@@ -18,10 +18,10 @@ var g_ctx = g_canvas.getContext("2d");
 // CREATE INITIAL SHIPS
 // ====================
 
-function createInitialShips() {
-  entityManager.generateShip({
-    cx: 200,
-    cy: 200
+function createMainCharacter() {
+  entityManager.generateMainCharacter({
+    cx: g_canvas.width/2,
+    cy: g_canvas.height/2
   });
 }
 
@@ -53,7 +53,6 @@ function updateSimulation(du) {
   entityManager.update(du);
 
   // Prevent perpetual firing!
-  eatKey(Ship.prototype.KEY_FIRE);
 }
 
 // GAME-SPECIFIC DIAGNOSTICS
@@ -89,34 +88,7 @@ function processDiagnostics() {
   if (eatKey(KEY_AVE_VEL)) g_useAveVel = !g_useAveVel;
 
   if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
-
-  if (eatKey(KEY_HALT)) entityManager.haltShips();
-
-  if (eatKey(KEY_RESET)) entityManager.resetShips();
-
-  if (eatKey(KEY_0)) entityManager.toggleRocks();
-
-  if (eatKey(KEY_1))
-    entityManager.generateShip({
-      cx: g_mouseX,
-      cy: g_mouseY,
-
-      sprite: g_sprites.ship
-    });
-
-  if (eatKey(KEY_2))
-    entityManager.generateShip({
-      cx: g_mouseX,
-      cy: g_mouseY,
-
-      sprite: g_sprites.ship2
-    });
-
-  if (eatKey(KEY_K)) entityManager.killNearestShip(g_mouseX, g_mouseY);
-
-  if (eatKey(KEY_EXPL)) g_useExpl = !g_useExpl;
 }
-
 // =================
 // RENDER SIMULATION
 // =================
@@ -143,11 +115,7 @@ var g_images = {};
 
 function requestPreloads() {
   var requiredImages = {
-    ship: "https://notendur.hi.is/~pk/308G/images/ship.png",
-    ship2: "https://notendur.hi.is/~pk/308G/images/ship_2.png",
-    rock: "https://notendur.hi.is/~pk/308G/images/rock.png",
-    bullet: "sprites/lb.png",
-    explosion: "sprites/Effect95.png"
+    mainCharacter: "sprites/chick.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -157,38 +125,15 @@ var g_sprites = {};
 var test = 0;
 
 function preloadDone() {
-  g_sprites.ship = new Sprite(g_images.ship);
-  g_sprites.ship2 = new Sprite(g_images.ship2);
-  g_sprites.rock = new Sprite(g_images.rock);
-
-  g_sprites.bullet = new Sprite(g_images.ship);
-  g_sprites.bullet.scale = 0.25;
-
-  // create sprites for the explosion
-  g_sprites.explosion = [
-    new Sprite(g_images.explosion, 0, 0, 128, 128),
-    new Sprite(g_images.explosion, 128, 0, 128, 128),
-    new Sprite(g_images.explosion, 256, 0, 128, 128),
-    new Sprite(g_images.explosion, 384, 0, 128, 128),
-
-    new Sprite(g_images.explosion, 0, 128, 128, 128),
-    new Sprite(g_images.explosion, 128, 128, 128, 128),
-    new Sprite(g_images.explosion, 256, 128, 128, 128),
-    new Sprite(g_images.explosion, 384, 128, 128, 128),
-
-    new Sprite(g_images.explosion, 0, 256, 128, 128),
-    new Sprite(g_images.explosion, 128, 256, 128, 128),
-    new Sprite(g_images.explosion, 256, 256, 128, 128),
-    new Sprite(g_images.explosion, 384, 256, 128, 128),
-
-    new Sprite(g_images.explosion, 0, 384, 128, 128),
-    new Sprite(g_images.explosion, 128, 384, 128, 128),
-    new Sprite(g_images.explosion, 256, 384, 128, 128),
-    new Sprite(g_images.explosion, 384, 384, 128, 128)
+  // Sprites for the Main Character walking left
+  g_sprites.mainCharacter = [
+    new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
+    new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
+    new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
+    new Sprite(g_images.mainCharacter, 96, 104, 32, 52)
   ];
-  g_sprites.explosion.scale = 0.1;
-  entityManager.init();
-  createInitialShips();
+  //entityManager.init();
+  createMainCharacter();
 
   main.init();
 }
