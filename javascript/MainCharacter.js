@@ -49,8 +49,8 @@ MainCharacter.prototype.update = function(du) {
     oldy = this.cy;
   spatialManager.register(this);
   this.updateSprite(du);
-  if(keys[this.KEY_LEFT]) this.cx -= 5;
-  if(keys[this.KEY_RIGHT]) this.cx += 5;
+  if(keys[this.KEY_LEFT]) this.cx = util.mod(this.cx - 5, g_canvas.width);
+  if(keys[this.KEY_RIGHT]) this.cx = util.mod(this.cx + 5, g_canvas.width);
 };
 
 MainCharacter.prototype.render = function(ctx){

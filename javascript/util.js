@@ -53,6 +53,9 @@ square: function(x) {
     return x*x;
 },
 
+mod: function(x, n) {
+    return ((x % n) + n) % n;
+},
 
 // DISTANCES
 // =========
