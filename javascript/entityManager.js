@@ -7,7 +7,7 @@ var entityManager = {
   // "PRIVATE" DATA
 
     _mainCharacter : [],
-
+    _ceilings: [],
   // "PRIVATE" METHODS
 
 
@@ -30,13 +30,18 @@ var entityManager = {
   //
   deferredSetup: function() {
     this._categories = [
-      this._mainCharacter
+      this._mainCharacter, 
+      this._ceilings
     ];
   },
 
-    generateMainCharacter : function(descr){
-        this._mainCharacter.push(new MainCharacter(descr))
-    },
+  generateCeiling: function(descr) {
+    this._ceilings.push(new Ceiling(descr));
+  },
+
+  generateMainCharacter : function(descr){
+      this._mainCharacter.push(new MainCharacter(descr))
+  },
 
   update: function(du) {
     for (var c = 0; c < this._categories.length; ++c) {
