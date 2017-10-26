@@ -88,8 +88,14 @@ MainCharacter.prototype.update = function(du) {
     if (keys[this.KEY_RIGHT] && this.cx < g_canvas.width - 16) this.cx += 5;
     this.updateSprite(du, oldx, oldy);
   spatialManager.register(this);
+<<<<<<< HEAD
   
   
+=======
+  this.updateSprite(du);
+  if(keys[this.KEY_LEFT]) this.cx = util.mod(this.cx - 5, g_canvas.width);
+  if(keys[this.KEY_RIGHT]) this.cx = util.mod(this.cx + 5, g_canvas.width);
+>>>>>>> 6adae46c126b5519985c22606d0dee38014a870e
 };
 
 MainCharacter.prototype.render = function(ctx){

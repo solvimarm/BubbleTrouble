@@ -25,6 +25,15 @@ function createMainCharacter() {
   });
 }
 
+function generateCeiling() {
+  entityManager.generateCeiling({
+    y: 0,
+    vel: 0,
+    minX: 0,
+    maxX: g_canvas.width
+  });
+}
+
 // =============
 // GATHER INPUTS
 // =============
@@ -142,6 +151,7 @@ function preloadDone() {
 
   //entityManager.init();
   createMainCharacter();
+  generateCeiling();
 
   main.init();
 }
