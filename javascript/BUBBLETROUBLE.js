@@ -21,7 +21,7 @@ var g_ctx = g_canvas.getContext("2d");
 function createMainCharacter() {
   entityManager.generateMainCharacter({
     cx: g_canvas.width/2,
-    cy: g_canvas.height/2
+    cy: g_canvas.height-52/2
   });
 }
 
@@ -132,6 +132,14 @@ function preloadDone() {
     new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
     new Sprite(g_images.mainCharacter, 96, 104, 32, 52)
   ];
+  g_sprites.mainCharacterLeft = [
+    new Sprite(g_images.mainCharacter, 96, 52, 32, 52),
+    new Sprite(g_images.mainCharacter, 64, 52, 32, 52),
+    new Sprite(g_images.mainCharacter, 32, 52, 32, 52),
+    new Sprite(g_images.mainCharacter, 0, 52, 32, 52)
+  ];
+  g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter,0,0,32,52);
+
   //entityManager.init();
   createMainCharacter();
 
