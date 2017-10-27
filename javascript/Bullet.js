@@ -14,6 +14,7 @@ function Bullet(descr){
 }
 
 Bullet.prototype = new Entity();
+Bullet.prototype.type = "default";
 
 
 Bullet.prototype.update = function(du){
