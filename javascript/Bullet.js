@@ -27,7 +27,7 @@ Bullet.prototype.update = function(du){
 };
 
 Bullet.prototype.render = function(ctx){
-        g_sprites.bullet.drawWrappedCentredAt(
-        ctx, this.cx, this.cy
+        g_sprites.bullet.drawCentredAt(
+        ctx, this.cx, this.cy+g_sprites.bullet.height/2
     );
 };
