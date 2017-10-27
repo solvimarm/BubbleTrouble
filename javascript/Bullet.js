@@ -18,9 +18,17 @@ Bullet.prototype.type = "default";
 
 
 Bullet.prototype.update = function(du){
-    // TODO
+	//spatialManager.unregister(this);
+	if(this.cy <= 0){
+		return entityManager.KILL_ME_NOW; 
+	}
+	this.cy -= du*2;
+    spatialManager.register(this);
 };
 
 Bullet.prototype.render = function(ctx){
-    // TODO
+		console.log(this.cy);
+        g_sprites.bullet.drawWrappedCentredAt(
+        ctx, this.cx, this.cy
+    );
 };

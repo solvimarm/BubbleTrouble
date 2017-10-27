@@ -124,7 +124,8 @@ var g_images = {};
 
 function requestPreloads() {
   var requiredImages = {
-    mainCharacter: "sprites/chick.png"
+    mainCharacter: "sprites/chick.png",
+    bullet: "sprites/chain.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -148,6 +149,8 @@ function preloadDone() {
     new Sprite(g_images.mainCharacter, 0, 52, 32, 52)
   ];
   g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter,0,0,32,52);
+  g_sprites.bullet = new Sprite(g_images.bullet);
+  g_sprites.bullet.scale = 0.25;
 
   //entityManager.init();
   createMainCharacter();

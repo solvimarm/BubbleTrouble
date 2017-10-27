@@ -15,6 +15,7 @@ MainCharacter.prototype = new Entity();
 
 MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
+MainCharacter.prototype.KEY_FIRE   = ' '.charCodeAt(0);
 
 MainCharacter.prototype.spriteRenderer = {
     movement:{
@@ -88,6 +89,17 @@ MainCharacter.prototype.update = function(du) {
     if (keys[this.KEY_RIGHT] && this.cx < g_canvas.width - 16)  this.cx=util.mod(this.cx + 5, g_canvas.width);
     this.updateSprite(du, oldx, oldy);
   spatialManager.register(this);
+  this.maybeFireBullet();
+};
+
+MainCharacter.prototype.maybeFireBullet = function () {
+
+    if (eatKey(this.KEY_FIRE)) {
+        console.log(this.cy)
+        entityManager.fireBullet(
+           this.cx , this.cy+g_sprites.bullet.height/1.25);
+    }
+    
 };
 
 MainCharacter.prototype.render = function(ctx){

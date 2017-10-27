@@ -8,6 +8,7 @@ var entityManager = {
 
     _mainCharacter : [],
     _ceilings: [],
+    _bullet: [],
   // "PRIVATE" METHODS
 
 
@@ -30,6 +31,7 @@ var entityManager = {
   //
   deferredSetup: function() {
     this._categories = [
+      this._bullet,
       this._mainCharacter, 
       this._ceilings
     ];
@@ -42,6 +44,12 @@ var entityManager = {
   generateMainCharacter : function(descr){
       this._mainCharacter.push(new MainCharacter(descr))
   },
+fireBullet: function(cx, cy) {
+    this._bullet.push(new Bullet({
+        cx   : cx,
+        cy   : cy,
+    }));
+},
 
   update: function(du) {
     for (var c = 0; c < this._categories.length; ++c) {
