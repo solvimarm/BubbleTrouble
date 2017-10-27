@@ -97,7 +97,7 @@ MainCharacter.prototype.maybeFireBullet = function () {
     if (eatKey(this.KEY_FIRE)) {
         console.log(this.cy)
         entityManager.fireBullet(
-           this.cx , this.cy+g_sprites.bullet.height/1.25);
+           this.cx , this.cy);
     }
     
 };

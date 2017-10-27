@@ -27,7 +27,6 @@ Bullet.prototype.update = function(du){
 };
 
 Bullet.prototype.render = function(ctx){
-		console.log(this.cy);
         g_sprites.bullet.drawWrappedCentredAt(
         ctx, this.cx, this.cy
     );
