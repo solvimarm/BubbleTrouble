@@ -132,16 +132,17 @@ function requestPreloads() {
 }
 
 var g_sprites = {};
-var test = 0;
+//var test = 0;
 
 function preloadDone() {
-  // Sprites for the Main Character walking left
-  g_sprites.mainCharacter = [
+  
+  g_sprites.mainCharacterRight = [
     new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
     new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
     new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
     new Sprite(g_images.mainCharacter, 96, 104, 32, 52)
   ];
+
   g_sprites.mainCharacterLeft = [
     new Sprite(g_images.mainCharacter, 96, 52, 32, 52),
     new Sprite(g_images.mainCharacter, 64, 52, 32, 52),

@@ -44,12 +44,13 @@ var entityManager = {
   generateMainCharacter : function(descr){
       this._mainCharacter.push(new MainCharacter(descr))
   },
-fireBullet: function(cx, cy) {
-    this._bullet.push(new Bullet({
-        cx   : cx,
-        cy   : cy,
-    }));
-},
+
+  fireBullet: function(cx, cy) {
+      this._bullet.push(new Bullet({
+          cx   : cx,
+          cy   : cy,
+      }));
+  },
 
   update: function(du) {
     for (var c = 0; c < this._categories.length; ++c) {
@@ -72,8 +73,7 @@ fireBullet: function(cx, cy) {
   },
 
   render: function(ctx) {
-    var debugX = 10,
-      debugY = 100;
+    var debugX = 10, debugY = 100;
 
     for (var c = 0; c < this._categories.length; ++c) {
       var aCategory = this._categories[c];

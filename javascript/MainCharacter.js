@@ -6,7 +6,7 @@
 function MainCharacter(descr){
     this.setup(descr);
 
-    this.sprite = this.sprite || g_sprites.mainCharacter[0];
+    this.sprite = this.sprite || g_sprites.mainCharacterRight[0];
     this.scale = this.scale || 1;
 
 }
@@ -18,7 +18,7 @@ MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE   = ' '.charCodeAt(0);
 
 MainCharacter.prototype.spriteRenderer = {
-    movement:{
+    movementRight:{
         renderTimes : 8,
         id :0,
         count: 0
@@ -36,7 +36,7 @@ MainCharacter.prototype.updateSprite = function(du, oldX, oldY) {
     var right = false;
     var still = false;
 
-    var runRight = this.spriteRenderer.movement;
+    var runRight = this.spriteRenderer.movementRight;
     var runLeft = this.spriteRenderer.movementLeft;
     
     if(oldX < this.cx){
@@ -55,12 +55,12 @@ MainCharacter.prototype.updateSprite = function(du, oldX, oldY) {
         still = true;
     }
     if(right)
-        this.sprite = g_sprites.mainCharacter[runRight.id];
+        this.sprite = g_sprites.mainCharacterRight[runRight.id];
     else if(left) 
         this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
     else if(still)
         this.sprite = g_sprites.mainCharacterStill;
-    if (still || runRight.count >= g_sprites.mainCharacter.length * runRight.renderTimes || 
+    if (still || runRight.count >= g_sprites.mainCharacterRight.length * runRight.renderTimes || 
         runLeft.count >= g_sprites.mainCharacterLeft.length * runLeft.renderTimes) {
       runRight.id = 0;
       runRight.count = 0;
@@ -96,10 +96,8 @@ MainCharacter.prototype.maybeFireBullet = function () {
 
     if (eatKey(this.KEY_FIRE)) {
         console.log(this.cy)
-        entityManager.fireBullet(
-           this.cx , this.cy);
+        entityManager.fireBullet(this.cx - 100, this.cy);
     }
-    
 };
 
 MainCharacter.prototype.render = function(ctx){

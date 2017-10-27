@@ -21,8 +21,6 @@
     never open.
 */
 
-
-
 function Wall(descr){
     this.setup(descr);
 }
