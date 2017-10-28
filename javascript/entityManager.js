@@ -49,7 +49,6 @@ var entityManager = {
 
   generateWall : function(descr){
     this._wall.push(new Wall(descr));
-    console.log("Keyrsla B");
 },
 
   fireBullet: function(cx, yTop) {

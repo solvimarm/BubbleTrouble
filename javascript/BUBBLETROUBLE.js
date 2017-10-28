@@ -34,6 +34,7 @@ function generateCeiling() {
   });
 }
 
+/*
 function generateWall() {
   entityManager.generateWall({
     x: 0,
@@ -41,10 +42,23 @@ function generateWall() {
     width: g_canvas.width,
     height: 100,
     type: 0,
-    ballsToHit: 10
+    ballsToHit: 10,
+    sprite : g_sprites.wall_ground
   });
-  console.log("keyrsla A");
 }
+
+function generateWall() {
+  entityManager.generateWall({
+    x: 0,
+    y: 0,
+    width: 15,
+    height: 500,
+    type: 1,
+    ballsToHit: 10,
+    sprite : g_sprites.wall_1
+  });
+}
+*/
 
 
 // =============
@@ -139,7 +153,8 @@ function requestPreloads() {
   var requiredImages = {
     mainCharacter: "sprites/chick.png",
     bullet: "sprites/Bullet1A.png",
-    ground: "sprites/wall_ground.png"
+    ground: "sprites/wall_ground.png",
+    wall_1: "sprites/wall_1.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -165,13 +180,53 @@ function preloadDone() {
   ];
   g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter,0,0,32,52);
   g_sprites.bullet = new Sprite(g_images.bullet);
-  g_sprites.wall = new Sprite(g_images.ground);
+  g_sprites.wall_ground = new Sprite(g_images.ground);
+  g_sprites.wall_1 = new Sprite(g_images.wall_1);
   //g_sprites.bullet.scale = 0.25;
 
   //entityManager.init();
   createMainCharacter();
   generateCeiling();
-  generateWall();
+  //generateWall();
+  entityManager.generateWall({
+    x: 0,
+    y: 0,
+    width: 15,
+    height: 500,
+    type: 1,
+    ballsToHit: 10,
+    sprite : g_sprites.wall_1
+  });
+
+  entityManager.generateWall({
+    x: 0,
+    y: Y_BOTTOM,
+    width: g_canvas.width,
+    height: 100,
+    type: 0,
+    ballsToHit: 10,
+    sprite : g_sprites.wall_ground
+  });
+
+  entityManager.generateWall({
+    x: 800-15,
+    y: 0,
+    width: 15,
+    height: 100,
+    type: 1,
+    ballsToHit: 10,
+    sprite : g_sprites.wall_1
+  });
+
+  entityManager.generateWall({
+    x: 400,
+    y: -200,
+    width: 15,
+    height: 100,
+    type: 1,
+    ballsToHit: 10,
+    sprite : g_sprites.wall_1
+  });
 
   main.init();
 }
