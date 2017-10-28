@@ -6,7 +6,7 @@
 function MainCharacter(descr){
     this.setup(descr);
 
-    this.sprite = this.sprite || g_sprites.mainCharacterRight[0];
+    this.sprite = this.sprite || g_sprites.mainCharacterStill;
     this.scale = this.scale || 1;
 
 }
@@ -96,7 +96,7 @@ MainCharacter.prototype.maybeFireBullet = function () {
 
     if (eatKey(this.KEY_FIRE)) {
         console.log(this.cy)
-        entityManager.fireBullet(this.cx - 100, this.cy);
+        entityManager.fireBullet(this.cx, this.cy + this.sprite.height/2);
     }
 };
 

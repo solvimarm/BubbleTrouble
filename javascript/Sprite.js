@@ -50,7 +50,19 @@ Sprite.prototype.drawCentredAt = function (ctx, cx, cy, rotation) {
                   this.width,this.height);
 
     ctx.restore();
-};  
+};
+
+Sprite.prototype.drawBullet = function (ctx, cx, yTop) {
+    var w = this.width, h = this.height;
+    ctx.save();
+    ctx.rotate(0);
+    ctx.scale(this.scale, this.scale);
+    ctx.drawImage(this.image, cx - w/2, yTop);
+    ctx.restore();
+};
+
+
+
 
 Sprite.prototype.drawWrappedCentredAt = function (ctx, cx, cy, rotation) {
     

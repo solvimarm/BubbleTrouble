@@ -42,13 +42,13 @@ var entityManager = {
   },
 
   generateMainCharacter : function(descr){
-      this._mainCharacter.push(new MainCharacter(descr))
+      this._mainCharacter.push(new MainCharacter(descr));
   },
 
-  fireBullet: function(cx, cy) {
+  fireBullet: function(cx, yTop) {
       this._bullet.push(new Bullet({
-          cx   : cx,
-          cy   : cy,
+        cx : cx,
+        yTop : yTop
       }));
   },
 

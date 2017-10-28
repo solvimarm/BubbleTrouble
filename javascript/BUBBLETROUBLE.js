@@ -125,7 +125,7 @@ var g_images = {};
 function requestPreloads() {
   var requiredImages = {
     mainCharacter: "sprites/chick.png",
-    bullet: "sprites/chain2.png"
+    bullet: "sprites/Bullet1A.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -135,7 +135,7 @@ var g_sprites = {};
 //var test = 0;
 
 function preloadDone() {
-  
+
   g_sprites.mainCharacterRight = [
     new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
     new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
