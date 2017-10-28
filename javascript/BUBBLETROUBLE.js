@@ -21,7 +21,7 @@ var g_ctx = g_canvas.getContext("2d");
 function createMainCharacter() {
   entityManager.generateMainCharacter({
     cx: g_canvas.width/2,
-    cy: g_canvas.height-52/2
+    cy: Y_BOTTOM - g_sprites.mainCharacterStill.height/2
   });
 }
 
@@ -33,6 +33,19 @@ function generateCeiling() {
     maxX: g_canvas.width
   });
 }
+
+function generateWall() {
+  entityManager.generateWall({
+    x: 0,
+    y: Y_BOTTOM,
+    width: g_canvas.width,
+    height: 100,
+    type: 0,
+    ballsToHit: 10
+  });
+  console.log("keyrsla A");
+}
+
 
 // =============
 // GATHER INPUTS
@@ -125,7 +138,8 @@ var g_images = {};
 function requestPreloads() {
   var requiredImages = {
     mainCharacter: "sprites/chick.png",
-    bullet: "sprites/Bullet1A.png"
+    bullet: "sprites/Bullet1A.png",
+    ground: "sprites/wall_ground.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -151,11 +165,13 @@ function preloadDone() {
   ];
   g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter,0,0,32,52);
   g_sprites.bullet = new Sprite(g_images.bullet);
+  g_sprites.wall = new Sprite(g_images.ground);
   //g_sprites.bullet.scale = 0.25;
 
   //entityManager.init();
   createMainCharacter();
   generateCeiling();
+  generateWall();
 
   main.init();
 }

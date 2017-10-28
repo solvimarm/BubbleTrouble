@@ -8,6 +8,7 @@ var entityManager = {
 
     _mainCharacter : [],
     _ceilings: [],
+    _wall: [],
     _bullet: [],
   // "PRIVATE" METHODS
 
@@ -33,7 +34,8 @@ var entityManager = {
     this._categories = [
       this._bullet,
       this._mainCharacter, 
-      this._ceilings
+      this._ceilings,
+      this._wall
     ];
   },
 
@@ -44,6 +46,11 @@ var entityManager = {
   generateMainCharacter : function(descr){
       this._mainCharacter.push(new MainCharacter(descr));
   },
+
+  generateWall : function(descr){
+    this._wall.push(new Wall(descr));
+    console.log("Keyrsla B");
+},
 
   fireBullet: function(cx, yTop) {
       this._bullet.push(new Bullet({
