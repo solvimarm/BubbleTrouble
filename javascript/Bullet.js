@@ -9,6 +9,13 @@
 
 */
 
+/*
+Bullet er þannig að cx er miðpunkturinn á x-ás og
+yTop er topppunkturinn. Það er held ég best að vera með þennan punkt (cx,yTop)
+þegar það kemur að framtíðinni að athuga með boltanna. - Svenni
+*/
+
+
 function Bullet(descr){
     this.setup(descr);
 }
