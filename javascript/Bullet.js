@@ -37,3 +37,4 @@ Bullet.prototype.update = function(du){
 Bullet.prototype.render = function(ctx){
         g_sprites.bullet.drawBullet(ctx, this.cx, this.yTop);
 };
+

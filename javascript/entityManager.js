@@ -10,6 +10,7 @@ var entityManager = {
     _ceilings: [],
     _wall: [],
     _bullet: [],
+    _balls:[],
   // "PRIVATE" METHODS
 
 
@@ -35,7 +36,8 @@ var entityManager = {
       this._bullet,
       this._mainCharacter, 
       this._ceilings,
-      this._wall
+      this._wall,
+      this._balls
     ];
   },
 
@@ -56,6 +58,9 @@ var entityManager = {
         cx : cx,
         yTop : yTop
       }));
+  },
+  generateBall : function(descr){
+    this._balls.push(new Ball(descr));
   },
 
   update: function(du) {

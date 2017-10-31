@@ -6,8 +6,8 @@
 var levels = [
     { // level 1
         background: 0, 
-        ball_cx: [],
-        ball_cy: [],
+        ball_cx: [100,700],
+        ball_cy: [100,100],
         ball_type: [],
         wall_x: [],
         wall_y: [],
@@ -17,3 +17,6 @@ var levels = [
         wall_ballsToHit: []
     },
 ]
+
+
+

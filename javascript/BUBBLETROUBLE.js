@@ -154,7 +154,8 @@ function requestPreloads() {
     mainCharacter: "sprites/chick.png",
     bullet: "sprites/Bullet1A.png",
     ground: "sprites/wall_ground.png",
-    wall_1: "sprites/wall_1.png"
+    wall_1: "sprites/wall_1.png",
+    balls: "sprites/ballSprite.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -183,6 +184,9 @@ function preloadDone() {
   g_sprites.wall_ground = new Sprite(g_images.ground);
   g_sprites.wall_1 = new Sprite(g_images.wall_1);
   //g_sprites.bullet.scale = 0.25;
+  
+  // Balls
+  g_sprites.YellowBall = new Sprite(g_images.balls,0,0,259,259);
 
   //entityManager.init();
   createMainCharacter();
@@ -228,6 +232,7 @@ function preloadDone() {
     sprite : g_sprites.wall_1
   });
 
+    entityManager.generateBall();
   main.init();
 }
 
