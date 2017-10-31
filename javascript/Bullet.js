@@ -26,11 +26,11 @@ Bullet.prototype.velY = 2;
 
 
 Bullet.prototype.update = function(du){
-	//spatialManager.unregister(this);
+	spatialManager.unregister(this);
 	if(this.yTop <= 0){
 		return entityManager.KILL_ME_NOW; 
-	}
-	this.yTop -= du*2;
+    }
+	this.yTop -= du*4;
     spatialManager.register(this);
 };
 

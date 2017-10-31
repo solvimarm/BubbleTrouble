@@ -69,8 +69,8 @@ findEntityInRange: function(posX, posY, radius) {
 render: function(ctx) {
     var oldStyle = ctx.strokeStyle;
     ctx.strokeStyle = "red";
-    
     for (var ID in this._entities) {
+        console.log(ID);
         var e = this._entities[ID];
         util.strokeCircle(ctx, e.getPos().posX, e.getPos().posY, e.getRadius());
     }

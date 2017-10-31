@@ -93,8 +93,8 @@ MainCharacter.prototype.update = function(du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
-
-    if (eatKey(this.KEY_FIRE)) {
+    
+    if (eatKey(this.KEY_FIRE) && entityManager._bullet.length === 0) {
         console.log(this.cy)
         entityManager.fireBullet(this.cx, this.cy + this.sprite.height/2);
     }
