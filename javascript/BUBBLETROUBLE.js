@@ -226,10 +226,19 @@ function preloadDone() {
     x: 400,
     y: -200,
     width: 15,
-    height: 100,
-    type: 1,
+    height: 500,
+    type: 2,
     ballsToHit: 10,
     sprite : g_sprites.wall_1
+  });
+  entityManager.generateWall({
+    x: 200,
+    y: -100,
+    width: 15,
+    height: 500,
+    type: 2,
+    ballsToHit: 10,
+    sprite: g_sprites.wall_1
   });
 
     entityManager.generateBall({

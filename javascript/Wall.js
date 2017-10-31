@@ -32,6 +32,9 @@ Wall.prototype = new Entity();
 
 Wall.prototype.update = function(du){
     // TODO
+    spatialManager.unregister(this);
+    spatialManager.register(this);
+
 };
 
 Wall.prototype.render = function(ctx){

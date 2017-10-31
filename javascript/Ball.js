@@ -41,9 +41,7 @@ Ball.prototype.update = function(du){
     newCoords = this._getNextCoords(du);
     // TODO: Collision with walls / ground.
     if(newCoords.nextY + this.radius > g_canvas.height) {
-        console.log("Here");
         this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
-        console.log(this.velY);
         newCoords = this._getNextCoords(du);
     }
 
@@ -51,7 +49,7 @@ Ball.prototype.update = function(du){
     this.cy = newCoords.nextY;
     this.velY = newCoords.newVelY;
 
-    console.log(this.cx + ", " + this.cy);
+    //console.log(this.cx + ", " + this.cy);
 };
 
 Ball.prototype._getNextCoords = function(du) {

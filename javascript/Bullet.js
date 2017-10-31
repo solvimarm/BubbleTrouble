@@ -26,9 +26,13 @@ Bullet.prototype.velY = 2;
 
 
 Bullet.prototype.update = function(du){
-	spatialManager.unregister(this);
+    spatialManager.unregister(this);
 	if(this.yTop <= 0){
 		return entityManager.KILL_ME_NOW; 
+    }
+    var hitEntity = this.findWallEntity();
+    if(hitEntity){
+        return entityManager.KILL_ME_NOW;
     }
 	this.yTop -= du*4;
     spatialManager.register(this);
@@ -36,5 +40,11 @@ Bullet.prototype.update = function(du){
 
 Bullet.prototype.render = function(ctx){
         g_sprites.bullet.drawBullet(ctx, this.cx, this.yTop);
+};
+
+Bullet.prototype.collisionWithWall = function(wallx,wally,width,height){
+    if(this.cx >= wallx && this.cx <= wallx + width){
+        console.log(this.cy + "    "+ this.yTop);
+    }
 };
 

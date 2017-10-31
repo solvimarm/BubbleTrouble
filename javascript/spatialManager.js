@@ -62,7 +62,20 @@ findEntityInRange: function(posX, posY, radius) {
         var distanceSq = util.distSq(cx,cy,posX,posY);
         var limitSq = util.square(rad + radius);
         if(distanceSq < limitSq) return entity;
-       
+    }
+},
+findWallInRange: function(x,y){
+    for(var ID in this._entities){
+        var entity = this._entities[ID];
+        var cx = entity.cx || entity.x;
+        var cy = entity.cy || entity.y;
+        var width = entity.width || 0;
+        var height = entity.height || 0;
+        var type = entity.type || 1;
+        if(x > cx && x < cx+width && type === 2){
+            if(y<=height-Math.abs(cy))
+                return entity;
+        }
     }
 },
 
@@ -70,7 +83,7 @@ render: function(ctx) {
     var oldStyle = ctx.strokeStyle;
     ctx.strokeStyle = "red";
     for (var ID in this._entities) {
-        console.log(ID);
+        //console.log(ID);
         var e = this._entities[ID];
         util.strokeCircle(ctx, e.getPos().posX, e.getPos().posY, e.getRadius());
     }
