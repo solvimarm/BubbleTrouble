@@ -10,8 +10,9 @@
 */
 
 var BallStyles = [
-    {color: "#123456", maxBounce: 110, radius: 10},
-    {color: "#121212", maxBounce: 140, radius: 15}
+    {color: "#123456", maxBounce: 110, radius: 5},
+    {color: "#121212", maxBounce: 140, radius: 10},
+    {color: "#235512", maxBounce: 170, radius: 15}
 ]
 
 function Ball(descr){
@@ -19,8 +20,9 @@ function Ball(descr){
     this.sprite = this.sprite || g_sprites.YellowBall;
 
     // TODO: Add more styles / types.
-    this.radius = BallStyles[this.type % 2].radius;
-    this.maxBounce = BallStyles[this.type % 2].maxBounce;
+    this.type = util.mod(this.type, BallStyles.length);
+    this.radius = BallStyles[this.type].radius;
+    this.maxBounce = BallStyles[this.type].maxBounce;
 }
 
 Ball.prototype = new Entity();
@@ -33,12 +35,39 @@ Ball.prototype.position = function(){
     this.cy = 300;
 };
 Ball.prototype.getRadius = function(){
-    return 100;
+    return this.radius;
 };
+
+Ball.prototype.hitBall = function() {
+    if(this.type > 0) {
+         entityManager.generateBall({
+            cx: this.cx,
+            cy: this.cy,
+            velX: -1,
+            velY: -3,
+            type: this.type-1
+        });
+        entityManager.generateBall({
+            cx: this.cx,
+            cy: this.cy,
+            velX: 1,
+            velY: -3,
+            type: this.type-1
+        });
+    }
+}
 
 Ball.prototype.update = function(du){
 
+    // TODO: Remove. Used for testing only.
+    if (eatKey(keyCode("L"))) {
+        this.hitBall();
+        return entityManager.KILL_ME_NOW;
+    }
+
+
     newCoords = this._getNextCoords(du);
+
     // TODO: Collision with walls / ground.
     if(newCoords.nextY + this.radius > g_canvas.height) {
         this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
@@ -48,11 +77,7 @@ Ball.prototype.update = function(du){
     this.cx = newCoords.nextX;
     this.cy = newCoords.nextY;
     this.velY = newCoords.newVelY;
-<<<<<<< HEAD
 
-    //console.log(this.cx + ", " + this.cy);
-=======
->>>>>>> 2cda1803b1fa28a22dfc8f11c674ec6c1d852b3a
 };
 
 Ball.prototype._getNextCoords = function(du) {
