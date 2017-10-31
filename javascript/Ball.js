@@ -10,15 +10,17 @@
 */
 
 var BallStyles = [
-    {color: "#123456", maxBounce: 90, radius: 10},
-    {color: "#121212", maxBounce: 120, radius: 15}
+    {color: "#123456", maxBounce: 110, radius: 10},
+    {color: "#121212", maxBounce: 140, radius: 15}
 ]
 
 function Ball(descr){
     this.setup(descr);
-    this.cx = 100;
-    this.cy = 100;
     this.sprite = this.sprite || g_sprites.YellowBall;
+
+    // TODO: Add more styles / types.
+    this.radius = BallStyles[this.type % 2].radius;
+    this.maxBounce = BallStyles[this.type % 2].maxBounce;
 }
 
 Ball.prototype = new Entity();
@@ -35,16 +37,51 @@ Ball.prototype.getRadius = function(){
 };
 
 Ball.prototype.update = function(du){
-    // TODO
-    // v = -sqrt(m*g)  => Toppurinn á skoppinu er í hæð m.
-    // Ef það rekst á botnin, velY = -Math.sqrt(this.maxBounce * 9.82);
+
+    newCoords = this._getNextCoords(du);
+    // TODO: Collision with walls / ground.
+    if(newCoords.nextY + this.radius > g_canvas.height) {
+        console.log("Here");
+        this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
+        console.log(this.velY);
+        newCoords = this._getNextCoords(du);
+    }
+
+    this.cx = newCoords.nextX;
+    this.cy = newCoords.nextY;
+    this.velY = newCoords.newVelY;
+
+    console.log(this.cx + ", " + this.cy);
+};
+
+Ball.prototype._getNextCoords = function(du) {
+    var oldVelY = this.velY;
+    var newVelY = oldVelY + consts.NOMINAL_GRAVITY * du;
+  
+    var aveVelY = (oldVelY + newVelY)/2;
+    var intervalVelY = g_useAveVel ? aveVelY : newVelY;
+    
+    var nextX = util.mod(this.cx + this.velX * du, g_canvas.width);
+    var nextY = util.mod(this.cy + intervalVelY * du, g_canvas.width);
+
+    return {
+        nextX: nextX,
+        nextY: nextY,
+        newVelY: newVelY
+    };
 };
 
 Ball.prototype.render = function(ctx){
-    // TODO
-    console.log(levels[0].ball_cx);
-    for(var i = 0; i < levels[0].ball_cx.length;i++){
-        this.sprite.scale = 0.8;
-        this.sprite.drawCentredAt(ctx, levels[0].ball_cx[i], levels[0].ball_cy[i], this.rotation);
-    }
+    
+    this.sprite.scale = 0.8;
+    this.sprite.drawCentredAt(ctx, this.cx, this.cy, 0);
+
+    // Boltarnir ættu allir að vera í entityManager._balls. Óþarfi að loop'a í gegnum þá hér.
+
+    //console.log(levels[0].ball_cx);
+    //for(var i = 0; i < levels[0].ball_cx.length;i++){
+    //    this.sprite.scale = 0.8;
+    //    this.sprite.drawCentredAt(ctx, levels[0].ball_cx[i], levels[0].ball_cy[i], this.rotation);
+    //}
 };
+

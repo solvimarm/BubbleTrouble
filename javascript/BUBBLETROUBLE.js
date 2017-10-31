@@ -232,7 +232,18 @@ function preloadDone() {
     sprite : g_sprites.wall_1
   });
 
-    entityManager.generateBall();
+    entityManager.generateBall({
+      cx: 150,
+      cy: 220,
+      velX: -1,
+      type: 0
+    });
+    entityManager.generateBall({
+      cx: 180,
+      cy: 220,
+      velX: 1,
+      type: 1
+    });
   main.init();
 }
 

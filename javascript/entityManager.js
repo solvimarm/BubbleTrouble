@@ -59,6 +59,7 @@ var entityManager = {
         yTop : yTop
       }));
   },
+  
   generateBall : function(descr){
     this._balls.push(new Ball(descr));
   },
