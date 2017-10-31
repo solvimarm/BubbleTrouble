@@ -48,8 +48,11 @@ Ball.prototype.update = function(du){
     this.cx = newCoords.nextX;
     this.cy = newCoords.nextY;
     this.velY = newCoords.newVelY;
+<<<<<<< HEAD
 
     //console.log(this.cx + ", " + this.cy);
+=======
+>>>>>>> 2cda1803b1fa28a22dfc8f11c674ec6c1d852b3a
 };
 
 Ball.prototype._getNextCoords = function(du) {
