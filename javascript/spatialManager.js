@@ -52,16 +52,22 @@ unregister: function(entity) {
     delete this._entities[spatialID];
 },
 
-findEntityInRange: function(posX, posY, radius) {
+findEntityInRange: function(posX, posY,width) {
     // TODO: YOUR STUFF HERE!
+    console.log("find entity in range");
     for (var ID in this._entities) {
         var entity = this._entities[ID];
         var cx = entity.cx;
         var cy = entity.cy;
         var rad = entity.getRadius();
         var distanceSq = util.distSq(cx,cy,posX,posY);
-        var limitSq = util.square(rad + radius);
+        var limitSq = util.square(rad);
         if(distanceSq < limitSq) return entity;
+        if(cy - rad>=posY)
+            if(Math.abs(cx-posX) < rad) 
+                return entity;
+       
+
     }
 },
 findWallInRange: function(x,y){

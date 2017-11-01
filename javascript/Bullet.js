@@ -31,9 +31,13 @@ Bullet.prototype.update = function(du){
 		return entityManager.KILL_ME_NOW; 
     }
     var hitEntity = this.findWallEntity();
-    if(hitEntity){
+    var hitBallEntity = this.findHitEntity();
+    if(hitBallEntity){
+        hitBallEntity.hitBall();
         return entityManager.KILL_ME_NOW;
     }
+    if(hitEntity) return entityManager.KILL_ME_NOW;
+    
 	this.yTop -= du*4;
     spatialManager.register(this);
 };

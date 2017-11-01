@@ -63,7 +63,9 @@ var entityManager = {
   generateBall : function(descr){
     this._balls.push(new Ball(descr));
   },
-
+  killBall : function(descr){
+    
+  },
   update: function(du) {
     for (var c = 0; c < this._categories.length; ++c) {
       var aCategory = this._categories[c];

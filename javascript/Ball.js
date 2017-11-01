@@ -10,9 +10,9 @@
 */
 
 var BallStyles = [
-    {color: "#123456", maxBounce: 110, radius: 5},
-    {color: "#121212", maxBounce: 140, radius: 10},
-    {color: "#235512", maxBounce: 170, radius: 15}
+    {color: "#123456", maxBounce: 110, radius: 9},
+    {color: "#121212", maxBounce: 140, radius: 20},
+    {color: "#235512", maxBounce: 170, radius: 30}
 ]
 
 function Ball(descr){
@@ -39,29 +39,35 @@ Ball.prototype.getRadius = function(){
 };
 
 Ball.prototype.hitBall = function() {
+    this.kill();
+   // console.log(this);
     if(this.type > 0) {
          entityManager.generateBall({
             cx: this.cx,
             cy: this.cy,
             velX: -1,
             velY: -3,
-            type: this.type-1
+            type: this.type-1,
+            scale:this.scale-0.3
         });
         entityManager.generateBall({
             cx: this.cx,
             cy: this.cy,
             velX: 1,
             velY: -3,
-            type: this.type-1
+            type: this.type-1,
+            scale:this.scale-0.3
         });
+        
     }
+    
 }
 
 Ball.prototype.update = function(du){
-
+    spatialManager.unregister(this);
     // TODO: Remove. Used for testing only.
-    if (eatKey(keyCode("L"))) {
-        this.hitBall();
+    if (this._isDeadNow) {
+        //this.hitBall();
         return entityManager.KILL_ME_NOW;
     }
 
@@ -69,7 +75,7 @@ Ball.prototype.update = function(du){
     newCoords = this._getNextCoords(du);
 
     // TODO: Collision with walls / ground.
-    if(newCoords.nextY + this.radius > g_canvas.height) {
+    if(newCoords.nextY + this.radius > g_canvas.height-100) {
         this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
         newCoords = this._getNextCoords(du);
     }
@@ -77,6 +83,7 @@ Ball.prototype.update = function(du){
     this.cx = newCoords.nextX;
     this.cy = newCoords.nextY;
     this.velY = newCoords.newVelY;
+    spatialManager.register(this);
 
 };
 
@@ -99,7 +106,7 @@ Ball.prototype._getNextCoords = function(du) {
 
 Ball.prototype.render = function(ctx){
     
-    this.sprite.scale = 0.8;
+    this.sprite.scale = this.scale;
     this.sprite.drawCentredAt(ctx, this.cx, this.cy, 0);
 
     // Boltarnir ættu allir að vera í entityManager._balls. Óþarfi að loop'a í gegnum þá hér.

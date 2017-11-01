@@ -64,13 +64,13 @@ Entity.prototype.getSpatialID = function () {
 };
 
 Entity.prototype.kill = function () {
-    this._isDeadNow = true;
+    this._isDeadNow = true;   
 };
 
 Entity.prototype.findHitEntity = function () {
     var pos = this.getPos();
     return spatialManager.findEntityInRange(
-        pos.posX, pos.posY, this.getRadius()
+        pos.posX, pos.posY,g_sprites.bullet.width
     );
 };
 Entity.prototype.findWallEntity = function() {
