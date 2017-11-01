@@ -66,18 +66,23 @@ Entity.prototype.getSpatialID = function () {
 Entity.prototype.kill = function () {
     this._isDeadNow = true;   
 };
-
+//þetta er fyrir bullet -> ball
 Entity.prototype.findHitEntity = function () {
     var pos = this.getPos();
     return spatialManager.findEntityInRange(
         pos.posX, pos.posY,g_sprites.bullet.width
     );
 };
+//þetta er fyrir bullet -> wall
 Entity.prototype.findWallEntity = function() {
   var pos = this.getPos();
 
   return spatialManager.findWallInRange(pos.posX, pos.posY);
 };
+Entity.prototype.findBallEntity = function(){
+    var pos = this.getPos();
+    return spatialManager.ballInRangeOfMC(pos.posX,pos.posY,this.getRad());
+}
 
 // This is just little "convenience wrapper"
 Entity.prototype.isColliding = function () {

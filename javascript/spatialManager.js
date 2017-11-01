@@ -51,7 +51,7 @@ unregister: function(entity) {
     // TODO: YOUR STUFF HERE!
     delete this._entities[spatialID];
 },
-
+//bullet -> ball
 findEntityInRange: function(posX, posY,width) {
     // TODO: YOUR STUFF HERE!
     console.log("find entity in range");
@@ -70,6 +70,7 @@ findEntityInRange: function(posX, posY,width) {
 
     }
 },
+//Bullet -> wall
 findWallInRange: function(x,y){
     for(var ID in this._entities){
         var entity = this._entities[ID];
@@ -82,6 +83,18 @@ findWallInRange: function(x,y){
             if(y<=height-Math.abs(cy))
                 return entity;
         }
+    }
+},
+
+ballInRangeOfMC : function(posX,posY,radius){
+    for (var ID in this._entities) {
+      var entity = this._entities[ID];
+      var cx = entity.cx;
+      var cy = entity.cy;
+      var rad = entity.getRadius();
+      var distanceSq = util.distSq(cx, cy, posX, posY);
+      var limitSq = util.square(rad + radius);
+      if (distanceSq < limitSq) return entity;
     }
 },
 

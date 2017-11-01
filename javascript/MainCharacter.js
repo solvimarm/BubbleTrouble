@@ -8,6 +8,7 @@ function MainCharacter(descr){
 
     this.sprite = this.sprite || g_sprites.mainCharacterStill;
     this.scale = this.scale || 1;
+    this.radius = 14;
 
 }
 
@@ -83,6 +84,10 @@ MainCharacter.prototype.update = function(du) {
     return entityManager.KILL_ME_NOW;
   }
 
+  var collEntity = this.findBallEntity();
+  if(collEntity) return entityManager.KILL_ME_NOW
+
+
   var oldx = this.cx,
     oldy = this.cy;
     if (keys[this.KEY_LEFT] && this.cx-16 > 0) this.cx=util.mod(this.cx - 3, g_canvas.width);
@@ -102,4 +107,8 @@ MainCharacter.prototype.maybeFireBullet = function () {
 
 MainCharacter.prototype.render = function(ctx){
     this.sprite.drawWrappedCentredAt(ctx,this.cx,this.cy,this.rotation);
+}
+
+MainCharacter.prototype.getRad = function (){
+    return this.radius;
 }
