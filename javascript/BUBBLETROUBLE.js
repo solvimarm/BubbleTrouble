@@ -14,54 +14,6 @@ var g_ctx = g_canvas.getContext("2d");
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 */
 
-// ====================
-// CREATE INITIAL SHIPS
-// ====================
-
-/*
-function createMainCharacter() {
-  entityManager.generateMainCharacter({
-    cx: g_canvas.width/2,
-    cy: Y_BOTTOM - g_sprites.mainCharacterStill.height/2
-  });
-}
-
-function generateCeiling() {
-  entityManager.generateCeiling({
-    y: 0,
-    vel: 0,
-    minX: 0,
-    maxX: g_canvas.width
-  });
-}
-*/
-
-/*
-function generateWall() {
-  entityManager.generateWall({
-    x: 0,
-    y: Y_BOTTOM,
-    width: g_canvas.width,
-    height: 100,
-    type: 0,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_ground
-  });
-}
-
-function generateWall() {
-  entityManager.generateWall({
-    x: 0,
-    y: 0,
-    width: 15,
-    height: 500,
-    type: 1,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_1
-  });
-}
-*/
-
 
 // =============
 // GATHER INPUTS
@@ -224,7 +176,7 @@ function preloadDone() {
   g_sprites.Ball_Orange = new Sprite(g_images.Ball_Orange);
 
   // Create Map number map_num
-  var map_num = 0;
+  var map_num = 1;
   generateMap(map_num, g_sprites);
 
   main.init();
