@@ -8,7 +8,7 @@ function createLEVELS(g_sprites){
             ball_cx: [100,700],
             ball_cy: [100,100],
             ball_velX: [1, -1],
-            ball_type: [2, 2],
+            ball_type: [3, 3],
             ball_sprites: [g_sprites.Ball_Red, g_sprites.Ball_Blue],
             wall_x: [0, 0, 784],
             wall_y: [Y_BOTTOM, 0, 0],

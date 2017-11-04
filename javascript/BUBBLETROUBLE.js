@@ -176,7 +176,7 @@ function preloadDone() {
   g_sprites.Ball_Orange = new Sprite(g_images.Ball_Orange);
 
   // Create Map number map_num
-  var map_num = 1;
+  var map_num = 0;
   generateMap(map_num, g_sprites);
 
   main.init();
