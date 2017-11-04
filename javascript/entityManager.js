@@ -1,22 +1,19 @@
-
-
 "use strict";
 
 
 var entityManager = {
   // "PRIVATE" DATA
 
-    _mainCharacter : [],
-    _ceilings: [],
-    _wall: [],
-    _bullet: [],
-    _balls:[],
-    _background: [],
+  _mainCharacter: [],
+  _ceilings: [],
+  _wall: [],
+  _bullet: [],
+  _balls: [],
+  _background: [],
   // "PRIVATE" METHODS
 
 
-
-  _forEachOf: function(aCategory, fn) {
+  _forEachOf: function (aCategory, fn) {
     for (var i = 0; i < aCategory.length; ++i) {
       fn.call(aCategory[i]);
     }
@@ -32,48 +29,48 @@ var entityManager = {
   // Some things must be deferred until after initial construction
   // i.e. thing which need `this` to be defined.
   //
-  deferredSetup: function() {
+  deferredSetup: function () {
     this._categories = [
       this._background,
       this._bullet,
-      this._mainCharacter, 
+      this._mainCharacter,
       this._ceilings,
       this._wall,
       this._balls
     ];
   },
 
-  generateCeiling: function(descr) {
+  generateCeiling: function (descr) {
     this._ceilings.push(new Ceiling(descr));
   },
 
-  generateMainCharacter : function(descr){
-      this._mainCharacter.push(new MainCharacter(descr));
+  generateMainCharacter: function (descr) {
+    this._mainCharacter.push(new MainCharacter(descr));
   },
 
-  generateWall : function(descr){
+  generateWall: function (descr) {
     this._wall.push(new Wall(descr));
   },
 
-  generateBackground : function(descr){
+  generateBackground: function (descr) {
     this._background.push(new Background(descr));
   },
 
-  fireBullet: function(cx, yTop, bulletType) {
-      this._bullet.push(new Bullet({
-        cx : cx,
-        yTop : yTop,
-        type: bulletType
-      }));
+  fireBullet: function (cx, yTop, bulletType) {
+    this._bullet.push(new Bullet({
+      cx: cx,
+      yTop: yTop,
+      type: bulletType
+    }));
   },
-  
-  generateBall : function(descr){
+
+  generateBall: function (descr) {
     this._balls.push(new Ball(descr));
   },
-  killBall : function(descr){
-    
+  killBall: function (descr) {
+
   },
-  update: function(du) {
+  update: function (du) {
     for (var c = 0; c < this._categories.length; ++c) {
       var aCategory = this._categories[c];
       var i = 0;
@@ -93,8 +90,9 @@ var entityManager = {
 
   },
 
-  render: function(ctx) {
-    var debugX = 10, debugY = 100;
+  render: function (ctx) {
+    var debugX = 10,
+      debugY = 100;
 
     for (var c = 0; c < this._categories.length; ++c) {
       var aCategory = this._categories[c];
