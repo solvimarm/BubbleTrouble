@@ -18,6 +18,7 @@ var g_ctx = g_canvas.getContext("2d");
 // CREATE INITIAL SHIPS
 // ====================
 
+/*
 function createMainCharacter() {
   entityManager.generateMainCharacter({
     cx: g_canvas.width/2,
@@ -33,6 +34,7 @@ function generateCeiling() {
     maxX: g_canvas.width
   });
 }
+*/
 
 /*
 function generateWall() {
@@ -155,7 +157,13 @@ function requestPreloads() {
     bullet: "Sprites/Bullets/Bullet_2.png",
     ground: "Sprites/Walls/Wall_Ground.png",
     wall_1: "Sprites/Walls/Wall_1.png",
-    balls: "Sprites/Balls/Ball_Orange.png"
+    balls: "Sprites/Balls/Ball_Orange.png",
+    background_1: "Sprites/Backgrounds/Back_1.jpg",
+    background_2: "Sprites/Backgrounds/Back_2.jpg",
+    background_3: "Sprites/Backgrounds/Back_3.jpg",
+    background_4: "Sprites/Backgrounds/Back_4.jpg",
+    background_5: "Sprites/Backgrounds/Back_5.jpg",
+    background_6: "Sprites/Backgrounds/Back_6.jpg"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -184,14 +192,22 @@ function preloadDone() {
   g_sprites.wall_ground = new Sprite(g_images.ground);
   g_sprites.wall_1 = new Sprite(g_images.wall_1);
   //g_sprites.bullet.scale = 0.25;
+
+  g_sprites.background_1 = new Sprite(g_images.background_1);
+  g_sprites.background_2 = new Sprite(g_images.background_2);
+  g_sprites.background_3 = new Sprite(g_images.background_3);
+  g_sprites.background_4 = new Sprite(g_images.background_4);
   
   // Balls
   g_sprites.YellowBall = new Sprite(g_images.balls);
 
+  generateMap(0, g_sprites);
+
   //entityManager.init();
-  createMainCharacter();
-  generateCeiling();
+  //createMainCharacter();
+  //generateCeiling();
   //generateWall();
+  /*
   entityManager.generateWall({
     x: 0,
     y: 0,
@@ -253,6 +269,7 @@ function preloadDone() {
       velX: 1,
       type: 2
     });
+    */
   main.init();
 }
 

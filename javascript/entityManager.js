@@ -11,6 +11,7 @@ var entityManager = {
     _wall: [],
     _bullet: [],
     _balls:[],
+    _background: [],
   // "PRIVATE" METHODS
 
 
@@ -33,6 +34,7 @@ var entityManager = {
   //
   deferredSetup: function() {
     this._categories = [
+      this._background,
       this._bullet,
       this._mainCharacter, 
       this._ceilings,
@@ -51,7 +53,11 @@ var entityManager = {
 
   generateWall : function(descr){
     this._wall.push(new Wall(descr));
-},
+  },
+
+  generateBackground : function(descr){
+    this._background.push(new Background(descr));
+  },
 
   fireBullet: function(cx, yTop) {
       this._bullet.push(new Bullet({
