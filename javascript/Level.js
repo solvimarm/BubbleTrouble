@@ -1,12 +1,8 @@
-
-
-
-function createLEVELS(g_sprites){
-    var LEVELS = [
-        { // level 1
+function createLEVELS(g_sprites) {
+    var LEVELS = [{ // level 1
             background: g_sprites.background_1, // Sprites 
-            ball_cx: [100,700],
-            ball_cy: [100,100],
+            ball_cx: [100, 700],
+            ball_cy: [100, 100],
             ball_velX: [1, -1],
             ball_type: [3, 3],
             ball_sprites: [g_sprites.Ball_Red, g_sprites.Ball_Blue],
@@ -22,14 +18,14 @@ function createLEVELS(g_sprites){
             ceiling_minX: [0],
             ceiling_maxX: [g_canvas.width],
             character_cx: 400,
-            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height/2,
+            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height / 2,
             character_bulletType: 1,
             character_sprite: g_sprites.mainCharacterStill
         },
         { // level 2
             background: g_sprites.background_2, // Sprites 
-            ball_cx: [100,700],
-            ball_cy: [100,100],
+            ball_cx: [100, 700],
+            ball_cy: [100, 100],
             ball_velX: [1, -1],
             ball_type: [2, 2],
             ball_sprites: [g_sprites.Ball_Orange, g_sprites.Ball_Orange],
@@ -45,7 +41,7 @@ function createLEVELS(g_sprites){
             ceiling_minX: [0],
             ceiling_maxX: [g_canvas.width],
             character_cx: 400,
-            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height/2,
+            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height / 2,
             character_bulletType: 2,
             character_sprite: g_sprites.mainCharacterStill
         }
@@ -54,18 +50,18 @@ function createLEVELS(g_sprites){
 }
 
 
-function generateMap(int, g_sprites){
+function generateMap(int, g_sprites) {
 
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
     var level = LEVELS[int];
 
     entityManager.generateBackground({
-        sprite : level.background
+        sprite: level.background
     });
-    
+
     // Generate all Ceilings
-    for(var i = 0; i < level.ceiling_y.length; i++){
+    for (var i = 0; i < level.ceiling_y.length; i++) {
         entityManager.generateCeiling({
             y: level.ceiling_y[i],
             vel: level.ceiling_vel[i],
@@ -75,7 +71,7 @@ function generateMap(int, g_sprites){
     }
 
     // Generate all Walls
-    for(var i = 0; i < level.wall_w.length; i++){
+    for (var i = 0; i < level.wall_w.length; i++) {
         entityManager.generateWall({
             x: level.wall_x[i],
             y: level.wall_y[i],
@@ -83,12 +79,12 @@ function generateMap(int, g_sprites){
             height: level.wall_h[i],
             type: level.wall_type[i],
             ballsToHit: level.wall_ballsToHit[i],
-            sprite : level.wall_sprites[i]
+            sprite: level.wall_sprites[i]
         });
     }
 
     // Generate all Balls
-    for(var i = 0; i < level.ball_cx.length; i++){
+    for (var i = 0; i < level.ball_cx.length; i++) {
         entityManager.generateBall({
             cx: level.ball_cx[i],
             cy: level.ball_cy[i],
@@ -106,6 +102,3 @@ function generateMap(int, g_sprites){
         sprite: level.character_sprite
     });
 }
-
-
-
