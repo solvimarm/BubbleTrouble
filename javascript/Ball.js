@@ -10,17 +10,16 @@
 */
 
 var BallStyles = [
-    {color: "#123456", maxBounce: 50, radius: 9},
-    {color: "#121212", maxBounce: 80, radius: 20},
-    {color: "#235512", maxBounce: 110, radius: 30}
+    {maxBounce: 50, radius: 9},     // type 0
+    {maxBounce: 80, radius: 20},    // type 1
+    {maxBounce: 110, radius: 30},   // type 2
+    {maxBounce: 140, radius: 40}    // type 3
 ]
 
 function Ball(descr){
     this.setup(descr);
-    this.sprite = this.sprite || g_sprites.YellowBall;
 
     // TODO: Add more styles / types.
-    this.type = util.mod(this.type, BallStyles.length);
     this.radius = BallStyles[this.type].radius;
     this.maxBounce = BallStyles[this.type].maxBounce;
 }
@@ -47,14 +46,16 @@ Ball.prototype.hitBall = function() {
             cy: this.cy,
             velX: -1,
             velY: -3,
-            type: this.type-1
+            type: this.type-1,
+            sprite: this.sprite
         });
         entityManager.generateBall({
             cx: this.cx,
             cy: this.cy,
             velX: 1,
             velY: -3,
-            type: this.type-1
+            type: this.type-1,
+            sprite: this.sprite
         });
         
     }

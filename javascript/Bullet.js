@@ -48,7 +48,13 @@ Bullet.prototype.update = function(du){
     }
     if(hitEntity) return entityManager.KILL_ME_NOW;
     
-	this.yTop -= du*4;
+    if(this.type === 2){
+        this.yTop -= du*20;
+    }
+    else{
+        this.yTop -= du*6;
+    }
+
     spatialManager.register(this);
 };
 

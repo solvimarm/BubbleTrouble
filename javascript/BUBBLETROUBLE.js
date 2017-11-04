@@ -217,7 +217,11 @@ function preloadDone() {
   g_sprites.background_6 = new Sprite(g_images.Background_6);
   
   // Balls
-  g_sprites.YellowBall = new Sprite(g_images.Ball_Red);
+  g_sprites.Ball_Red = new Sprite(g_images.Ball_Red);
+  g_sprites.Ball_Blue = new Sprite(g_images.Ball_Blue);
+  g_sprites.Ball_Green = new Sprite(g_images.Ball_Green);
+  g_sprites.Ball_WineRed = new Sprite(g_images.Ball_WineRed);
+  g_sprites.Ball_Orange = new Sprite(g_images.Ball_Orange);
 
   // Create Map number map_num
   var map_num = 0;
