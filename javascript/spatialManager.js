@@ -26,7 +26,43 @@ _entities : [],
 
 // "PRIVATE" METHODS
 //
-// <none yet>
+_circAndRectCollision: function(circX, circY, radius, circVelX, circVelY, rectX, rectY, width, height) {
+    var x = circX - (rectX + width/2);
+    var y = circY - (rectY + height/2);
+    var absX = Math.abs(x);
+    var absY = Math.abs(y);
+    
+    if(absX > radius + width/2 || absY > radius + height/2) {
+        // Center of ball too far away for collision
+        return undefined;
+    }
+
+    var dx = circVelX/100;
+    var dy = circVelY/100;
+
+    if(absX < width/2) {
+        if(Math.abs(y+dy) > absY) {
+            return undefined;
+        }
+        return {velX: circVelX, velY: -circVelY};
+    }
+    else if(absY < height/2) {
+        if(Math.abs(x+dx) > absX) {
+            return undefined;
+        }
+        return {velX: -circVelX, velY: circVelY};
+    }
+    else if(util.square(absX - width/2) + util.square(absY - height/2) > util.square(radius)) {
+        return undefined;
+    }
+
+    if(x > y) {
+        return {velX: -circVelX, velY: circVelY};
+    }
+    else{
+        return {velX: circVelX, velY: -circVelY};
+    }
+},
 
 
 // PUBLIC METHODS
@@ -86,7 +122,28 @@ findWallInRange: function(x,y){
     }
 },
 
-ballInRangeOfMC : function(posX,posY,radius){
+// Ball -> Wall
+ballCollidesWithWall: function(cx, cy, radius, velX, velY) {
+    for(var ID in this._entities) {
+        // Start by shifting the center of the rectangle to the origin, and 'untilt' the rectangle.
+        // Adjust the circle coordinates accordingly.
+        var entity = this._entities[ID];
+        var width = entity.width;
+        var height = entity.height;
+        var rectX = entity.x;
+        var rectY = entity.y;
+        if(width !== undefined && height !== undefined && rectX !== undefined && rectY !== undefined) {
+            var direction = this._circAndRectCollision(cx, cy, radius, velX, velY, rectX, rectY, width, height);
+            if(direction) {
+                return direction;
+            }
+        }
+        
+    }
+    return {velX: velX, velY: velY};
+},
+
+ballInRangeOfMC: function(posX,posY,radius){
     for (var ID in this._entities) {
       var entity = this._entities[ID];
       var cx = entity.cx;

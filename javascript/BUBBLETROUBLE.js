@@ -245,15 +245,13 @@ function preloadDone() {
       cx: 150,
       cy: 220,
       velX: -1,
-      type: 2,
-      scale: 0.8
+      type: 2
     });
     entityManager.generateBall({
       cx: 180,
       cy: 220,
       velX: 1,
-      type: 2,
-      scale :0.8
+      type: 2
     });
   main.init();
 }
