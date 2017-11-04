@@ -59,10 +59,11 @@ var entityManager = {
     this._background.push(new Background(descr));
   },
 
-  fireBullet: function(cx, yTop) {
+  fireBullet: function(cx, yTop, bulletType) {
       this._bullet.push(new Bullet({
         cx : cx,
-        yTop : yTop
+        yTop : yTop,
+        type: bulletType
       }));
   },
   

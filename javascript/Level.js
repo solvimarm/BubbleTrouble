@@ -1,7 +1,4 @@
-/*
-    The level object should maintain all entities in the level. 
-    It should contain a counter on how many balls have been hit.
-*/
+
 
 
 function createLEVELS(g_sprites){
@@ -11,21 +8,21 @@ function createLEVELS(g_sprites){
             ball_cx: [100,700],
             ball_cy: [100,100],
             ball_velX: [1, -1],
-            ball_type: [1, 1],
-            ball_scale: [0.5, 0.5],
-            wall_x: [0, 400],
-            wall_y: [Y_BOTTOM, 0],
-            wall_w: [g_canvas.width, 10],
-            wall_h: [100, 500],
-            wall_type: [0, 0],
-            wall_ballsToHit: [10, 100],
-            wall_sprites: [g_sprites.wall_ground, g_sprites.wall_1],
+            ball_type: [2, 2],
+            wall_x: [0, 0, 784],
+            wall_y: [Y_BOTTOM, 0, 0],
+            wall_w: [g_canvas.width, 16, 16],
+            wall_h: [100, 500, 500],
+            wall_type: [0, 0, 0],
+            wall_ballsToHit: [10, 10, 10],
+            wall_sprites: [g_sprites.wall_ground, g_sprites.wall_1, g_sprites.wall_1],
             ceiling_y: [0],
             ceiling_vel: [0],
             ceiling_minX: [0],
             ceiling_maxX: [g_canvas.width],
             character_cx: 400,
             character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height/2,
+            character_bulletType: 3,
             character_sprite: g_sprites.mainCharacterStill
         }
     ];
@@ -72,8 +69,7 @@ function generateMap(int, g_sprites){
             cx: level.ball_cx[i],
             cy: level.ball_cy[i],
             velX: level.ball_velX[i],
-            type: level.ball_type[i],
-            scale: level.ball_scale[i]
+            type: level.ball_type[i]
         });
     }
 
@@ -81,6 +77,7 @@ function generateMap(int, g_sprites){
     entityManager.generateMainCharacter({
         cx: level.character_cx,
         cy: level.character_cy,
+        bulletType: level.character_bulletType,
         sprite: level.character_sprite
     });
 }

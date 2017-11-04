@@ -66,13 +66,14 @@ Entity.prototype.getSpatialID = function () {
 Entity.prototype.kill = function () {
     this._isDeadNow = true;   
 };
+
 //þetta er fyrir bullet -> ball
 Entity.prototype.findHitEntity = function () {
     var pos = this.getPos();
     return spatialManager.findEntityInRange(
-        pos.posX, pos.posY,g_sprites.bullet.width
-    );
+        pos.posX, pos.posY);
 };
+
 //þetta er fyrir bullet -> wall
 Entity.prototype.findWallEntity = function() {
   var pos = this.getPos();

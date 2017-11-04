@@ -18,6 +18,16 @@ yTop er topppunkturinn. Það er held ég best að vera með þennan punkt (cx,y
 
 function Bullet(descr){
     this.setup(descr);
+
+    if(this.type === 1){
+        this.bullet = g_sprites.bullet_1;
+    }
+    if(this.type === 2){
+        this.bullet = g_sprites.bullet_2;
+    }
+    if(this.type === 3){
+        this.bullet = g_sprites.bullet_3;
+    }
 }
 
 Bullet.prototype = new Entity();
@@ -43,7 +53,7 @@ Bullet.prototype.update = function(du){
 };
 
 Bullet.prototype.render = function(ctx){
-        g_sprites.bullet.drawBullet(ctx, this.cx, this.yTop);
+    this.bullet.drawBullet(ctx, this.cx, this.yTop);
 };
 
 Bullet.prototype.collisionWithWall = function(wallx,wally,width,height){

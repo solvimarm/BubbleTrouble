@@ -68,29 +68,23 @@ _circAndRectCollision: function(circX, circY, radius, circVelX, circVelY, rectX,
 // PUBLIC METHODS
 
 getNewSpatialID : function() {
-
-    // TODO: YOUR STUFF HERE!
     return this._nextSpatialID++;
-
 },
 
 register: function(entity) {
     var pos = entity.getPos();
     var spatialID = entity.getSpatialID();
-    // TODO: YOUR STUFF HERE!
     this._entities[spatialID] = entity;
 
 },
 
 unregister: function(entity) {
     var spatialID = entity.getSpatialID();
-    // TODO: YOUR STUFF HERE!
     delete this._entities[spatialID];
 },
+
 //bullet -> ball
-findEntityInRange: function(posX, posY,width) {
-    // TODO: YOUR STUFF HERE!
-    console.log("find entity in range");
+findEntityInRange: function(posX, posY) {
     for (var ID in this._entities) {
         var entity = this._entities[ID];
         var cx = entity.cx;
@@ -99,13 +93,14 @@ findEntityInRange: function(posX, posY,width) {
         var distanceSq = util.distSq(cx,cy,posX,posY);
         var limitSq = util.square(rad);
         if(distanceSq < limitSq) return entity;
-        if(cy - rad>=posY)
-            if(Math.abs(cx-posX) < rad) 
+        if(cy - rad>=posY){
+            if(Math.abs(cx-posX) < rad){
                 return entity;
-       
-
+            }
+        }
     }
 },
+
 //Bullet -> wall
 findWallInRange: function(x,y){
     for(var ID in this._entities){
@@ -137,8 +132,7 @@ ballCollidesWithWall: function(cx, cy, radius, velX, velY) {
             if(direction) {
                 return direction;
             }
-        }
-        
+        } 
     }
     return {velX: velX, velY: velY};
 },
@@ -151,7 +145,7 @@ ballInRangeOfMC: function(posX,posY,radius){
       var rad = entity.getRadius();
       var distanceSq = util.distSq(cx, cy, posX, posY);
       var limitSq = util.square(rad + radius);
-      if (distanceSq < limitSq) return entity;
+      if (distanceSq < limitSq) {return entity;}
     }
 },
 
@@ -159,7 +153,6 @@ render: function(ctx) {
     var oldStyle = ctx.strokeStyle;
     ctx.strokeStyle = "red";
     for (var ID in this._entities) {
-        //console.log(ID);
         var e = this._entities[ID];
         util.strokeCircle(ctx, e.getPos().posX, e.getPos().posY, e.getRadius());
     }

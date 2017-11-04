@@ -153,123 +153,76 @@ var g_images = {};
 
 function requestPreloads() {
   var requiredImages = {
-    mainCharacter: "Sprites/Charackters/Chick.png",
-    bullet: "Sprites/Bullets/Bullet_2.png",
-    ground: "Sprites/Walls/Wall_Ground.png",
-    wall_1: "Sprites/Walls/Wall_1.png",
-    balls: "Sprites/Balls/Ball_Orange.png",
-    background_1: "Sprites/Backgrounds/Back_1.jpg",
-    background_2: "Sprites/Backgrounds/Back_2.jpg",
-    background_3: "Sprites/Backgrounds/Back_3.jpg",
-    background_4: "Sprites/Backgrounds/Back_4.jpg",
-    background_5: "Sprites/Backgrounds/Back_5.jpg",
-    background_6: "Sprites/Backgrounds/Back_6.jpg"
+    MainCharacter: "Sprites/Charackters/Chick.png",
+    Background_1: "Sprites/Backgrounds/Back_1.jpg",
+    Background_2: "Sprites/Backgrounds/Back_2.jpg",
+    Background_3: "Sprites/Backgrounds/Back_3.jpg",
+    Background_4: "Sprites/Backgrounds/Back_4.jpg",
+    Background_5: "Sprites/Backgrounds/Back_5.jpg",
+    Background_6: "Sprites/Backgrounds/Back_6.jpg",
+    Bullet_1: "Sprites/Bullets/Bullet_1.png",
+    Bullet_2: "Sprites/Bullets/Bullet_2.png",
+    Bullet_3: "Sprites/Bullets/Bullet_3.png",
+    Wall_ground: "Sprites/Walls/Wall_Ground.png",
+    Wall_1: "Sprites/Walls/Wall_1.png",
+    Ball_Red: "Sprites/Balls/Ball_Red.png", 
+    Ball_Blue: "Sprites/Balls/Ball_Blue.png",
+    Ball_Green: "Sprites/Balls/Ball_Green.png",
+    Ball_WineRed: "Sprites/Balls/Ball_WineRed.png",
+    Ball_Orange: "Sprites/Balls/Ball_Orange.png",
+    Ball_Brown: "Sprites/Balls/Ball_Brown.png",
+    Ball_Grey: "Sprites/Balls/Ball_Grey.png",
+    Ball_LightGreen: "Sprites/Balls/Ball_LightGreen.png",
+    Ball_Purple: "Sprites/Balls/Ball_Purple.png",
+    Ball_SeaGreen: "Sprites/Balls/Ball_SeaGreen.png",
+    Ball_Yellow: "Sprites/Balls/Ball_Yellow.png",
+    Ball_LightBlue: "Sprites/Balls/Ball_LightBlue.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
 }
 
 var g_sprites = {};
-//var test = 0;
 
 function preloadDone() {
 
   g_sprites.mainCharacterRight = [
-    new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
-    new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
-    new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
-    new Sprite(g_images.mainCharacter, 96, 104, 32, 52)
+    new Sprite(g_images.MainCharacter, 0, 104, 32, 52),
+    new Sprite(g_images.MainCharacter, 32, 104, 32, 52),
+    new Sprite(g_images.MainCharacter, 64, 104, 32, 52),
+    new Sprite(g_images.MainCharacter, 96, 104, 32, 52)
   ];
 
   g_sprites.mainCharacterLeft = [
-    new Sprite(g_images.mainCharacter, 96, 52, 32, 52),
-    new Sprite(g_images.mainCharacter, 64, 52, 32, 52),
-    new Sprite(g_images.mainCharacter, 32, 52, 32, 52),
-    new Sprite(g_images.mainCharacter, 0, 52, 32, 52)
+    new Sprite(g_images.MainCharacter, 96, 52, 32, 52),
+    new Sprite(g_images.MainCharacter, 64, 52, 32, 52),
+    new Sprite(g_images.MainCharacter, 32, 52, 32, 52),
+    new Sprite(g_images.MainCharacter, 0, 52, 32, 52)
   ];
-  g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter,0,0,32,52);
-  g_sprites.bullet = new Sprite(g_images.bullet);
-  g_sprites.wall_ground = new Sprite(g_images.ground);
-  g_sprites.wall_1 = new Sprite(g_images.wall_1);
-  //g_sprites.bullet.scale = 0.25;
 
-  g_sprites.background_1 = new Sprite(g_images.background_1);
-  g_sprites.background_2 = new Sprite(g_images.background_2);
-  g_sprites.background_3 = new Sprite(g_images.background_3);
-  g_sprites.background_4 = new Sprite(g_images.background_4);
+  g_sprites.mainCharacterStill = new Sprite(g_images.MainCharacter,0,0,32,52);
+  
+  g_sprites.bullet_1 = new Sprite(g_images.Bullet_1);
+  g_sprites.bullet_2 = new Sprite(g_images.Bullet_2);
+  g_sprites.bullet_3 = new Sprite(g_images.Bullet_3);
+  
+  g_sprites.wall_ground = new Sprite(g_images.Wall_ground);
+  g_sprites.wall_1 = new Sprite(g_images.Wall_1);
+
+  g_sprites.background_1 = new Sprite(g_images.Background_1);
+  g_sprites.background_2 = new Sprite(g_images.Background_2);
+  g_sprites.background_3 = new Sprite(g_images.Background_3);
+  g_sprites.background_4 = new Sprite(g_images.Background_4);
+  g_sprites.background_5 = new Sprite(g_images.Background_5);
+  g_sprites.background_6 = new Sprite(g_images.Background_6);
   
   // Balls
-  g_sprites.YellowBall = new Sprite(g_images.balls);
+  g_sprites.YellowBall = new Sprite(g_images.Ball_Red);
 
-  generateMap(0, g_sprites);
+  // Create Map number map_num
+  var map_num = 0;
+  generateMap(map_num, g_sprites);
 
-  //entityManager.init();
-  //createMainCharacter();
-  //generateCeiling();
-  //generateWall();
-  /*
-  entityManager.generateWall({
-    x: 0,
-    y: 0,
-    width: 15,
-    height: 500,
-    type: 1,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_1
-  });
-
-  entityManager.generateWall({
-    x: 0,
-    y: Y_BOTTOM,
-    width: g_canvas.width,
-    height: 100,
-    type: 0,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_ground
-  });
-
-  entityManager.generateWall({
-    x: 800-15,
-    y: 0,
-    width: 15,
-    height: 100,
-    type: 1,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_1
-  });
-
-  entityManager.generateWall({
-    x: 400,
-    y: -200,
-    width: 15,
-    height: 500,
-    type: 2,
-    ballsToHit: 10,
-    sprite : g_sprites.wall_1
-  });
-  entityManager.generateWall({
-    x: 200,
-    y: -100,
-    width: 15,
-    height: 500,
-    type: 2,
-    ballsToHit: 10,
-    sprite: g_sprites.wall_1
-  });
-
-    entityManager.generateBall({
-      cx: 150,
-      cy: 220,
-      velX: -1,
-      type: 2
-    });
-    entityManager.generateBall({
-      cx: 180,
-      cy: 220,
-      velX: 1,
-      type: 2
-    });
-    */
   main.init();
 }
 
