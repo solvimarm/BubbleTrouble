@@ -151,11 +151,11 @@ var g_images = {};
 
 function requestPreloads() {
   var requiredImages = {
-    mainCharacter: "sprites/chick.png",
-    bullet: "sprites/Bullet1A.png",
-    ground: "sprites/wall_ground.png",
-    wall_1: "sprites/wall_1.png",
-    balls: "sprites/ballSprite.png"
+    mainCharacter: "Sprites/Charackters/Chick.png",
+    bullet: "Sprites/Bullets/Bullet_2.png",
+    ground: "Sprites/Walls/Wall_Ground.png",
+    wall_1: "Sprites/Walls/Wall_1.png",
+    balls: "Sprites/Balls/Ball_Orange.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -186,7 +186,7 @@ function preloadDone() {
   //g_sprites.bullet.scale = 0.25;
   
   // Balls
-  g_sprites.YellowBall = new Sprite(g_images.balls,0,0,259,259);
+  g_sprites.YellowBall = new Sprite(g_images.balls);
 
   //entityManager.init();
   createMainCharacter();
