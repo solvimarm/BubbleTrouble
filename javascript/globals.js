@@ -27,3 +27,4 @@ var Y_BOTTOM = 500;
 var characterChosen = 0;
 
 var  POWER_IMAGE_HEIGHT = 25;
+var SPIKE_HEIGHT = 12;

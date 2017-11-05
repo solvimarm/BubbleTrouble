@@ -18,7 +18,7 @@ MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
-MainCharacter.prototype.CHAIN_BULLET = false;
+MainCharacter.prototype.CHAIN_BULLET = true;
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -106,9 +106,9 @@ MainCharacter.prototype.update = function (du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
-    var bulletType = 1;
+    var bulletType = "default";
     if(this.CHAIN_BULLET){
-        bulletType = 2
+        bulletType = "chain"
     }
 
     if (eatKey(this.KEY_FIRE) && entityManager._bullet.length === 0) {
