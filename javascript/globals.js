@@ -25,3 +25,5 @@ var SECS_TO_NOMINALS = 1000 / NOMINAL_UPDATE_INTERVAL;
 var Y_BOTTOM = 500;
 
 var characterChosen = 0;
+
+var  POWER_IMAGE_HEIGHT = 25;

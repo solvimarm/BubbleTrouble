@@ -154,6 +154,10 @@ function requestPreloads() {
     Ball_Yellow2: "Sprites/Balls/Ball_Yellow2.png",         // 17
     // PowerUps
     Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png",
+    Power_hourglass: "Sprites/PowerUps/hour_glass.png",
+    Power_chain: "Sprites/PowerUps/power_chain.png",
+    Power_shield: "Sprites/PowerUps/shield.png",
+    Power_characterShield: "Sprites/PowerUps/character_shield.png",
     // StartScreen icon
     Play: "sprites/StartScreen/Play.png",
     Chick_Color: "sprites/StartScreen/Chick_Color.png",
@@ -267,6 +271,11 @@ function preloadDone() {
 
   // PowerUps
   g_sprites.Power_LiveRedHeart = new Sprite(g_images.Power_LiveRedHeart);
+  g_sprites.Power_hourglass = new Sprite(g_images.Power_hourglass);
+  g_sprites.Power_chain = new Sprite(g_images.Power_chain);
+  g_sprites.Power_shield = new Sprite(g_images.Power_shield);
+  g_sprites.Power_characterShield = new Sprite(g_images.Power_characterShield);
+
 
   // Create Map number map_num
   var map_num = 0;

@@ -38,6 +38,7 @@ Ball.prototype.getRadius = function(){
 };
 
 Ball.prototype.hitBall = function() {
+    maybeCreatePower(this.cx , this.cy);
     this.kill();
    // console.log(this);
     if(this.type > 0) {

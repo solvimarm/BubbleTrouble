@@ -17,6 +17,8 @@ MainCharacter.prototype = new Entity();
 MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
+MainCharacter.prototype.SHIELD = false;
+MainCharacter.prototype.CHAIN_BULLET = false;
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -104,15 +106,22 @@ MainCharacter.prototype.update = function (du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
+    var bulletType = 1;
+    if(this.CHAIN_BULLET){
+        bulletType = 2
+    }
 
     if (eatKey(this.KEY_FIRE) && entityManager._bullet.length === 0) {
         console.log(this.cy)
-        entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+        entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
     }
 };
 
 MainCharacter.prototype.render = function (ctx) {
     this.sprite.drawWrappedCentredAt(ctx, this.cx, this.cy, this.rotation);
+    if(this.SHIELD){
+        g_sprites.Power_characterShield.drawWrappedCentredAt(ctx, this.cx, this.cy);
+    }
 }
 
 MainCharacter.prototype.getRad = function () {

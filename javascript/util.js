@@ -45,6 +45,10 @@ randRange: function(min, max) {
     return (min + Math.random() * (max - min));
 },
 
+wholeRandRange: function(min, max) {
+    return (Math.floor(min + Math.random() * (max - min)));
+},
+
 
 // MISC
 // ====
