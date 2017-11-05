@@ -111,10 +111,10 @@ var g_images = {};
 function requestPreloads() {
   var requiredImages = {
     // Characters
-    Chick:        "Sprites/Characters/Chick.png",
+    Chick: "Sprites/Characters/Chick.png",
     Anotherdevil: "Sprites/Characters/Anotherdevil.png",
-    Deathnote:    "Sprites/Characters/Deathnote.png",
-    Golbez:       "Sprites/Characters/Golbez.png",
+    Deathnote: "Sprites/Characters/Deathnote.png",
+    Golbez: "Sprites/Characters/Golbez.png",
     // Backgrounds
     Background_1: "Sprites/Backgrounds/Back_1.jpg",
     Background_2: "Sprites/Backgrounds/Back_2.jpg",
@@ -155,14 +155,14 @@ function requestPreloads() {
     // PowerUps
     Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png",
     // StartScreen icon
-    Chick_Color:        "sprites/StartScreen/Chick_Color.png",
-    AnotherdevilBW:     "sprites/StartScreen/Anotherdevil_BW.png",
+    Chick_Color: "sprites/StartScreen/Chick_Color.png",
+    AnotherdevilBW: "sprites/StartScreen/Anotherdevil_BW.png",
     Anotherdevil_Color: "sprites/StartScreen/Anotherdevil_Color.png",
-    Chick_BW:           "sprites/StartScreen/Chick_BW.png",
-    Deathnote_BW:       "sprites/StartScreen/Deathnote_BW.png",
-    Deathnote_Color:    "sprites/StartScreen/Deathnote_Color.png",
-    Golbez_BW:          "sprites/StartScreen/Golbez_BW.png",
-    Golbez_Color:       "sprites/StartScreen/Golbez_Color.png"
+    Chick_BW: "sprites/StartScreen/Chick_BW.png",
+    Deathnote_BW: "sprites/StartScreen/Deathnote_BW.png",
+    Deathnote_Color: "sprites/StartScreen/Deathnote_Color.png",
+    Golbez_BW: "sprites/StartScreen/Golbez_BW.png",
+    Golbez_Color: "sprites/StartScreen/Golbez_Color.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -172,56 +172,56 @@ var g_sprites = {};
 
 function preloadDone() {
   // Characters
-   g_sprites.mainCharacterRight = [
-     new Sprite(g_images.Chick, 0, 104, 32, 52),
-     new Sprite(g_images.Chick, 32, 104, 32, 52),
-     new Sprite(g_images.Chick, 64, 104, 32, 52),
-     new Sprite(g_images.Chick, 96, 104, 32, 52),
+  g_sprites.mainCharacterRight = [
+    new Sprite(g_images.Chick, 0, 104, 32, 52),
+    new Sprite(g_images.Chick, 32, 104, 32, 52),
+    new Sprite(g_images.Chick, 64, 104, 32, 52),
+    new Sprite(g_images.Chick, 96, 104, 32, 52),
 
-     new Sprite(g_images.Anotherdevil, 0, 96, 32, 48),
-     new Sprite(g_images.Anotherdevil, 32, 96, 32, 48),
-     new Sprite(g_images.Anotherdevil, 64, 96, 32, 48),
-     new Sprite(g_images.Anotherdevil, 96, 96, 32, 48),
+    new Sprite(g_images.Anotherdevil, 0, 96, 32, 48),
+    new Sprite(g_images.Anotherdevil, 32, 96, 32, 48),
+    new Sprite(g_images.Anotherdevil, 64, 96, 32, 48),
+    new Sprite(g_images.Anotherdevil, 96, 96, 32, 48),
 
-     new Sprite(g_images.Deathnote, 0, 128, 48, 64),
-     new Sprite(g_images.Deathnote, 48, 128, 48, 64),
-     new Sprite(g_images.Deathnote, 96, 128, 48, 64),
-     new Sprite(g_images.Deathnote, 144, 128, 48, 64),
+    new Sprite(g_images.Deathnote, 0, 128, 48, 64),
+    new Sprite(g_images.Deathnote, 48, 128, 48, 64),
+    new Sprite(g_images.Deathnote, 96, 128, 48, 64),
+    new Sprite(g_images.Deathnote, 144, 128, 48, 64),
 
-     new Sprite(g_images.Golbez, 0, 96, 32, 50),
-     new Sprite(g_images.Golbez, 32, 96, 32, 50),
-     new Sprite(g_images.Golbez, 64, 96, 32, 50),
-     new Sprite(g_images.Golbez, 96, 96, 32, 50)
-   ];
+    new Sprite(g_images.Golbez, 0, 96, 32, 50),
+    new Sprite(g_images.Golbez, 32, 96, 32, 50),
+    new Sprite(g_images.Golbez, 64, 96, 32, 50),
+    new Sprite(g_images.Golbez, 96, 96, 32, 50)
+  ];
 
-   g_sprites.mainCharacterLeft = [
-     new Sprite(g_images.Chick, 96, 52, 32, 52),
-     new Sprite(g_images.Chick, 64, 52, 32, 52),
-     new Sprite(g_images.Chick, 32, 52, 32, 52),
-     new Sprite(g_images.Chick, 0, 52, 32, 52),
+  g_sprites.mainCharacterLeft = [
+    new Sprite(g_images.Chick, 96, 52, 32, 52),
+    new Sprite(g_images.Chick, 64, 52, 32, 52),
+    new Sprite(g_images.Chick, 32, 52, 32, 52),
+    new Sprite(g_images.Chick, 0, 52, 32, 52),
 
-     new Sprite(g_images.Anotherdevil, 96, 48, 32, 48),
-     new Sprite(g_images.Anotherdevil, 64, 48, 32, 48),
-     new Sprite(g_images.Anotherdevil, 32, 48, 32, 48),
-     new Sprite(g_images.Anotherdevil, 0, 48, 32, 48),
+    new Sprite(g_images.Anotherdevil, 96, 48, 32, 48),
+    new Sprite(g_images.Anotherdevil, 64, 48, 32, 48),
+    new Sprite(g_images.Anotherdevil, 32, 48, 32, 48),
+    new Sprite(g_images.Anotherdevil, 0, 48, 32, 48),
 
-     new Sprite(g_images.Deathnote, 144, 64, 48, 64),
-     new Sprite(g_images.Deathnote, 96, 64, 48, 64),
-     new Sprite(g_images.Deathnote, 48, 64, 48, 64),
-     new Sprite(g_images.Deathnote, 0, 64, 48, 64),
+    new Sprite(g_images.Deathnote, 144, 64, 48, 64),
+    new Sprite(g_images.Deathnote, 96, 64, 48, 64),
+    new Sprite(g_images.Deathnote, 48, 64, 48, 64),
+    new Sprite(g_images.Deathnote, 0, 64, 48, 64),
 
-     new Sprite(g_images.Golbez, 96, 46, 32, 50),
-     new Sprite(g_images.Golbez, 64, 46, 32, 50),
-     new Sprite(g_images.Golbez, 32, 46, 32, 50),
-     new Sprite(g_images.Golbez, 0, 46, 32, 50)
-   ];
+    new Sprite(g_images.Golbez, 96, 46, 32, 50),
+    new Sprite(g_images.Golbez, 64, 46, 32, 50),
+    new Sprite(g_images.Golbez, 32, 46, 32, 50),
+    new Sprite(g_images.Golbez, 0, 46, 32, 50)
+  ];
 
-   g_sprites.mainCharacterStill = [
-     new Sprite(g_images.Chick, 0, 0, 32, 52),
-     new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
-     new Sprite(g_images.Deathnote, 0, 0, 48, 64),
-     new Sprite(g_images.Golbez, 0, 0, 32, 50)
-   ];
+  g_sprites.mainCharacterStill = [
+    new Sprite(g_images.Chick, 0, 0, 32, 52),
+    new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
+    new Sprite(g_images.Deathnote, 0, 0, 48, 64),
+    new Sprite(g_images.Golbez, 0, 0, 32, 50)
+  ];
 
   // Backgrounds
   g_sprites.background_1 = new Sprite(g_images.Background_1);
@@ -245,24 +245,24 @@ function preloadDone() {
   g_sprites.wall_Steel = new Sprite(g_images.Wall_Steel);
   g_sprites.wall_Wood = new Sprite(g_images.Wall_Wood);
 
-  // Balls
-  g_sprites.Ball_Blue1 = new Sprite(g_images.Ball_Blue1);          
-  g_sprites.Ball_Blue2 = new Sprite(g_images.Ball_Blue1);          
-  g_sprites.Ball_Brown1  = new Sprite(g_images.Ball_Brown1);         
-  g_sprites.Ball_Brown2  = new Sprite(g_images.Ball_Brown2);         
-  g_sprites.Ball_Green = new Sprite(g_images.Ball_Green);          
-  g_sprites.Ball_GreenBlue = new Sprite(g_images.Ball_GreenBlue);      
-  g_sprites.Ball_Grey  = new Sprite(g_images.Ball_Grey);            
-  g_sprites.Ball_LightBlue = new Sprite(g_images.Ball_LightBlue);      
-  g_sprites.Ball_LightGreen  = new Sprite(g_images.Ball_Green);      
-  g_sprites.Ball_Orange  = new Sprite(g_images.Ball_Orange);           
-  g_sprites.Ball_Pink  = new Sprite(g_images.Ball_Pink);            
-  g_sprites.Ball_Purple  = new Sprite(g_images.Ball_Purple);          
-  g_sprites.Ball_Red = new Sprite(g_images.Ball_Red);           
-  g_sprites.Ball_SeaGreen  = new Sprite(g_images.Ball_SeaGreen);        
-  g_sprites.Ball_WineRed = new Sprite(g_images.Ball_WineRed);         
-  g_sprites.Ball_Yellow1 = new Sprite(g_images.Ball_Yellow1);                        
-  g_sprites.Ball_Yellow2 = new Sprite(g_images.Ball_Yellow2); 
+  // Balls - There are 17 balls exist.
+  g_sprites.Ball_Blue1 = new Sprite(g_images.Ball_Blue1);             // 1
+  g_sprites.Ball_Blue2 = new Sprite(g_images.Ball_Blue1);             // 2
+  g_sprites.Ball_Brown1 = new Sprite(g_images.Ball_Brown1);           // 3
+  g_sprites.Ball_Brown2 = new Sprite(g_images.Ball_Brown2);           // 4
+  g_sprites.Ball_Green = new Sprite(g_images.Ball_Green);             // 5
+  g_sprites.Ball_GreenBlue = new Sprite(g_images.Ball_GreenBlue);     // 6
+  g_sprites.Ball_Grey = new Sprite(g_images.Ball_Grey);               // 7
+  g_sprites.Ball_LightBlue = new Sprite(g_images.Ball_LightBlue);     // 8
+  g_sprites.Ball_LightGreen = new Sprite(g_images.Ball_Green);        // 9
+  g_sprites.Ball_Orange = new Sprite(g_images.Ball_Orange);           // 10
+  g_sprites.Ball_Pink = new Sprite(g_images.Ball_Pink);               // 11
+  g_sprites.Ball_Purple = new Sprite(g_images.Ball_Purple);           // 12
+  g_sprites.Ball_Red = new Sprite(g_images.Ball_Red);                 // 13
+  g_sprites.Ball_SeaGreen = new Sprite(g_images.Ball_SeaGreen);       // 14   
+  g_sprites.Ball_WineRed = new Sprite(g_images.Ball_WineRed);         // 15
+  g_sprites.Ball_Yellow1 = new Sprite(g_images.Ball_Yellow1);         // 16          
+  g_sprites.Ball_Yellow2 = new Sprite(g_images.Ball_Yellow2);         // 17
 
   // PowerUps
   g_sprites.Power_LiveRedHeart = new Sprite(g_images.Power_LiveRedHeart);
