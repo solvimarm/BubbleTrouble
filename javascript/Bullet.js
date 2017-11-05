@@ -28,6 +28,15 @@ function Bullet(descr){
     if(this.type === 3){
         this.bullet = g_sprites.bullet_3;
     }
+    if(this.type === 4){
+        this.bullet = g_sprites.bullet_4;
+    }
+    if(this.type === 5){
+        this.bullet = g_sprites.bullet_5;
+    }
+    else{
+        this.bullet = g_sprites.bullet_1;
+    }
 }
 
 Bullet.prototype = new Entity();
@@ -48,7 +57,7 @@ Bullet.prototype.update = function(du){
     }
     if(hitEntity) return entityManager.KILL_ME_NOW;
     
-    if(this.type === 2){
+    if(this.type === 2 || this.type === 5){
         this.yTop -= du*20;
     }
     else{
