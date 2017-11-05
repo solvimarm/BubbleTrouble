@@ -110,8 +110,11 @@ var g_images = {};
 
 function requestPreloads() {
   var requiredImages = {
-    // Character
-    MainCharacter: "Sprites/Characters/Chick.png",
+    // Characters
+    Chick:        "Sprites/Characters/Chick.png",
+    Anotherdevil: "Sprites/Characters/Anotherdevil.png",
+    Deathnote:    "Sprites/Characters/Deathnote.png",
+    Golbez:       "Sprites/Characters/Golbez.png",
     // Backgrounds
     Background_1: "Sprites/Backgrounds/Back_1.jpg",
     Background_2: "Sprites/Backgrounds/Back_2.jpg",
@@ -150,33 +153,16 @@ function requestPreloads() {
     Ball_Yellow1: "Sprites/Balls/Ball_Yellow1.png",         // 16
     Ball_Yellow2: "Sprites/Balls/Ball_Yellow2.png",         // 17
     // PowerUps
-    Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png"
-    Wall_1: "Sprites/Walls/Wall_1.png",
-    Ball_Red: "Sprites/Balls/Ball_Red.png",
-    Ball_Blue: "Sprites/Balls/Ball_Blue.png",
-    Ball_Green: "Sprites/Balls/Ball_Green.png",
-    Ball_WineRed: "Sprites/Balls/Ball_WineRed.png",
-    Ball_Orange: "Sprites/Balls/Ball_Orange.png",
-    Ball_Brown: "Sprites/Balls/Ball_Brown.png",
-    Ball_Grey: "Sprites/Balls/Ball_Grey.png",
-    Ball_LightGreen: "Sprites/Balls/Ball_LightGreen.png",
-    Ball_Purple: "Sprites/Balls/Ball_Purple.png",
-    Ball_SeaGreen: "Sprites/Balls/Ball_SeaGreen.png",
-    Ball_Yellow: "Sprites/Balls/Ball_Yellow.png",
-    Ball_LightBlue: "Sprites/Balls/Ball_LightBlue.png",
-
-    Anotherdevil:"sprites/anotherdevil.png",
-    Deathnote:"sprites/deathnote.png",
-    Golbez:"sprites/golbez.png",
-
-    Chick_Color: "sprites/StartScreen/Chick_Color.png",
-    AnotherdevilBW: "sprites/StartScreen/Anotherdevil_BW.png",
+    Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png",
+    // StartScreen icon
+    Chick_Color:        "sprites/StartScreen/Chick_Color.png",
+    AnotherdevilBW:     "sprites/StartScreen/Anotherdevil_BW.png",
     Anotherdevil_Color: "sprites/StartScreen/Anotherdevil_Color.png",
-    Chick_BW: "sprites/StartScreen/Chick_BW.png",
-    Deathnote_BW: "sprites/StartScreen/Deathnote_BW.png",
-    Deathnote_Color: "sprites/StartScreen/Deathnote_Color.png",
-    Golbez_BW: "sprites/StartScreen/Golbez_BW.png",
-    Golbez_Color: "sprites/StartScreen/Golbez_Color.png"
+    Chick_BW:           "sprites/StartScreen/Chick_BW.png",
+    Deathnote_BW:       "sprites/StartScreen/Deathnote_BW.png",
+    Deathnote_Color:    "sprites/StartScreen/Deathnote_Color.png",
+    Golbez_BW:          "sprites/StartScreen/Golbez_BW.png",
+    Golbez_Color:       "sprites/StartScreen/Golbez_Color.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -185,26 +171,12 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
-  // Character
-  g_sprites.mainCharacterRight = [
-    new Sprite(g_images.MainCharacter, 0, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 32, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 64, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 96, 104, 32, 52)
-  ];
-  g_sprites.mainCharacterLeft = [
-    new Sprite(g_images.MainCharacter, 96, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 64, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 32, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 0, 52, 32, 52)
-  ];
-  g_sprites.mainCharacterStill = new Sprite(g_images.MainCharacter, 0, 0, 32, 52);
-
-   g_sprites.mainCharacter = [
-     new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
-     new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
-     new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
-     new Sprite(g_images.mainCharacter, 96, 104, 32, 52),
+  // Characters
+   g_sprites.mainCharacterRight = [
+     new Sprite(g_images.Chick, 0, 104, 32, 52),
+     new Sprite(g_images.Chick, 32, 104, 32, 52),
+     new Sprite(g_images.Chick, 64, 104, 32, 52),
+     new Sprite(g_images.Chick, 96, 104, 32, 52),
 
      new Sprite(g_images.Anotherdevil, 0, 96, 32, 48),
      new Sprite(g_images.Anotherdevil, 32, 96, 32, 48),
@@ -220,13 +192,13 @@ function preloadDone() {
      new Sprite(g_images.Golbez, 32, 96, 32, 50),
      new Sprite(g_images.Golbez, 64, 96, 32, 50),
      new Sprite(g_images.Golbez, 96, 96, 32, 50)
-
    ];
+
    g_sprites.mainCharacterLeft = [
-     new Sprite(g_images.mainCharacter, 96, 52, 32, 52),
-     new Sprite(g_images.mainCharacter, 64, 52, 32, 52),
-     new Sprite(g_images.mainCharacter, 32, 52, 32, 52),
-     new Sprite(g_images.mainCharacter, 0, 52, 32, 52),
+     new Sprite(g_images.Chick, 96, 52, 32, 52),
+     new Sprite(g_images.Chick, 64, 52, 32, 52),
+     new Sprite(g_images.Chick, 32, 52, 32, 52),
+     new Sprite(g_images.Chick, 0, 52, 32, 52),
 
      new Sprite(g_images.Anotherdevil, 96, 48, 32, 48),
      new Sprite(g_images.Anotherdevil, 64, 48, 32, 48),
@@ -243,22 +215,15 @@ function preloadDone() {
      new Sprite(g_images.Golbez, 32, 46, 32, 50),
      new Sprite(g_images.Golbez, 0, 46, 32, 50)
    ];
-   //g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter, 0, 0, 32, 52);
+
    g_sprites.mainCharacterStill = [
-     new Sprite(g_images.mainCharacter, 0, 0, 32, 52),
+     new Sprite(g_images.Chick, 0, 0, 32, 52),
      new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
      new Sprite(g_images.Deathnote, 0, 0, 48, 64),
      new Sprite(g_images.Golbez, 0, 0, 32, 50)
    ];
 
   // Backgrounds
-  g_sprites.bullet_1 = new Sprite(g_images.Bullet_1);
-  g_sprites.bullet_2 = new Sprite(g_images.Bullet_2);
-  g_sprites.bullet_3 = new Sprite(g_images.Bullet_3);
-
-  g_sprites.wall_ground = new Sprite(g_images.Wall_ground);
-  g_sprites.wall_1 = new Sprite(g_images.Wall_1);
-
   g_sprites.background_1 = new Sprite(g_images.Background_1);
   g_sprites.background_2 = new Sprite(g_images.Background_2);
   g_sprites.background_3 = new Sprite(g_images.Background_3);
