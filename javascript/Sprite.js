@@ -22,7 +22,7 @@ function Sprite(image, sx, sy, width,height,scale) {
     this.sx = sx;
     this.sy = sy;
     //this.width = image.width || width;
-    this.width = width || image.width
+    this.width = width || image.width;
     //this.height = image.height || width;
     this.height = height ||image.height;
     this.scale = scale;

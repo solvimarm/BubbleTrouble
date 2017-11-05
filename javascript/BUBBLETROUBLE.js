@@ -8,9 +8,9 @@
 
 var g_canvas = document.getElementById("myCanvas");
 var g_ctx = g_canvas.getContext("2d");
-var state = [
-  startGame = false
-];
+var state = {
+  startGame : false
+};
 
 /*
 0        1         2         3         4         5         6         7         8
@@ -155,6 +155,7 @@ function requestPreloads() {
     // PowerUps
     Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png",
     // StartScreen icon
+    Play: "sprites/StartScreen/Play.png",
     Chick_Color: "sprites/StartScreen/Chick_Color.png",
     AnotherdevilBW: "sprites/StartScreen/Anotherdevil_BW.png",
     Anotherdevil_Color: "sprites/StartScreen/Anotherdevil_Color.png",
@@ -172,7 +173,7 @@ var g_sprites = {};
 
 function preloadDone() {
   // Characters
-  g_sprites.mainCharacterRight = [
+  g_sprites.mainCharacter = [
     new Sprite(g_images.Chick, 0, 104, 32, 52),
     new Sprite(g_images.Chick, 32, 104, 32, 52),
     new Sprite(g_images.Chick, 64, 104, 32, 52),
@@ -183,15 +184,15 @@ function preloadDone() {
     new Sprite(g_images.Anotherdevil, 64, 96, 32, 48),
     new Sprite(g_images.Anotherdevil, 96, 96, 32, 48),
 
-    new Sprite(g_images.Deathnote, 0, 128, 48, 64),
-    new Sprite(g_images.Deathnote, 48, 128, 48, 64),
-    new Sprite(g_images.Deathnote, 96, 128, 48, 64),
-    new Sprite(g_images.Deathnote, 144, 128, 48, 64),
+    new Sprite(g_images.Deathnote, 0, 96, 36, 48),
+    new Sprite(g_images.Deathnote, 36, 96, 36, 48),
+    new Sprite(g_images.Deathnote, 72, 96, 36, 48),
+    new Sprite(g_images.Deathnote, 108, 96, 36, 48),
 
-    new Sprite(g_images.Golbez, 0, 96, 32, 50),
-    new Sprite(g_images.Golbez, 32, 96, 32, 50),
-    new Sprite(g_images.Golbez, 64, 96, 32, 50),
-    new Sprite(g_images.Golbez, 96, 96, 32, 50)
+    new Sprite(g_images.Golbez, 0, 96, 32, 48),
+    new Sprite(g_images.Golbez, 32, 96, 32, 48),
+    new Sprite(g_images.Golbez, 64, 96, 32, 48),
+    new Sprite(g_images.Golbez, 96, 96, 32, 48)
   ];
 
   g_sprites.mainCharacterLeft = [
@@ -205,22 +206,22 @@ function preloadDone() {
     new Sprite(g_images.Anotherdevil, 32, 48, 32, 48),
     new Sprite(g_images.Anotherdevil, 0, 48, 32, 48),
 
-    new Sprite(g_images.Deathnote, 144, 64, 48, 64),
-    new Sprite(g_images.Deathnote, 96, 64, 48, 64),
-    new Sprite(g_images.Deathnote, 48, 64, 48, 64),
-    new Sprite(g_images.Deathnote, 0, 64, 48, 64),
+    new Sprite(g_images.Deathnote, 108, 48, 36, 48),
+    new Sprite(g_images.Deathnote, 72, 48, 36, 48),
+    new Sprite(g_images.Deathnote, 36, 48, 36, 48),
+    new Sprite(g_images.Deathnote, 0, 48, 36, 48),
 
-    new Sprite(g_images.Golbez, 96, 46, 32, 50),
-    new Sprite(g_images.Golbez, 64, 46, 32, 50),
-    new Sprite(g_images.Golbez, 32, 46, 32, 50),
-    new Sprite(g_images.Golbez, 0, 46, 32, 50)
+    new Sprite(g_images.Golbez, 96, 46, 32, 48),
+    new Sprite(g_images.Golbez, 64, 46, 32, 48),
+    new Sprite(g_images.Golbez, 32, 46, 32, 48),
+    new Sprite(g_images.Golbez, 0, 46, 32, 48)
   ];
 
   g_sprites.mainCharacterStill = [
     new Sprite(g_images.Chick, 0, 0, 32, 52),
     new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
-    new Sprite(g_images.Deathnote, 0, 0, 48, 64),
-    new Sprite(g_images.Golbez, 0, 0, 32, 50)
+    new Sprite(g_images.Deathnote, 0, 0, 36, 48),
+    new Sprite(g_images.Golbez, 0, 0, 32, 48)
   ];
 
   // Backgrounds
@@ -268,7 +269,7 @@ function preloadDone() {
   g_sprites.Power_LiveRedHeart = new Sprite(g_images.Power_LiveRedHeart);
 
   // Create Map number map_num
-  var map_num = 1;
+  var map_num = 0;
   generateMap(map_num, g_sprites);
 
   main.init();

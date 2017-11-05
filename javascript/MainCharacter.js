@@ -6,10 +6,10 @@
 function MainCharacter(descr) {
     this.setup(descr);
 
-    this.sprite = this.sprite || g_sprites.mainCharacterStill;
+    this.sprite = this.sprite || g_sprites.mainCharacterStill[0];
     this.scale = this.scale || 1;
     this.radius = 14;
-
+    console.log(this.sprite);
 }
 
 MainCharacter.prototype = new Entity();
@@ -53,14 +53,22 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
         right = false;
         still = true;
     }
-    if (right)
-        this.sprite = g_sprites.mainCharacterRight[runRight.id];
-    else if (left)
-        this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
-    else if (still)
-        this.sprite = g_sprites.mainCharacterStill;
-    if (still || runRight.count >= g_sprites.mainCharacterRight.length * runRight.renderTimes ||
-        runLeft.count >= g_sprites.mainCharacterLeft.length * runLeft.renderTimes) {
+    if (right) {
+        
+      if (characterChosen === 0) this.sprite = g_sprites.mainCharacter[runRight.id];
+      if (characterChosen === 1) {
+        this.sprite = g_sprites.mainCharacter[runRight.id + 4];
+      }
+      if (characterChosen === 2) this.sprite = g_sprites.mainCharacter[runRight.id + 8];
+      if (characterChosen === 3) this.sprite = g_sprites.mainCharacter[runRight.id + 12];
+    } else if (left) {
+      if (characterChosen === 0) this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
+      if (characterChosen === 1) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 4];
+      if (characterChosen === 2) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 8];
+      if (characterChosen === 3) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 12];
+    } else if (still) this.sprite = g_sprites.mainCharacterStill[characterChosen];
+    if (still || runRight.count >= /*g_sprites.mainCharacterRight.length*/ 4 * runRight.renderTimes ||
+        runLeft.count >= /*g_sprites.mainCharacterLeft.length*/ 4 * runLeft.renderTimes) {
         runRight.id = 0;
         runRight.count = 0;
         runLeft.id = 0;

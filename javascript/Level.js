@@ -18,10 +18,10 @@ function createLEVELS(g_sprites) {
             ceiling_minX: [0],
             ceiling_maxX: [g_canvas.width],
             character_cx: 400,
-            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height / 2,
+            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
             character_bulletType: 1,
-            character_sprite: g_sprites.mainCharacterStill
-        },
+            character_sprite: g_sprites.mainCharacterStill[characterChosen]
+    },
         { // level 2
             background: g_sprites.background_2, // Sprites 
             ball_cx: [100, 700],
@@ -41,11 +41,12 @@ function createLEVELS(g_sprites) {
             ceiling_minX: [0],
             ceiling_maxX: [g_canvas.width],
             character_cx: 400,
-            character_cy: Y_BOTTOM - g_sprites.mainCharacterStill.height / 2,
+            character_cy: Y_BOTTOM -  g_sprites.mainCharacterStill[characterChosen].height/2,
             character_bulletType: 5,
-            character_sprite: g_sprites.mainCharacterStill
+            character_sprite: g_sprites.mainCharacterStill[characterChosen]
         }
     ];
+    console.log(g_sprites.mainCharacterStill[0].height);
     return LEVELS;
 }
 
