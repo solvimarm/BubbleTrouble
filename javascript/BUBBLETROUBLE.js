@@ -127,7 +127,6 @@ function requestPreloads() {
     Bullet_5: "Sprites/Bullets/Bullet_5.png",
     // Walls
     Wall_ground: "Sprites/Walls/Wall_Ground.png",
-<<<<<<< HEAD
     Wall_Stone1: "Sprites/Walls/Wall_Stone1.png",
     Wall_Stone2: "Sprites/Walls/Wall_Stone2.png",
     Wall_Steel: "Sprites/Walls/Wall_Steel.png",
@@ -152,7 +151,6 @@ function requestPreloads() {
     Ball_Yellow2: "Sprites/Balls/Ball_Yellow2.png",         // 17
     // PowerUps
     Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png"
-=======
     Wall_1: "Sprites/Walls/Wall_1.png",
     Ball_Red: "Sprites/Balls/Ball_Red.png",
     Ball_Blue: "Sprites/Balls/Ball_Blue.png",
@@ -179,10 +177,6 @@ function requestPreloads() {
     Deathnote_Color: "sprites/StartScreen/Deathnote_Color.png",
     Golbez_BW: "sprites/StartScreen/Golbez_BW.png",
     Golbez_Color: "sprites/StartScreen/Golbez_Color.png"
-<<<<<<< HEAD
->>>>>>> 2eadc5327c88620bd2c0a5e5424a9cb64bb6ae3b
-=======
->>>>>>> 2eadc5327c88620bd2c0a5e5424a9cb64bb6ae3b
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -191,8 +185,6 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
-<<<<<<< HEAD
-<<<<<<< HEAD
   // Character
   g_sprites.mainCharacterRight = [
     new Sprite(g_images.MainCharacter, 0, 104, 32, 52),
@@ -207,9 +199,6 @@ function preloadDone() {
     new Sprite(g_images.MainCharacter, 0, 52, 32, 52)
   ];
   g_sprites.mainCharacterStill = new Sprite(g_images.MainCharacter, 0, 0, 32, 52);
-=======
-=======
->>>>>>> 2eadc5327c88620bd2c0a5e5424a9cb64bb6ae3b
 
    g_sprites.mainCharacter = [
      new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
@@ -261,12 +250,8 @@ function preloadDone() {
      new Sprite(g_images.Deathnote, 0, 0, 48, 64),
      new Sprite(g_images.Golbez, 0, 0, 32, 50)
    ];
-<<<<<<< HEAD
->>>>>>> 2eadc5327c88620bd2c0a5e5424a9cb64bb6ae3b
 
   // Backgrounds
-=======
-
   g_sprites.bullet_1 = new Sprite(g_images.Bullet_1);
   g_sprites.bullet_2 = new Sprite(g_images.Bullet_2);
   g_sprites.bullet_3 = new Sprite(g_images.Bullet_3);
@@ -274,7 +259,6 @@ function preloadDone() {
   g_sprites.wall_ground = new Sprite(g_images.Wall_ground);
   g_sprites.wall_1 = new Sprite(g_images.Wall_1);
 
->>>>>>> 2eadc5327c88620bd2c0a5e5424a9cb64bb6ae3b
   g_sprites.background_1 = new Sprite(g_images.Background_1);
   g_sprites.background_2 = new Sprite(g_images.Background_2);
   g_sprites.background_3 = new Sprite(g_images.Background_3);
