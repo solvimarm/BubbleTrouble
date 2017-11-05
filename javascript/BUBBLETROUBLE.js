@@ -8,6 +8,9 @@
 
 var g_canvas = document.getElementById("myCanvas");
 var g_ctx = g_canvas.getContext("2d");
+var state = [
+  startGame = false
+];
 
 /*
 0        1         2         3         4         5         6         7         8
@@ -40,7 +43,8 @@ function gatherInputs() {
 function updateSimulation(du) {
   processDiagnostics();
 
-  entityManager.update(du);
+  if (state.startGame)
+    entityManager.update(du);
 
   // Prevent perpetual firing!
 }
@@ -92,9 +96,10 @@ function processDiagnostics() {
 
 // GAME-SPECIFIC RENDERING
 function renderSimulation(ctx) {
-  entityManager.render(ctx);
-
-  if (g_renderSpatialDebug) spatialManager.render(ctx);
+  if (state.startGame)
+    entityManager.render(ctx);
+  if (!state.startGame) drawStartScreen(ctx);
+  if (g_renderSpatialDebug && state.startGame) spatialManager.render(ctx);
 }
 
 // =============
@@ -128,7 +133,20 @@ function requestPreloads() {
     Ball_Purple: "Sprites/Balls/Ball_Purple.png",
     Ball_SeaGreen: "Sprites/Balls/Ball_SeaGreen.png",
     Ball_Yellow: "Sprites/Balls/Ball_Yellow.png",
-    Ball_LightBlue: "Sprites/Balls/Ball_LightBlue.png"
+    Ball_LightBlue: "Sprites/Balls/Ball_LightBlue.png",
+
+    Anotherdevil:"sprites/anotherdevil.png",
+    Deathnote:"sprites/deathnote.png",
+    Golbez:"sprites/golbez.png",
+
+    Chick_Color: "sprites/StartScreen/Chick_Color.png",
+    AnotherdevilBW: "sprites/StartScreen/Anotherdevil_BW.png",
+    Anotherdevil_Color: "sprites/StartScreen/Anotherdevil_Color.png",
+    Chick_BW: "sprites/StartScreen/Chick_BW.png",
+    Deathnote_BW: "sprites/StartScreen/Deathnote_BW.png",
+    Deathnote_Color: "sprites/StartScreen/Deathnote_Color.png",
+    Golbez_BW: "sprites/StartScreen/Golbez_BW.png",
+    Golbez_Color: "sprites/StartScreen/Golbez_Color.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -138,21 +156,56 @@ var g_sprites = {};
 
 function preloadDone() {
 
-  g_sprites.mainCharacterRight = [
-    new Sprite(g_images.MainCharacter, 0, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 32, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 64, 104, 32, 52),
-    new Sprite(g_images.MainCharacter, 96, 104, 32, 52)
-  ];
+   g_sprites.mainCharacter = [
+     new Sprite(g_images.mainCharacter, 0, 104, 32, 52),
+     new Sprite(g_images.mainCharacter, 32, 104, 32, 52),
+     new Sprite(g_images.mainCharacter, 64, 104, 32, 52),
+     new Sprite(g_images.mainCharacter, 96, 104, 32, 52),
 
-  g_sprites.mainCharacterLeft = [
-    new Sprite(g_images.MainCharacter, 96, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 64, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 32, 52, 32, 52),
-    new Sprite(g_images.MainCharacter, 0, 52, 32, 52)
-  ];
+     new Sprite(g_images.Anotherdevil, 0, 96, 32, 48),
+     new Sprite(g_images.Anotherdevil, 32, 96, 32, 48),
+     new Sprite(g_images.Anotherdevil, 64, 96, 32, 48),
+     new Sprite(g_images.Anotherdevil, 96, 96, 32, 48),
 
-  g_sprites.mainCharacterStill = new Sprite(g_images.MainCharacter, 0, 0, 32, 52);
+     new Sprite(g_images.Deathnote, 0, 128, 48, 64),
+     new Sprite(g_images.Deathnote, 48, 128, 48, 64),
+     new Sprite(g_images.Deathnote, 96, 128, 48, 64),
+     new Sprite(g_images.Deathnote, 144, 128, 48, 64),
+
+     new Sprite(g_images.Golbez, 0, 96, 32, 50),
+     new Sprite(g_images.Golbez, 32, 96, 32, 50),
+     new Sprite(g_images.Golbez, 64, 96, 32, 50),
+     new Sprite(g_images.Golbez, 96, 96, 32, 50)
+
+   ];
+   g_sprites.mainCharacterLeft = [
+     new Sprite(g_images.mainCharacter, 96, 52, 32, 52),
+     new Sprite(g_images.mainCharacter, 64, 52, 32, 52),
+     new Sprite(g_images.mainCharacter, 32, 52, 32, 52),
+     new Sprite(g_images.mainCharacter, 0, 52, 32, 52),
+
+     new Sprite(g_images.Anotherdevil, 96, 48, 32, 48),
+     new Sprite(g_images.Anotherdevil, 64, 48, 32, 48),
+     new Sprite(g_images.Anotherdevil, 32, 48, 32, 48),
+     new Sprite(g_images.Anotherdevil, 0, 48, 32, 48),
+
+     new Sprite(g_images.Deathnote, 144, 64, 48, 64),
+     new Sprite(g_images.Deathnote, 96, 64, 48, 64),
+     new Sprite(g_images.Deathnote, 48, 64, 48, 64),
+     new Sprite(g_images.Deathnote, 0, 64, 48, 64),
+
+     new Sprite(g_images.Golbez, 96, 46, 32, 50),
+     new Sprite(g_images.Golbez, 64, 46, 32, 50),
+     new Sprite(g_images.Golbez, 32, 46, 32, 50),
+     new Sprite(g_images.Golbez, 0, 46, 32, 50)
+   ];
+   //g_sprites.mainCharacterStill = new Sprite(g_images.mainCharacter, 0, 0, 32, 52);
+   g_sprites.mainCharacterStill = [
+     new Sprite(g_images.mainCharacter, 0, 0, 32, 52),
+     new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
+     new Sprite(g_images.Deathnote, 0, 0, 48, 64),
+     new Sprite(g_images.Golbez, 0, 0, 32, 50)
+   ];
 
   g_sprites.bullet_1 = new Sprite(g_images.Bullet_1);
   g_sprites.bullet_2 = new Sprite(g_images.Bullet_2);
@@ -184,3 +237,145 @@ function preloadDone() {
 
 // Kick it off
 requestPreloads();
+
+var playX = 100;
+var playY = 100;
+
+function st_screen(x, y) {
+  console.log(x + "   " + y);
+  if (x > 100 - g_images.Chick_BW.width / 2 && x < 100 + g_images.Chick_BW.width / 2) {
+    if (y > 400 - g_images.Chick_BW.height / 2 && y < 400 + g_images.Chick_BW.height / 2) {
+      characterChosen = 0;
+    }
+  }
+  if (x > 300 - g_images.AnotherdevilBW.width / 2 && x < 300 + g_images.AnotherdevilBW.width / 2) {
+    if (y > 400 - g_images.AnotherdevilBW.height / 2 && y < 400 + g_images.AnotherdevilBW.height / 2) {
+      characterChosen = 1;
+    }
+  }
+  if (x > 500 - g_images.Deathnote_BW.width / 2 && x < 500 + g_images.Deathnote_BW.width / 2) {
+    if (y > 400 - g_images.Deathnote_BW.height / 2 && y < 400 + g_images.Deathnote_BW.height / 2) {
+      characterChosen = 2;
+    }
+  }
+  if (x > 700 - g_images.Golbez_BW.width / 2 && x < 700 + g_images.Golbez_BW.width / 2) {
+    if (y > 400 - g_images.Golbez_BW.height / 2 && y < 400 + g_images.Golbez_BW.height / 2) {
+      characterChosen = 3;
+    }
+  }
+  if (x > 350 /* - g_images.Play.width / 2 */ && x < 350 + g_images.Play.width) {
+    if (y > 200 /*-g_images.Play.height / 2 */ && y < 200 + g_images.Play.height) {
+      state.startGame = true;
+    }
+  }
+}
+
+function drawStartScreen(ctx) {
+  ctx.drawImage(g_images.Play, 350, 200);
+  switch (characterChosen) {
+    case 0:
+      drawChick(ctx);
+      break;
+    case 1:
+      drawAnotherDevil(ctx);
+      break;
+    case 2:
+      drawDeathnote(ctx);
+      break;
+    case 3:
+      drawGolbez(ctx);
+      break;
+  }
+}
+
+function drawChick(ctx) {
+  ctx.save();
+  ctx.translate(100, 400);
+  ctx.scale(2, 2)
+  ctx.drawImage(g_images.Chick_Color, -g_images.Chick_Color.width / 2, -g_images.Chick_Color.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(300, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(500, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(700, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
+  ctx.restore();
+}
+
+function drawAnotherDevil(ctx) {
+  ctx.save();
+  ctx.translate(100, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(300, 400);
+  ctx.scale(2, 2)
+  ctx.drawImage(g_images.Anotherdevil_Color, -g_images.Anotherdevil_Color.width / 2, -g_images.Anotherdevil_Color.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(500, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(700, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
+  ctx.restore();
+}
+
+function drawDeathnote(ctx) {
+  ctx.save();
+  ctx.translate(100, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(300, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(500, 400);
+  ctx.scale(2, 2)
+  ctx.drawImage(g_images.Deathnote_Color, -g_images.Deathnote_Color.width / 2, -g_images.Deathnote_Color.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(700, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
+  ctx.restore();
+}
+
+function drawGolbez(ctx) {
+  ctx.save();
+  ctx.translate(100, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(300, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(500, 400);
+  ctx.scale(1.5, 1.5)
+  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(700, 400);
+  ctx.scale(2, 2)
+  ctx.drawImage(g_images.Golbez_Color, -g_images.Golbez_Color.width / 2, -g_images.Golbez_Color.height / 2);
+  ctx.restore();
+}
