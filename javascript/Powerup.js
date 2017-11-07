@@ -17,6 +17,7 @@
 
 function Powerup(descr){
     this.setup(descr);
+    this.radius = POWER_IMAGE_HEIGHT/2;
 
     if(this.power === "extratime"){
         this.Powerup = g_sprites.Power_hourglass;
@@ -34,10 +35,14 @@ function Powerup(descr){
 
 Powerup.prototype = new Entity();
 Powerup.prototype.lifeSpan = 2*SECS_TO_NOMINALS;
+Powerup.prototype.alive = true;
 
 
 Powerup.prototype.update = function(du){
-    //spatialManager.unregister(this);
+    spatialManager.unregister(this);
+    if(!this.alive){
+        return entityManager.KILL_ME_NOW;
+    }
     if(this.lifeSpan <= 0){
         return entityManager.KILL_ME_NOW;
     }
@@ -47,11 +52,14 @@ Powerup.prototype.update = function(du){
     if(this.cy+POWER_IMAGE_HEIGHT/2 >= Y_BOTTOM){
         this.lifeSpan -= du;
     }
-    //spatialManager.register(this);
+    spatialManager.register(this);
 };
 
 Powerup.prototype.render = function(ctx){
     this.Powerup.drawWrappedCentredAt(ctx, this.cx, this.cy);
+};
+Powerup.prototype.getRadius = function(){
+    return this.radius;
 };
 
 function maybeCreatePower(cx, cy) {

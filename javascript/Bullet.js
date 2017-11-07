@@ -46,8 +46,8 @@ Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
 
 Bullet.prototype.update = function(du){
     spatialManager.unregister(this);
-	if(this.yTop <= 0 && this.type === "default"){
-		return entityManager.KILL_ME_NOW; 
+    if(this.yTop <= 0 && this.type === "default"){
+        return entityManager.KILL_ME_NOW; 
     }
 
     if(this.lifeSpan <= 0 && this.type === "chain"){
@@ -56,8 +56,10 @@ Bullet.prototype.update = function(du){
     var hitEntity = this.findWallEntity();
     var hitBallEntity = this.findHitEntity();
     if(hitBallEntity){
-        hitBallEntity.hitBall();
-        return entityManager.KILL_ME_NOW;
+        if(!hitBallEntity.power){
+            hitBallEntity.hitBall();
+            return entityManager.KILL_ME_NOW;
+        }
     }
     if(this.yTop <= 0 ){
         this.lifeSpan -= du;

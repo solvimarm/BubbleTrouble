@@ -280,6 +280,9 @@ function preloadDone() {
   // Create Map number map_num
   var map_num = 0;
   generateMap(map_num, g_sprites);
+  for(var i = 0; i < g_LIVES; i++){
+    entityManager.generateLives();
+  }
 
   main.init();
 }

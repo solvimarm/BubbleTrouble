@@ -18,7 +18,10 @@ MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
-MainCharacter.prototype.CHAIN_BULLET = true;
+MainCharacter.prototype.CHAIN_BULLET = false;
+var g_LIVES = 3;
+var lifelost = true;
+var shield_time = false;
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -93,7 +96,27 @@ MainCharacter.prototype.update = function (du) {
     }
 
     var collEntity = this.findBallEntity();
-    if (collEntity) return entityManager.KILL_ME_NOW
+    if (collEntity){
+        if(collEntity.power){
+            this.getPowerup(collEntity.power);
+            collEntity.alive = false;
+        } 
+        else if(this.SHIELD && !shield_time){
+            shield_time = true
+            setTimeout(shieldTimeout, 500);
+            this.SHIELD = false;
+        }
+        else if(g_LIVES > 0 && lifelost && !shield_time){
+            lifelost = false
+            setTimeout(looseLife, 500);
+            g_LIVES--;
+
+        }
+        else if(g_LIVES <= 0 && !shield_time){
+            return entityManager.KILL_ME_NOW;
+        }
+    }
+
 
 
     var oldx = this.cx,
@@ -127,3 +150,26 @@ MainCharacter.prototype.render = function (ctx) {
 MainCharacter.prototype.getRad = function () {
     return this.radius;
 }
+
+MainCharacter.prototype.getPowerup = function(power){
+    if(power === "shield"){
+        this.SHIELD = true;
+    }
+    if(power === "chain"){
+        this.CHAIN_BULLET = true;
+    }
+    if(power === "extralife"){
+
+        g_LIVES++;
+    }
+    if(power === "extratime"){
+        return;
+    }
+};
+function looseLife() {
+    lifelost = true;
+}
+function shieldTimeout(){
+    shield_time = false;
+}
+

@@ -11,6 +11,7 @@ var entityManager = {
   _balls: [],
   _power:[],
   _background: [],
+  _lives: [],
   // "PRIVATE" METHODS
 
 
@@ -38,7 +39,8 @@ var entityManager = {
       this._ceilings,
       this._wall,
       this._power,
-      this._balls
+      this._balls,
+      this._lives
     ];
   },
 
@@ -68,6 +70,12 @@ var entityManager = {
 
   generateBall: function (descr) {
     this._balls.push(new Ball(descr));
+  },
+    generateLives: function (num) {
+    this._lives.push(new Lives({
+      cx: 315,
+      cy: 550 
+    }));
   },
   CreatePower: function(cx, cy, power) {
       this._power.push(new Powerup({
