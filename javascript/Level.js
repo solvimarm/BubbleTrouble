@@ -1,12 +1,12 @@
 function createLEVELS(g_sprites) {
     var LEVELS = [
         { // LEVEL FOR DELAY 
-            background: 0,
+            background: 100,
             balls: [
-                {cx: 150, cy: 100, velX: -1, size: 3},
-                {cx: 150, cy: 100, velX: -1, size: 2},
-                {cx: 150, cy: 100, velX: -1, size: 1},
-                {cx: 150, cy: 100, velX: -1, size: 0},
+                //{cx: 150, cy: 100, velX: -1, size: 3},
+                //{cx: 150, cy: 100, velX: -1, size: 2},
+                //{cx: 150, cy: 100, velX: -1, size: 1},
+                {cx: 150, cy: 100, velX: -1, size: 0}
             ],
             walls: [
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
@@ -28,8 +28,8 @@ function createLEVELS(g_sprites) {
         { // LEVEL 1
             background: 0,
             balls: [
-                {cx: 100, cy: 100, velX: 1, size: 3},
-                {cx: 700, cy: 100, velX: -1, size: 3}
+                //{cx: 100, cy: 100, velX: 1, size: 3},
+                {cx: 700, cy: 100, velX: -1, size: 1}
             ],
             walls: [
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
@@ -49,11 +49,11 @@ function createLEVELS(g_sprites) {
         {// LEVEL 2 //////////////////////////////////////////////
             background: 1,
             balls: [
-                {cx: 30, cy: 100, velY: 0, velX: 1, size: 0},
-                {cx: 50, cy: 100, velX: 1, size: 0},
-                {cx: 70, cy: 100, velX: 1, size: 0},
-                {cx: 110, cy: 100, velX: 1, size: 0},
-                {cx: 130, cy: 100, velX: 1, size: 0},
+                //{cx: 30, cy: 100, velY: 0, velX: 1, size: 0},
+                //{cx: 50, cy: 100, velX: 1, size: 0},
+                //{cx: 70, cy: 100, velX: 1, size: 0},
+                //{cx: 110, cy: 100, velX: 1, size: 0},
+                //{cx: 130, cy: 100, velX: 1, size: 0},
                 {cx: 150, cy: 100, velX: 1, size: 0},
             ],
             walls: [
@@ -74,9 +74,9 @@ function createLEVELS(g_sprites) {
         {// LEVEL 3 //////////////////////////////////////////////
             background: 2,
             balls: [
-                {cx: 50, cy: 100, velX: 1, size: 1},
-                {cx: 100, cy: 200, velX: 1, size: 1},
-                {cx: 150, cy: 200, velX: 1, size: 1},
+                //{cx: 50, cy: 100, velX: 1, size: 1},
+                //{cx: 100, cy: 200, velX: 1, size: 1},
+                //{cx: 150, cy: 200, velX: 1, size: 1},
                 {cx: 200, cy: 100, velX: 1, size: 1},
             ],
             walls: [
@@ -148,6 +148,8 @@ function generateMap(map_number) {
     var level = LEVELS[map_number];
     
     entityManager.clear();
+    entityManager.deferredSetup();
+    
     entityManager.generateBackground({
         sprite: g_sprites.background[util.mod(level.background, g_sprites.background.length)]
     });

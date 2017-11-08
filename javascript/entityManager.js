@@ -45,15 +45,15 @@ var entityManager = {
   },
 
   clear: function() {
-    //spatialManager.clear();
-    //this._mainCharacter = [];
-    //this._ceilings = [];
-    //this._wall = [];
-    //this._bullet = [];
-    //this._balls = [];
-    //this._power = [];
-    //this._background = [];
-    //this._lives = [];
+    spatialManager.clear();
+    this._mainCharacter = [];
+    this._ceilings = [];
+    this._wall = [];
+    this._bullet = [];
+    this._balls = [];
+    this._power = [];
+    this._background = [];
+    this._lives = [];
   },
 
   initiateLevel: function(map_number, numberOfBalls) {
@@ -156,4 +156,4 @@ var entityManager = {
 };
 
 // Some deferred setup which needs the object to have been created first
-entityManager.deferredSetup();
+//entityManager.deferredSetup();
