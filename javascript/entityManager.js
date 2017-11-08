@@ -44,6 +44,34 @@ var entityManager = {
     ];
   },
 
+  clear: function() {
+    //spatialManager.clear();
+    //this._mainCharacter = [];
+    //this._ceilings = [];
+    //this._wall = [];
+    //this._bullet = [];
+    //this._balls = [];
+    //this._power = [];
+    //this._background = [];
+    //this._lives = [];
+  },
+
+  initiateLevel: function(map_number, numberOfBalls) {
+    this._level = {
+      "currentMap": map_number,
+      "initialBalls": numberOfBalls,
+      "ballsHit": 0
+    };
+  },
+
+  ballHit: function() {
+    this._level["ballsHit"]++;
+    console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
+    if(this._level["ballsHit"] === this._level["initialBalls"]) {
+      generateMap(this._level["currentMap"]+1);
+    }
+  },
+
   generateCeiling: function (descr) {
     this._ceilings.push(new Ceiling(descr));
   },
@@ -71,12 +99,14 @@ var entityManager = {
   generateBall: function (descr) {
     this._balls.push(new Ball(descr));
   },
-    generateLives: function (num) {
+
+  generateLives: function (num) {
     this._lives.push(new Lives({
       cx: 315,
       cy: 550 
     }));
   },
+  
   CreatePower: function(cx, cy, power) {
       this._power.push(new Powerup({
         cx : cx,

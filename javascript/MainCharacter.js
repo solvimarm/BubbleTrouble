@@ -117,7 +117,10 @@ MainCharacter.prototype.update = function (du) {
         }
     }
 
-
+    var pos = this.getPos(); 
+    if(spatialManager.ballCollidesWithCeiling(pos.posX,pos.posY,this.getRad())) {
+        g_LIVES = 0;
+    }
 
     var oldx = this.cx,
         oldy = this.cy;

@@ -67,6 +67,11 @@ _circAndRectCollision: function(circX, circY, radius, circVelX, circVelY, rectX,
 
 // PUBLIC METHODS
 
+clear: function() {
+    this._nextSpatialID = 1;
+    this._entities = [];
+},
+
 getNewSpatialID : function() {
     return this._nextSpatialID++;
 },
@@ -135,6 +140,20 @@ ballCollidesWithWall: function(cx, cy, radius, velX, velY) {
         } 
     }
     return {velX: velX, velY: velY};
+},
+
+ballCollidesWithCeiling: function(cx, cy, radius) {
+    for(var ID in this._entities) {
+        var entity = this._entities[ID];
+        var minX = entity.minX;
+        var maxX = entity.maxX;
+        if(minX !== undefined && maxX !== undefined) {
+            if(minX <= cx && cx <= maxX && cy - radius < entity.bottom) {
+                return true;
+            }
+        }
+    }
+    return false;
 },
 
 ballInRangeOfMC: function(posX,posY,radius){

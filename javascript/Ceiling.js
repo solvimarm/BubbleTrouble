@@ -14,6 +14,7 @@ function Ceiling(descr){
     this.setup(descr);
 
     this.bottom = this.y + this.SPIKE_HEIGHT;
+    this.vel = this.vel/5;
 }
 
 Ceiling.prototype = new Entity();
@@ -27,6 +28,7 @@ Ceiling.prototype.vel = 0;
 
 
 Ceiling.prototype.update = function(du) {
+    spatialManager.unregister(this);
     this.y = this.y + this.vel * du;
     if(this.y < 0) {
         this.vel = 0;
@@ -39,6 +41,7 @@ Ceiling.prototype.update = function(du) {
         this.y = g_canvas.height - this.SPIKE_HEIGHT;
     }
     this.bottom = this.y + this.SPIKE_HEIGHT;
+    spatialManager.register(this);
 };
 
 Ceiling.prototype.render = function(ctx) {

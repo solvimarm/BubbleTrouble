@@ -20,21 +20,21 @@ function Bullet(descr){
     this.setup(descr);
 
     if(this.type === "chain"){
-        this.bullet = g_sprites.bullet_1;
+        this.bullet = g_sprites.bullet[0];
         this.lifeSpan = 3*SECS_TO_NOMINALS;
     }
     if(this.type === "default"){
-        this.bullet = g_sprites.bullet_2;
+        this.bullet = g_sprites.bullet[1];
         this.lifeSpan = 0;
     }
     if(this.type === 3){
-        this.bullet = g_sprites.bullet_3;
+        this.bullet = g_sprites.bullet[2];
     }
     if(this.type === 4){
-        this.bullet = g_sprites.bullet_4;
+        this.bullet = g_sprites.bullet[3];
     }
     if(this.type === 5){
-        this.bullet = g_sprites.bullet_5;
+        this.bullet = g_sprites.bullet[4];
     }
 }
 

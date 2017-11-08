@@ -229,19 +229,21 @@ function preloadDone() {
   ];
 
   // Backgrounds
-  g_sprites.background_1 = new Sprite(g_images.Background_1);
-  g_sprites.background_2 = new Sprite(g_images.Background_2);
-  g_sprites.background_3 = new Sprite(g_images.Background_3);
-  g_sprites.background_4 = new Sprite(g_images.Background_4);
-  g_sprites.background_5 = new Sprite(g_images.Background_5);
-  g_sprites.background_6 = new Sprite(g_images.Background_6);
+  g_sprites.background = [new Sprite(g_images.Background_1),
+    new Sprite(g_images.Background_2),
+    new Sprite(g_images.Background_3),
+    new Sprite(g_images.Background_4),
+    new Sprite(g_images.Background_5),
+    new Sprite(g_images.Background_6)
+  ];
 
   // Bullets
-  g_sprites.bullet_1 = new Sprite(g_images.Bullet_1);
-  g_sprites.bullet_2 = new Sprite(g_images.Bullet_2);
-  g_sprites.bullet_3 = new Sprite(g_images.Bullet_3);
-  g_sprites.bullet_4 = new Sprite(g_images.Bullet_4);
-  g_sprites.bullet_5 = new Sprite(g_images.Bullet_5);
+  g_sprites.bullet = [new Sprite(g_images.Bullet_1),
+    new Sprite(g_images.Bullet_2),
+    new Sprite(g_images.Bullet_3),
+    new Sprite(g_images.Bullet_4),
+    new Sprite(g_images.Bullet_5)
+  ];
 
   // Walls
   g_sprites.wall_ground = new Sprite(g_images.Wall_ground);
@@ -250,24 +252,27 @@ function preloadDone() {
   g_sprites.wall_Steel = new Sprite(g_images.Wall_Steel);
   g_sprites.wall_Wood = new Sprite(g_images.Wall_Wood);
 
-  // Balls - There are 17 balls exist.
-  g_sprites.Ball_Blue1 = new Sprite(g_images.Ball_Blue1);             // 1
-  g_sprites.Ball_Blue2 = new Sprite(g_images.Ball_Blue1);             // 2
-  g_sprites.Ball_Brown1 = new Sprite(g_images.Ball_Brown1);           // 3
-  g_sprites.Ball_Brown2 = new Sprite(g_images.Ball_Brown2);           // 4
-  g_sprites.Ball_Green = new Sprite(g_images.Ball_Green);             // 5
-  g_sprites.Ball_GreenBlue = new Sprite(g_images.Ball_GreenBlue);     // 6
-  g_sprites.Ball_Grey = new Sprite(g_images.Ball_Grey);               // 7
-  g_sprites.Ball_LightBlue = new Sprite(g_images.Ball_LightBlue);     // 8
-  g_sprites.Ball_LightGreen = new Sprite(g_images.Ball_Green);        // 9
-  g_sprites.Ball_Orange = new Sprite(g_images.Ball_Orange);           // 10
-  g_sprites.Ball_Pink = new Sprite(g_images.Ball_Pink);               // 11
-  g_sprites.Ball_Purple = new Sprite(g_images.Ball_Purple);           // 12
-  g_sprites.Ball_Red = new Sprite(g_images.Ball_Red);                 // 13
-  g_sprites.Ball_SeaGreen = new Sprite(g_images.Ball_SeaGreen);       // 14   
-  g_sprites.Ball_WineRed = new Sprite(g_images.Ball_WineRed);         // 15
-  g_sprites.Ball_Yellow1 = new Sprite(g_images.Ball_Yellow1);         // 16          
-  g_sprites.Ball_Yellow2 = new Sprite(g_images.Ball_Yellow2);         // 17
+  // Balls - There are 17 balls.
+  g_sprites.Ball = {
+    "Blue1": new Sprite(g_images.Ball_Blue1),
+    "Blue2": new Sprite(g_images.Ball_Blue1),
+    "Brown1": new Sprite(g_images.Ball_Brown1),
+    "Brown2": new Sprite(g_images.Ball_Brown2),
+    "Green": new Sprite(g_images.Ball_Green),
+    "GreenBlue": new Sprite(g_images.Ball_GreenBlue),
+    "Grey": new Sprite(g_images.Ball_Grey),
+    "LightBlue": new Sprite(g_images.Ball_LightBlue),
+    "LightGreen": new Sprite(g_images.Ball_Green),
+    "Orange": new Sprite(g_images.Ball_Orange),
+    "Pink": new Sprite(g_images.Ball_Pink),
+    "Purple": new Sprite(g_images.Ball_Purple),
+    "Red": new Sprite(g_images.Ball_Red),
+    "SeaGreen": new Sprite(g_images.Ball_SeaGreen),
+    "WineRed": new Sprite(g_images.Ball_WineRed),
+    "Yellow1": new Sprite(g_images.Ball_Yellow1),
+    "Yellow2": new Sprite(g_images.Ball_Yellow2)
+  };
+
 
   // PowerUps
   g_sprites.Power_LiveRedHeart = new Sprite(g_images.Power_LiveRedHeart);
@@ -279,10 +284,7 @@ function preloadDone() {
 
   // Create Map number map_num
   var map_num = 0;
-  generateMap(map_num, g_sprites);
-  for(var i = 0; i < g_LIVES; i++){
-    entityManager.generateLives();
-  }
+  generateMap(map_num, g_LIVES, g_sprites);
 
   main.init();
 }
@@ -318,6 +320,7 @@ function st_screen(x, y) {
   if (x > 350 /* - g_images.Play.width / 2 */ && x < 350 + g_images.Play.width) {
     if (y > 200 /*-g_images.Play.height / 2 */ && y < 200 + g_images.Play.height) {
       state.startGame = true;
+      
     }
   }
 }
@@ -341,93 +344,36 @@ function drawStartScreen(ctx) {
 }
 
 function drawChick(ctx) {
-  ctx.save();
-  ctx.translate(100, 400);
-  ctx.scale(2, 2)
-  ctx.drawImage(g_images.Chick_Color, -g_images.Chick_Color.width / 2, -g_images.Chick_Color.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(300, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(500, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(700, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
-  ctx.restore();
+  drawGhosts(ctx);
+  drawCharacter(ctx, 100, 400, 2, g_images.Chick_Color);
 }
 
 function drawAnotherDevil(ctx) {
-  ctx.save();
-  ctx.translate(100, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(300, 400);
-  ctx.scale(2, 2)
-  ctx.drawImage(g_images.Anotherdevil_Color, -g_images.Anotherdevil_Color.width / 2, -g_images.Anotherdevil_Color.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(500, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(700, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
-  ctx.restore();
+  drawGhosts(ctx);
+  drawCharacter(ctx, 300, 400, 2, g_images.Anotherdevil_Color);
 }
 
 function drawDeathnote(ctx) {
-  ctx.save();
-  ctx.translate(100, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(300, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(500, 400);
-  ctx.scale(2, 2)
-  ctx.drawImage(g_images.Deathnote_Color, -g_images.Deathnote_Color.width / 2, -g_images.Deathnote_Color.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(700, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Golbez_BW, -g_images.Golbez_BW.width / 2, -g_images.Golbez_BW.height / 2);
-  ctx.restore();
+  drawGhosts(ctx);
+  drawCharacter(ctx, 500, 400, 2, g_images.Deathnote_Color);
 }
 
 function drawGolbez(ctx) {
+  drawGhosts(ctx);
+  drawCharacter(ctx, 700, 400, 2, g_images.Golbez_Color);
+}
+
+function drawGhosts(ctx) {
+  drawCharacter(ctx, 100, 400, 1.5, g_images.Chick_BW);
+  drawCharacter(ctx, 300, 400, 1.5, g_images.AnotherdevilBW);
+  drawCharacter(ctx, 500, 400, 1.5, g_images.Deathnote_BW);
+  drawCharacter(ctx, 700, 400, 1.5, g_images.Golbez_BW);
+}
+
+function drawCharacter(ctx, x, y, scale, image) {
   ctx.save();
-  ctx.translate(100, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Chick_BW, -g_images.Chick_BW.width / 2, -g_images.Chick_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(300, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.AnotherdevilBW, -g_images.AnotherdevilBW.width / 2, -g_images.AnotherdevilBW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(500, 400);
-  ctx.scale(1.5, 1.5)
-  ctx.drawImage(g_images.Deathnote_BW, -g_images.Deathnote_BW.width / 2, -g_images.Deathnote_BW.height / 2);
-  ctx.restore();
-  ctx.save();
-  ctx.translate(700, 400);
-  ctx.scale(2, 2)
-  ctx.drawImage(g_images.Golbez_Color, -g_images.Golbez_Color.width / 2, -g_images.Golbez_Color.height / 2);
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  ctx.drawImage(image, -image.width/2, -image.height/2);
   ctx.restore();
 }

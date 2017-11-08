@@ -10,18 +10,22 @@
 */
 
 var BallStyles = [
-    {maxBounce: 50, radius: 9},     // type 0
-    {maxBounce: 80, radius: 20},    // type 1
-    {maxBounce: 110, radius: 30},   // type 2
-    {maxBounce: 140, radius: 40}    // type 3
+    {maxBounce: 40, radius: 8, color: "Red"},     // type 0
+    {maxBounce: 70, radius: 16, color: "Blue1"},    // type 1
+    {maxBounce: 100, radius: 25, color: "Green"},   // type 2
+    {maxBounce: 120, radius: 35, color: "Pink"},    // type 3
+    {maxBounce: 120, radius: 40, color: "SeaGreen"},    // type 4
+    {maxBounce: 100, radius: 45, color: "Brown1"},    // type 5
+    
 ]
 
 function Ball(descr){
     this.setup(descr);
 
     // TODO: Add more styles / types.
-    this.radius = BallStyles[this.type].radius;
-    this.maxBounce = BallStyles[this.type].maxBounce;
+    this.radius = BallStyles[this.size].radius;
+    this.maxBounce = BallStyles[this.size].maxBounce;
+    this.sprite = g_sprites.Ball[BallStyles[this.size].color];
 }
 
 Ball.prototype = new Entity();
@@ -41,36 +45,37 @@ Ball.prototype.hitBall = function() {
     maybeCreatePower(this.cx , this.cy);
     this.kill();
    // console.log(this);
-    if(this.type > 0) {
+    if(this.size > 0) {
          entityManager.generateBall({
             cx: this.cx,
             cy: this.cy,
             velX: -1,
             velY: -3,
-            type: this.type-1,
-            sprite: this.sprite
+            size: this.size-1
         });
         entityManager.generateBall({
             cx: this.cx,
             cy: this.cy,
             velX: 1,
             velY: -3,
-            type: this.type-1,
-            sprite: this.sprite
+            size: this.size-1
         });
-        
     }
-    
+    entityManager.ballHit();
 }
 
 Ball.prototype.update = function(du){
     spatialManager.unregister(this);
-    // TODO: Remove. Used for testing only.
+
     if (this._isDeadNow) {
         //this.hitBall();
         return entityManager.KILL_ME_NOW;
     }
     
+    if(spatialManager.ballCollidesWithCeiling(this.cx, this.cy, this.radius)) {
+        this.hitBall();
+    }
+
     var newDirections = spatialManager.ballCollidesWithWall(
         this.cx, this.cy, this.radius, this.velX, this.velY
     );
