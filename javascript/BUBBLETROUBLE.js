@@ -170,7 +170,8 @@ function requestPreloads() {
     Golbez_BW: "sprites/StartScreen/Golbez_BW.png",
     Golbez_Color: "sprites/StartScreen/Golbez_Color.png",
     Devil_BW : "Sprites/StartScreen/Devil_BW.png",
-    Devil_Color: "Sprites/StartScreen/Devil_Color.png"
+    Devil_Color: "Sprites/StartScreen/Devil_Color.png",
+    Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -337,7 +338,7 @@ function st_screen(x, y) {
     }
   }
   if (x > 350 /* - g_images.Play.width / 2 */ && x < 350 + g_images.Play.width) {
-    if (y > 200 /*-g_images.Play.height / 2 */ && y < 200 + g_images.Play.height) {
+    if (y > 240 /*-g_images.Play.height / 2 */ && y < 240 + g_images.Play.height) {
       state.startGame = true;
       
     }
@@ -345,7 +346,8 @@ function st_screen(x, y) {
 }
 
 function drawStartScreen(ctx) {
-  ctx.drawImage(g_images.Play, 350, 200);
+  ctx.drawImage(g_images.Logo, 0, 0);
+  ctx.drawImage(g_images.Play, 350, 240);
   switch (characterChosen) {
     case 0:
       drawChick(ctx);
