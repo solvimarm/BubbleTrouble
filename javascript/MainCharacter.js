@@ -61,16 +61,16 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
     if (right) {
         
       if (characterChosen === 0) this.sprite = g_sprites.mainCharacter[runRight.id];
-      if (characterChosen === 1) {
-        this.sprite = g_sprites.mainCharacter[runRight.id + 4];
-      }
+      if (characterChosen === 1) this.sprite = g_sprites.mainCharacter[runRight.id + 4];
       if (characterChosen === 2) this.sprite = g_sprites.mainCharacter[runRight.id + 8];
       if (characterChosen === 3) this.sprite = g_sprites.mainCharacter[runRight.id + 12];
+      if (characterChosen === 4) this.sprite = g_sprites.mainCharacter[runRight.id + 16];
     } else if (left) {
       if (characterChosen === 0) this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
       if (characterChosen === 1) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 4];
       if (characterChosen === 2) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 8];
       if (characterChosen === 3) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 12];
+      if (characterChosen === 4) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 16];
     } else if (still) this.sprite = g_sprites.mainCharacterStill[characterChosen];
     if (still || runRight.count >= /*g_sprites.mainCharacterRight.length*/ 4 * runRight.renderTimes ||
         runLeft.count >= /*g_sprites.mainCharacterLeft.length*/ 4 * runLeft.renderTimes) {
