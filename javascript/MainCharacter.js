@@ -6,10 +6,11 @@
 function MainCharacter(descr) {
     this.setup(descr);
 
-    this.sprite = this.sprite || g_sprites.mainCharacterStill[0];
+    //this.sprite = this.sprite //|| g_sprites.mainCharacterStill[0];
     this.scale = this.scale || 1;
     this.radius = 14;
     console.log(this.sprite);
+    console.log("this character cx: " + this.cx + "and cy: " + this.cy);
 }
 
 MainCharacter.prototype = new Entity();
@@ -72,7 +73,7 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
       if (characterChosen === 3) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 12];
       if (characterChosen === 4) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 16];
     } else if (still) this.sprite = g_sprites.mainCharacterStill[characterChosen];
-    
+
     if (still || runRight.count >= /*g_sprites.mainCharacterRight.length*/ 4 * runRight.renderTimes ||
         runLeft.count >= /*g_sprites.mainCharacterLeft.length*/ 4 * runLeft.renderTimes) {
         runRight.id = 0;

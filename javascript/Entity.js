@@ -38,6 +38,7 @@ Entity.prototype.setup = function (descr) {
     for (var property in descr) {
         this[property] = descr[property];
     }
+    console.log("descr : " + descr);
     
     // Get my (unique) spatial ID
     this._spatialID = spatialManager.getNewSpatialID();
@@ -46,10 +47,12 @@ Entity.prototype.setup = function (descr) {
     this._isDeadNow = false;
 };
 
+/*
 Entity.prototype.setPos = function (cx, cy) {
     this.cx = cx;
     this.cy = cy;
 };
+*/
 
 Entity.prototype.getPos = function () {
     return {posX : this.cx||this.x, posY : this.cy||this.y||this.yTop};

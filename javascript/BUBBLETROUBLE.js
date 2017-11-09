@@ -201,7 +201,7 @@ function preloadDone() {
     new Sprite(g_images.Golbez, 32, 96, 32, 48),
     new Sprite(g_images.Golbez, 64, 96, 32, 48),
     new Sprite(g_images.Golbez, 96, 96, 32, 48),
-    
+
     new Sprite(g_images.Devil,   0, 134, 67, 67),
     new Sprite(g_images.Devil,  67, 134, 67, 67),
     new Sprite(g_images.Devil, 134, 134, 67, 67),
@@ -296,11 +296,6 @@ function preloadDone() {
   g_sprites.Power_shield = new Sprite(g_images.Power_shield);
   g_sprites.Power_characterShield = new Sprite(g_images.Power_characterShield);
 
-
-  // Create Map number map_num
-  var map_num = 0;
-  generateMap(map_num, g_LIVES, g_sprites);
-
   main.init();
 }
 
@@ -340,6 +335,7 @@ function st_screen(x, y) {
   if (x > 350 /* - g_images.Play.width / 2 */ && x < 350 + g_images.Play.width) {
     if (y > 240 /*-g_images.Play.height / 2 */ && y < 240 + g_images.Play.height) {
       state.startGame = true;
+      generateMap(0);
       
     }
   }
