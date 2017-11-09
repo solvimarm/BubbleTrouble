@@ -171,7 +171,8 @@ function requestPreloads() {
     Golbez_Color: "sprites/StartScreen/Golbez_Color.png",
     Devil_BW : "Sprites/StartScreen/Devil_BW.png",
     Devil_Color: "Sprites/StartScreen/Devil_Color.png",
-    Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png"
+    Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png",
+    Wall_Background: "Sprites/Walls/Wall_Start.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -263,7 +264,7 @@ function preloadDone() {
   // Walls
   g_sprites.wall_ground = new Sprite(g_images.Wall_ground);
   g_sprites.wall_Stone1 = new Sprite(g_images.Wall_Stone1);
-  g_sprites.wall_Stone2 = new Sprite(g_images.Wall_Stone1);
+  g_sprites.wall_Stone2 = new Sprite(g_images.Wall_Stone2);
   g_sprites.wall_Steel = new Sprite(g_images.Wall_Steel);
   g_sprites.wall_Wood = new Sprite(g_images.Wall_Wood);
 
@@ -332,18 +333,18 @@ function st_screen(x, y) {
       characterChosen = 4;
     }
   }
-  if (x > 350 /* - g_images.Play.width / 2 */ && x < 350 + g_images.Play.width) {
-    if (y > 240 /*-g_images.Play.height / 2 */ && y < 240 + g_images.Play.height) {
+  if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
+    if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
-      generateMap(0);
-      
+      generateMap(0);s
     }
   }
 }
 
 function drawStartScreen(ctx) {
+  ctx.drawImage(g_images.Wall_Background, 0, 0);
   ctx.drawImage(g_images.Logo, 0, 0);
-  ctx.drawImage(g_images.Play, 350, 240);
+  ctx.drawImage(g_images.Play, 680, 480);
   switch (characterChosen) {
     case 0:
       drawChick(ctx);
@@ -365,34 +366,34 @@ function drawStartScreen(ctx) {
 
 function drawChick(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 80, 400, 2, g_images.Chick_Color);
+  drawCharacter(ctx, 80, 400, 1.2, g_images.Chick_Color);
 }
 
 function drawAnotherDevil(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 240, 400, 2, g_images.Anotherdevil_Color);
+  drawCharacter(ctx, 240, 400, 1.2, g_images.Anotherdevil_Color);
 }
 
 function drawDeathnote(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 400, 400, 2, g_images.Deathnote_Color);
+  drawCharacter(ctx, 400, 400, 1.2  , g_images.Deathnote_Color);
 }
 
 function drawGolbez(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 560, 400, 2, g_images.Golbez_Color);
+  drawCharacter(ctx, 560, 400, 1.2, g_images.Golbez_Color);
 }
 function drawDevil(ctx){
   drawGhosts(ctx);
-  drawCharacter(ctx,720,400,2,g_images.Devil_Color);
+  drawCharacter(ctx,720,400, 1.2,g_images.Devil_Color);
 }
 
 function drawGhosts(ctx) {
-  drawCharacter(ctx, 80, 400, 1.5, g_images.Chick_BW);
-  drawCharacter(ctx, 240, 400, 1.5, g_images.AnotherdevilBW);
-  drawCharacter(ctx, 400, 400, 1.5, g_images.Deathnote_BW);
-  drawCharacter(ctx, 560, 400, 1.5, g_images.Golbez_BW);
-  drawCharacter(ctx,720,400,1.5,g_images.Devil_BW);
+  drawCharacter(ctx, 80, 400, 1, g_images.Chick_BW);
+  drawCharacter(ctx, 240, 400, 1, g_images.AnotherdevilBW);
+  drawCharacter(ctx, 400, 400, 1, g_images.Deathnote_BW);
+  drawCharacter(ctx, 560, 400, 1, g_images.Golbez_BW);
+  drawCharacter(ctx,720,400, 1,g_images.Devil_BW);
 }
 
 function drawCharacter(ctx, x, y, scale, image) {

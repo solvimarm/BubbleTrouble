@@ -1,7 +1,7 @@
 function createLEVELS(g_sprites) {
     var LEVELS = [
-        { // LEVEL FOR DELAY 
-            background: 100,
+        {// LEVEL 0 ////////////////////////////////////////////// 
+            background: 0,
             balls: [
                 //{cx: 150, cy: 100, velX: -1, size: 3},
                 //{cx: 150, cy: 100, velX: -1, size: 2},
@@ -19,14 +19,13 @@ function createLEVELS(g_sprites) {
             character: {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 1,
+                bulletType: 5,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
 
-
-        { // LEVEL 1
-            background: 0,
+        {// LEVEL 1 //////////////////////////////////////////////
+            background: 1,
             balls: [
                 //{cx: 100, cy: 100, velX: 1, size: 3},
                 {cx: 700, cy: 100, velX: -1, size: 1}
@@ -48,7 +47,7 @@ function createLEVELS(g_sprites) {
             }
         },
         {// LEVEL 2 //////////////////////////////////////////////
-            background: 1,
+            background: 2,
             balls: [
                 //{cx: 30, cy: 100, velY: 0, velX: 1, size: 0},
                 //{cx: 50, cy: 100, velX: 1, size: 0},
@@ -73,7 +72,7 @@ function createLEVELS(g_sprites) {
             }
         },
         {// LEVEL 3 //////////////////////////////////////////////
-            background: 2,
+            background: 3,
             balls: [
                 //{cx: 50, cy: 100, velX: 1, size: 1},
                 //{cx: 100, cy: 200, velX: 1, size: 1},
@@ -96,7 +95,7 @@ function createLEVELS(g_sprites) {
             }
         },
         {// LEVEL 4 //////////////////////////////////////////////
-            background: 2,
+            background: 4,
             balls: [
                 {cx: 100, cy: 300, velX: 1, size: 2},
                 {cx: 100, cy: 100, velX: -1, size: 2}
@@ -117,7 +116,7 @@ function createLEVELS(g_sprites) {
             }
         },
           {// LEVEL 5 //////////////////////////////////////////////
-            background: 2,
+            background: 5,
             balls: [
                 {cx: 100, cy: 300, velX: 1, size: 3},
                 {cx: 100, cy: 100, velX: -1, size: 3}
@@ -138,7 +137,6 @@ function createLEVELS(g_sprites) {
             }
         }
     ];
-    console.log(g_sprites.mainCharacterStill[0].height);
     return LEVELS;
 }
 
