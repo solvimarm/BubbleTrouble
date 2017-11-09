@@ -201,11 +201,11 @@ function preloadDone() {
     new Sprite(g_images.Golbez, 32, 96, 32, 48),
     new Sprite(g_images.Golbez, 64, 96, 32, 48),
     new Sprite(g_images.Golbez, 96, 96, 32, 48),
-
-    new Sprite(g_images.Devil, 0,160,80,80),
-    new Sprite(g_images.Devil, 80,160,80,80),
-    new Sprite(g_images.Devil, 160,160,80,80),
-    new Sprite(g_images.Devil, 240,160,80,80),
+    
+    new Sprite(g_images.Devil,   0, 134, 67, 67),
+    new Sprite(g_images.Devil,  67, 134, 67, 67),
+    new Sprite(g_images.Devil, 134, 134, 67, 67),
+    new Sprite(g_images.Devil, 201, 134, 67, 67) 
   ];
 
   g_sprites.mainCharacterLeft = [
@@ -229,10 +229,10 @@ function preloadDone() {
     new Sprite(g_images.Golbez, 32, 46, 32, 48),
     new Sprite(g_images.Golbez, 0, 46, 32, 48),
 
-    new Sprite(g_images.Devil, 240,80,80,80),
-    new Sprite(g_images.Devil, 160,80,80,80),
-    new Sprite(g_images.Devil, 80,80,80,80),
-    new Sprite(g_images.Devil, 0,80,80,80)    
+    new Sprite(g_images.Devil, 201, 67, 67, 67),
+    new Sprite(g_images.Devil, 134, 67, 67, 67),
+    new Sprite(g_images.Devil,  67, 67, 67, 67),
+    new Sprite(g_images.Devil,   0, 67, 67, 67)    
   ];
 
   g_sprites.mainCharacterStill = [
@@ -240,7 +240,7 @@ function preloadDone() {
     new Sprite(g_images.Anotherdevil, 0, 0, 32, 48),
     new Sprite(g_images.Deathnote, 0, 0, 36, 48),
     new Sprite(g_images.Golbez, 0, 0, 32, 48),
-    new Sprite(g_images.Devil,0,0,80,80)
+    new Sprite(g_images.Devil, 0, 0, 67, 67)
   ];
 
   // Backgrounds

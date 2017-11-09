@@ -21,7 +21,9 @@ function handleMouse(evt) {
   // If no button is being pressed, then bail
   var button = evt.buttons === undefined ? evt.which : evt.buttons;
   if (!button) return;
-  st_screen(g_mouseX, g_mouseY);
+  if(!state.startGame){
+    st_screen(g_mouseX, g_mouseY);
+  }
   //entityManager.yoinkNearestShip(g_mouseX, g_mouseY);
 }
 

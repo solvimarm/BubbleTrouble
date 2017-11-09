@@ -68,7 +68,9 @@ var entityManager = {
     this._level["ballsHit"]++;
     console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
     if(this._level["ballsHit"] === this._level["initialBalls"]) {
-      generateMap(this._level["currentMap"]+1);
+      generateMap( this._level["currentMap"]+1);
+      //setTimeout(generateMap[ 3000, this._level["currentMap"]+1]);
+      //generateMap(this._level["currentMap"]+1)
     }
   },
 
