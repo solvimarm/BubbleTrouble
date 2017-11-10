@@ -22,10 +22,12 @@ function Bullet(descr){
     if(this.type === "chain"){
         this.bullet = g_sprites.bullet[0];
         this.lifeSpan = 3*SECS_TO_NOMINALS;
+        this.fireSound_chain.play();
     }
     if(this.type === "default"){
         this.bullet = g_sprites.bullet[1];
         this.lifeSpan = 0;
+        this.fireSound_laser.play();
     }
     if(this.type === 3){
         this.bullet = g_sprites.bullet[2];
@@ -42,6 +44,10 @@ Bullet.prototype = new Entity();
 Bullet.prototype.type = "default";
 Bullet.prototype.velY = 2;
 Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
+Bullet.prototype.fireSound_laser = new Audio(
+    "Sounds/laser_blaster2.wav");
+Bullet.prototype.fireSound_chain = new Audio(
+    "Sounds/chain.wav");
 
 
 Bullet.prototype.update = function(du){

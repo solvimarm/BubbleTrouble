@@ -164,8 +164,7 @@ MainCharacter.prototype.getPowerup = function(power){
         this.CHAIN_BULLET = true;
     }
     if(power === "extralife"){
-
-        g_LIVES++;
+        if(g_LIVES < 5) g_LIVES++;
     }
     if(power === "extratime"){
         return;
