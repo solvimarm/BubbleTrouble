@@ -336,7 +336,7 @@ function st_screen(x, y) {
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
     if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
-      generateMap(0);s
+      generateMap(0);
     }
   }
 }
