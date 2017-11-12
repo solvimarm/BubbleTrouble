@@ -172,7 +172,11 @@ function requestPreloads() {
     Devil_BW : "Sprites/StartScreen/Devil_BW.png",
     Devil_Color: "Sprites/StartScreen/Devil_Color.png",
     Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png",
-    Wall_Background: "Sprites/Walls/Wall_Start.png"
+    Wall_Background: "Sprites/Walls/Wall_Start.png",
+    // numbers
+    Number_1: "Sprites/Numbers/number_1.png",
+    Number_2: "Sprites/Numbers/number_2.png",
+    Number_3: "Sprites/Numbers/number_3.png"
   };
 
   imagesPreload(requiredImages, g_images, preloadDone);
@@ -267,6 +271,10 @@ function preloadDone() {
   g_sprites.wall_Stone2 = new Sprite(g_images.Wall_Stone2);
   g_sprites.wall_Steel = new Sprite(g_images.Wall_Steel);
   g_sprites.wall_Wood = new Sprite(g_images.Wall_Wood);
+  // numbers
+  g_sprites.Number_1 = new Sprite(g_images.Number_1);
+  g_sprites.Number_2 = new Sprite(g_images.Number_2);
+  g_sprites.Number_3 = new Sprite(g_images.Number_3);
 
   // Balls - There are 17 balls.
   g_sprites.Ball = {
@@ -336,7 +344,19 @@ function st_screen(x, y) {
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
     if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
-      generateMap(0);
+      NEXT_LEVEL = true;
+        generateMap(0);
+        if(NEXT_LEVEL){
+          var Timer = setInterval(function(){
+          timeleft--;
+          console.log(timeleft);
+          if(timeleft <= 0){
+            clearInterval(Timer);
+            NEXT_LEVEL = false;
+            timeleft = 3;
+          }
+        },1000);
+      }
     }
   }
 }

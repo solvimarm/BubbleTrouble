@@ -68,9 +68,19 @@ var entityManager = {
     this._level["ballsHit"]++;
     console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
     if(this._level["ballsHit"] === this._level["initialBalls"]) {
-      generateMap( this._level["currentMap"]+1);
-      //setTimeout(generateMap[ 3000, this._level["currentMap"]+1]);
-      //generateMap(this._level["currentMap"]+1)
+      NEXT_LEVEL = true;
+        generateMap( this._level["currentMap"]+1);
+        if(NEXT_LEVEL){
+          var Timer = setInterval(function(){
+          timeleft--;
+          console.log(timeleft);
+          if(timeleft <= 0){
+            clearInterval(Timer);
+            NEXT_LEVEL = false;
+            timeleft = 3;
+          }
+        },1000);
+      }
     }
   },
 
@@ -120,23 +130,24 @@ var entityManager = {
 
   },
   update: function (du) {
-    for (var c = 0; c < this._categories.length; ++c) {
-      var aCategory = this._categories[c];
-      var i = 0;
+    if(!NEXT_LEVEL){
+      for (var c = 0; c < this._categories.length; ++c) {
+        var aCategory = this._categories[c];
+        var i = 0;
 
-      while (i < aCategory.length) {
-        var status = aCategory[i].update(du);
+        while (i < aCategory.length) {
+          var status = aCategory[i].update(du);
 
-        if (status === this.KILL_ME_NOW) {
-          // remove the dead guy, and shuffle the others down to
-          // prevent a confusing gap from appearing in the array
-          aCategory.splice(i, 1);
-        } else {
-          ++i;
+          if (status === this.KILL_ME_NOW) {
+           // remove the dead guy, and shuffle the others down to
+            // prevent a confusing gap from appearing in the array
+            aCategory.splice(i, 1);
+          } else {
+           ++i;
+          }
         }
       }
     }
-
   },
 
   render: function (ctx) {
@@ -153,6 +164,17 @@ var entityManager = {
         //debug.text(".", debugX + i * 10, debugY);
       }
       debugY += 10;
+    }
+    if(NEXT_LEVEL){
+      if(timeleft === 3){
+        g_sprites.Number_3.drawWrappedCentredAt(ctx, g_canvas.width/2, g_canvas.height/2);
+      }
+      if(timeleft === 2){
+        g_sprites.Number_2.drawWrappedCentredAt(ctx, g_canvas.width/2, g_canvas.height/2);
+      }
+      if(timeleft === 1){
+        g_sprites.Number_1.drawWrappedCentredAt(ctx, g_canvas.width/2, g_canvas.height/2);
+      }
     }
   }
 };

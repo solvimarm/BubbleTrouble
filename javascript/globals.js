@@ -28,3 +28,6 @@ var characterChosen = 0;
 
 var  POWER_IMAGE_HEIGHT = 25;
 var SPIKE_HEIGHT = 12;
+
+var NEXT_LEVEL = false;
+var timeleft = 3;
