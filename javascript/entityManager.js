@@ -154,7 +154,7 @@ var entityManager = {
       }
       debugY += 10;
     }
-    renderExtras();
+    renderExtras(ctx);
   }
 };
 

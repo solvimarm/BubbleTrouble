@@ -31,3 +31,5 @@ var SPIKE_HEIGHT = 12;
 
 var NEXT_LEVEL = false;
 var timeleft = 3;
+
+var GAME_BAR = g_canvas.width;
