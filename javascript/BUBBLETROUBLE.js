@@ -344,18 +344,8 @@ function st_screen(x, y) {
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
     if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
-      NEXT_LEVEL = true;
-        generateMap(0);
-        if(NEXT_LEVEL){
-          var Timer = setInterval(function(){
-          timeleft--;
-          if(timeleft <= 0){
-            clearInterval(Timer);
-            NEXT_LEVEL = false;
-            timeleft = 3;
-          }
-        },1000);
-      }
+      generateMap(0);
+      countDown();
     }
   }
 }
