@@ -349,7 +349,6 @@ function st_screen(x, y) {
         if(NEXT_LEVEL){
           var Timer = setInterval(function(){
           timeleft--;
-          console.log(timeleft);
           if(timeleft <= 0){
             clearInterval(Timer);
             NEXT_LEVEL = false;
