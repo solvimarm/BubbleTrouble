@@ -43,8 +43,9 @@ function gatherInputs() {
 function updateSimulation(du) {
   processDiagnostics();
 
-  if (state.startGame)
+  if (state.startGame){
     entityManager.update(du);
+  }
 
   // Prevent perpetual firing!
 }
@@ -344,6 +345,7 @@ function st_screen(x, y) {
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
     if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
+      g_LIVES = 3;
       generateMap(0);
       countDown();
     }

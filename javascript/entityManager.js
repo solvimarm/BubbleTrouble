@@ -101,7 +101,7 @@ var entityManager = {
     this._balls.push(new Ball(descr));
   },
 
-  generateLives: function (num) {
+  generateLives: function () {
     this._lives.push(new Lives({
       cx: 315,
       cy: 550 
@@ -115,9 +115,10 @@ var entityManager = {
         power: power
       }));
   },
+  
   killBall: function (descr) {
-
   },
+
   update: function (du) {
     if(!NEXT_LEVEL){
       for (var c = 0; c < this._categories.length; ++c) {

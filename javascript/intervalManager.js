@@ -13,15 +13,18 @@ function countDown(){
         }
       },1000);
    }
+   g_isUpdatePaused = false;
 }
 
 function gameTime(){
   var Timer = setInterval(function(){
-    GAME_BAR -= g_canvas.width/(20*250);
-    console.log(GAME_BAR);
-    if(GAME_BAR <= 0){
-      clearInterval(Timer);
-      GAME_BAR = g_canvas.width;
+    if(!g_isUpdatePaused){
+      GAME_BAR -= g_canvas.width/(20*250);
+      //console.log(GAME_BAR);
+      if(GAME_BAR <= 0){
+        clearInterval(Timer);
+        GAME_BAR = g_canvas.width;
+      }
     }
   },1);
 }

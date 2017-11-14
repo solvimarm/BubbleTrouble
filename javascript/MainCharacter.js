@@ -20,9 +20,10 @@ MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
 MainCharacter.prototype.CHAIN_BULLET = false;
-var g_LIVES = 3;
+//var g_LIVES = 3;
 var lifelost = true;
 var shield_time = false;
+var GameOver_sound = new Audio("Sounds/game_over.wav");
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -115,7 +116,9 @@ MainCharacter.prototype.update = function (du) {
 
         }
         else if(g_LIVES <= 0 && !shield_time){
-            return entityManager.KILL_ME_NOW;
+            GameOver_sound.play();
+            g_isUpdatePaused = true;
+            setTimeout(gameOver, 4000);
         }
     }
 
@@ -175,5 +178,10 @@ function looseLife() {
 }
 function shieldTimeout(){
     shield_time = false;
+}
+
+function gameOver(){
+    state.startGame = false;
+    entityManager.clear();
 }
 

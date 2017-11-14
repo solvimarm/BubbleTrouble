@@ -167,6 +167,8 @@ function generateMap(map_number) {
         entityManager.generateWall(level.walls[i]);
     }
 
+    entityManager.generateLives();
+
     var numberOfBalls = 0;
     // Generate all Balls
     for (var i = 0; i < level.balls.length; i++) {

@@ -2,9 +2,7 @@
 // GLOBALS
 // =======
 /*
-
 Evil, ugly (but "necessary") globals, which everyone can use.
-
 */
 
 "use strict";
@@ -26,10 +24,12 @@ var Y_BOTTOM = 500;
 
 var characterChosen = 0;
 
-var  POWER_IMAGE_HEIGHT = 25;
+var POWER_IMAGE_HEIGHT = 25;
 var SPIKE_HEIGHT = 12;
 
 var NEXT_LEVEL = false;
 var timeleft = 3;
 
 var GAME_BAR = g_canvas.width;
+
+var g_LIVES = 3;

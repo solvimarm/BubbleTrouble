@@ -4,6 +4,7 @@ function Lives(descr){
 }
 
 Lives.prototype = new Entity();
+
 Lives.prototype.update = function(du){
 
 };
