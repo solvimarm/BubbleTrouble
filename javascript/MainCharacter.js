@@ -120,12 +120,16 @@ MainCharacter.prototype.update = function (du) {
             return entityManager.KILL_ME_NOW;
         }
         else if(g_LIVES <= 0 && !shield_time){
-            return entityManager.KILL_ME_NOW;
+            g_isUpdatePaused = true;
+            setTimeout(gameOver, 4000);
+            GameOver_sound.play();
         }
     }
     if((this.gameBar <= 0) && lifelost){
         if(g_LIVES <= 0){
-            return entityManager.KILL_ME_NOW;
+            g_isUpdatePaused = true;
+            setTimeout(gameOver, 4000);
+            
         }
         else{
             lifelost = false;
