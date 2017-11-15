@@ -73,6 +73,10 @@ var entityManager = {
     }
   },
 
+  numberOfBallsHit: function() {
+    return this._level["ballsHit"];
+  },
+
   generateCeiling: function (descr) {
     this._ceilings.push(new Ceiling(descr));
   },

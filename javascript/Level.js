@@ -6,12 +6,12 @@ function createLEVELS(g_sprites) {
                 //{cx: 150, cy: 100, velX: -1, size: 3},
                 //{cx: 150, cy: 100, velX: -1, size: 2},
                 //{cx: 150, cy: 100, velX: -1, size: 1},
-                {cx: 150, cy: 100, velX: -1, size: 0}
+                {cx: 150, cy: 100, velX: -1, size: 1}
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
+                {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2},
+                {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2}
             ],
             ceilings: [
                 {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
@@ -27,19 +27,21 @@ function createLEVELS(g_sprites) {
         {// LEVEL 1 //////////////////////////////////////////////
             background: 1,
             balls: [
-                //{cx: 100, cy: 100, velX: 1, size: 3},
-                {cx: 700, cy: 100, velX: -1, size: 1}
+                {cx: 100, cy: 100, velX: 1, size: 2},
+                {cx: 700, cy: 100, velX: -1, size: 3}
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
+                {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 400, y: 430, width: 16, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
+                {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel}
             ],
             ceilings: [
                 {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
             ],
             character: {
-                cx: 400,
+                cx: 300,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
@@ -56,7 +58,7 @@ function createLEVELS(g_sprites) {
                 {cx: 150, cy: 100, velX: 1, size: 0},
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
             ],
@@ -79,7 +81,7 @@ function createLEVELS(g_sprites) {
                 {cx: 200, cy: 100, velX: 1, size: 1},
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
             ],
@@ -100,7 +102,7 @@ function createLEVELS(g_sprites) {
                 {cx: 100, cy: 100, velX: -1, size: 2}
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Steel},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone1}
             ],
@@ -121,7 +123,7 @@ function createLEVELS(g_sprites) {
                 {cx: 100, cy: 100, velX: -1, size: 3}
             ],
             walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
+                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Steel},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone1}
             ],

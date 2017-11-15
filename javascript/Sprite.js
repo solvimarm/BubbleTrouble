@@ -28,8 +28,19 @@ function Sprite(image, sx, sy, width,height,scale) {
     this.scale = scale;
 }
 
-Sprite.prototype.drawAt = function (ctx, x, y) {
-    ctx.drawImage(this.image, x, y);
+Sprite.prototype.drawAt = function (ctx, x, y, swidth, sheight) {
+    if(swidth === undefined && sheight === undefined) {
+        ctx.drawImage(this.image, x, y);
+    }
+    else if(swidth === undefined) {
+        ctx.drawImage(this.image, x, y, sheight=sheight);
+    }
+    else if(sheight === undefined) {
+        ctx.drawImage(this.image, x, y, swidth=swidth);
+    }
+    else {
+        ctx.drawImage(this.image, x, y, swidth=swidth, sheight=sheight);
+    }
 };
 
 Sprite.prototype.drawCentredAt = function (ctx, cx, cy, rotation) {
