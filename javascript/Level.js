@@ -33,7 +33,6 @@ function createLEVELS(g_sprites) {
             walls: [
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, ballsToHit: 10, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
-                {x: 400, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
             ],
             ceilings: [
