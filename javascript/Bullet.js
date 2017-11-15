@@ -1,20 +1,3 @@
-/*
-    Constructor:
-
-    new Bullet({
-        cx  : 10,
-        yTop: 10,
-        type: 0
-    });
-
-*/
-
-/*
-Bullet er þannig að cx er miðpunkturinn á x-ás og
-yTop er topppunkturinn. Það er held ég best að vera með þennan punkt (cx,yTop)
-þegar það kemur að framtíðinni að athuga með boltanna. - Svenni
-*/
-
 
 function Bullet(descr){
     this.setup(descr);
@@ -22,15 +5,20 @@ function Bullet(descr){
     if(this.type === "chain"){
         this.bullet = g_sprites.bullet[0];
         this.lifeSpan = 3*SECS_TO_NOMINALS;
-        this.fireSound_chain.play();
+        this.fireSound = new Audio("Sounds/chain.wav");
+        this.fireSound.play();
     }
     if(this.type === "default"){
         this.bullet = g_sprites.bullet[1];
         this.lifeSpan = 0;
-        this.fireSound_laser.play();
+        this.fireSound = new Audio("Sounds/laser_blaster2.wav");
+        this.fireSound.play();
     }
     if(this.type === 3){
         this.bullet = g_sprites.bullet[2];
+        this.lifeSpan = 0;
+        this.fireSound = new Audio("Sounds/laser_blaster.wav");
+        this.fireSound.play();
     }
     if(this.type === 4){
         this.bullet = g_sprites.bullet[3];
@@ -44,15 +32,13 @@ Bullet.prototype = new Entity();
 Bullet.prototype.type = "default";
 Bullet.prototype.velY = 2;
 Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
-Bullet.prototype.fireSound_laser = new Audio(
-    "Sounds/laser_blaster2.wav");
-Bullet.prototype.fireSound_chain = new Audio(
-    "Sounds/chain.wav");
 
 
 Bullet.prototype.update = function(du){
     spatialManager.unregister(this);
+    
     if(this.yTop <= 0 && this.type === "default"){
+        this.fireSound.pause();
         return entityManager.KILL_ME_NOW; 
     }
 
@@ -64,14 +50,13 @@ Bullet.prototype.update = function(du){
     if(hitBallEntity){
         if(!hitBallEntity.power){
             hitBallEntity.hitBall();
+            this.fireSound.pause();
             return entityManager.KILL_ME_NOW;
         }
     }
     if(this.yTop <= 0 ){
         this.lifeSpan -= du;
     }
-    console.log(this.type);
-    console.log(this.lifeSpan);
     
     if(hitEntity) return entityManager.KILL_ME_NOW;
     
@@ -91,7 +76,6 @@ Bullet.prototype.render = function(ctx){
 
 Bullet.prototype.collisionWithWall = function(wallx,wally,width,height){
     if(this.cx >= wallx && this.cx <= wallx + width){
-        console.log(this.cy + "    "+ this.yTop);
     }
 };
 

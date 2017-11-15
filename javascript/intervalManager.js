@@ -18,7 +18,7 @@ function countDown(){
 function freezeTime(){
   var Timer = setInterval(function(){
   FREEZE_TIME -= 1;
-  console.log(FREEZE_TIME);
+  //console.log(FREEZE_TIME);
   if(FREEZE_TIME <= 0){
       clearInterval(Timer);
       FREEZE = false;

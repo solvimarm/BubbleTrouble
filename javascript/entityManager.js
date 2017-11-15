@@ -74,6 +74,7 @@ var entityManager = {
         GAME_BAR = g_canvas.width;
     }
   },
+  
   resetLevel: function(){
     generateMap(this._level["currentMap"]);
     countDown();

@@ -36,7 +36,7 @@ function createLEVELS(g_sprites) {
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
                 {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel},
                 {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
-                {x: 400, y: 430, width: 16, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
+                {x: 398, y: 430, width: 20, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
                 {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel}
             ],
             ceilings: [
@@ -46,7 +46,7 @@ function createLEVELS(g_sprites) {
                 cx: 300,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
-                levelTime: 30,
+                levelTime: 60,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
