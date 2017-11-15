@@ -156,6 +156,29 @@ ballCollidesWithCeiling: function(cx, cy, radius) {
     return false;
 },
 
+wallInRangeOfMC: function(posX, posY, radius) {
+    for(var ID in this._entities) {
+        var entity = this._entities[ID];
+        var width = entity.width;
+        var height = entity.height;
+        var rectX = entity.x;
+        var rectY = entity.y;
+        if(width !== undefined && height !== undefined && rectX !== undefined && rectY !== undefined) {
+            var isInHeightRange = ((posY - radius > rectY) && (posY - radius < rectY + height)) 
+                                || ((posY + radius > rectY) && (posY + radius < rectY + height));
+            if(isInHeightRange) {
+                var isInWall = ((posX - radius < rectX + width) && (posX - radius > rectX)) 
+                            ||((posX + radius < rectX + width) && (posX + radius > rectX));
+
+                if(isInWall) {
+                    return true;
+                }
+            }
+        } 
+    }
+    return false;
+},
+
 ballInRangeOfMC: function(posX,posY,radius){
     for (var ID in this._entities) {
       var entity = this._entities[ID];

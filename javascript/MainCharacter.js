@@ -123,15 +123,29 @@ MainCharacter.prototype.update = function (du) {
     }
 
     var pos = this.getPos(); 
-    if(spatialManager.ballCollidesWithCeiling(pos.posX,pos.posY,this.getRad())) {
+    var radius = this.getRad();
+    if(spatialManager.ballCollidesWithCeiling(pos.posX,pos.posY,radius)) {
         g_LIVES = 0;
     }
 
-    var oldx = this.cx,
-        oldy = this.cy;
-    if (keys[this.KEY_LEFT] && this.cx - 16 > 0) this.cx = util.mod(this.cx - 3, g_canvas.width);
-    if (keys[this.KEY_RIGHT] && this.cx < g_canvas.width - 16) this.cx = util.mod(this.cx + 3, g_canvas.width);
-    this.updateSprite(du, oldx, oldy);
+    var oldx = this.cx;
+        
+    if(keys[this.KEY_LEFT]) {
+        var nextX = this.cx - 3;
+        var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
+        if(!isCollidingWithWall) {
+            this.cx = util.mod(nextX, g_canvas.width);
+        }
+    }
+    if(keys[this.KEY_RIGHT]) {
+        var nextX = this.cx + 3;
+        var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
+        if(!isCollidingWithWall) {
+            this.cx = util.mod(nextX, g_canvas.width);
+        }
+    }
+    
+    this.updateSprite(du, oldx, this.cy);
     spatialManager.register(this);
     this.maybeFireBullet();
 };
