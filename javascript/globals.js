@@ -30,6 +30,12 @@ var SPIKE_HEIGHT = 12;
 var NEXT_LEVEL = false;
 var timeleft = 3;
 
+var GAME_TIME = 30;
+
 var GAME_BAR = g_canvas.width;
+
+var FREEZE = false;
+
+var FREEZE_TIME = 5;
 
 var g_LIVES = 3;

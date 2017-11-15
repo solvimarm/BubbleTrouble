@@ -9,24 +9,22 @@ function countDown(){
           clearInterval(Timer);
           NEXT_LEVEL = false;
           timeleft = 3;
-          gameTime();
         }
       },1000);
    }
    g_isUpdatePaused = false;
 }
 
-function gameTime(){
+function freezeTime(){
   var Timer = setInterval(function(){
-    if(!g_isUpdatePaused){
-      GAME_BAR -= g_canvas.width/(20*250);
-      //console.log(GAME_BAR);
-      if(GAME_BAR <= 0){
-        clearInterval(Timer);
-        GAME_BAR = g_canvas.width;
-      }
+  FREEZE_TIME -= 1;
+  console.log(FREEZE_TIME);
+  if(FREEZE_TIME <= 0){
+      clearInterval(Timer);
+      FREEZE = false;
+      FREEZE_TIME = 5;
     }
-  },1);
+  },1000);
 }
 
 
@@ -44,4 +42,13 @@ function renderExtras(ctx){
     }
     ctx.fillStyle ="red";
     ctx.fillRect(0,520,GAME_BAR,10);
+    if(FREEZE){
+      ctx.fillStyle ="green";
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = "black";
+      ctx.font = "50px Arial Bold";
+      ctx.fillText(FREEZE_TIME,g_canvas.width/2,60);
+      ctx.shadowBlur = null;
+      ctx.shadowColor = "none";
+    }
 }

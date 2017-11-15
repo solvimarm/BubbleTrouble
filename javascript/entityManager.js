@@ -68,9 +68,16 @@ var entityManager = {
     this._level["ballsHit"]++;
     console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
     if(this._level["ballsHit"] === this._level["initialBalls"]) {
-      generateMap( this._level["currentMap"]+1);
-      countDown();
+        NEXT_LEVEL = true;
+        generateMap( this._level["currentMap"]+1);
+        countDown();
+        GAME_BAR = g_canvas.width;
     }
+  },
+  resetLevel: function(){
+    generateMap(this._level["currentMap"]);
+    countDown();
+    GAME_BAR = g_canvas.width;
   },
 
   numberOfBallsHit: function() {

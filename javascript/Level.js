@@ -20,6 +20,8 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
+                levelTime: 10,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
@@ -44,6 +46,8 @@ function createLEVELS(g_sprites) {
                 cx: 300,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
+                levelTime: 30,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
@@ -69,6 +73,8 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
+                levelTime: 20,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
@@ -92,6 +98,8 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
+                levelTime: 40,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
@@ -113,6 +121,8 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
+                levelTime: 50,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         },
@@ -134,6 +144,8 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
+                levelTime: 40,
+                gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
         }

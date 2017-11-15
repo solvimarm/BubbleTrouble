@@ -93,32 +93,46 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
 
 MainCharacter.prototype.update = function (du) {
     spatialManager.unregister(this);
+    var gameTime = this.levelTime*SECS_TO_NOMINALS;
 
     if (this._isDeadNow) {
         return entityManager.KILL_ME_NOW;
     }
 
+    this.gameBar -= g_canvas.width/gameTime;
+    GAME_BAR -= g_canvas.width/gameTime;
     var collEntity = this.findBallEntity();
     if (collEntity){
         if(collEntity.power){
             this.getPowerup(collEntity.power);
             collEntity.alive = false;
         } 
-        else if(this.SHIELD && !shield_time){
-            shield_time = true
+        else if(this.SHIELD && !shield_time ){
+            shield_time = true;
             setTimeout(shieldTimeout, 500);
             this.SHIELD = false;
         }
         else if(g_LIVES > 0 && lifelost && !shield_time){
-            lifelost = false
+            lifelost = false;
+            entityManager.resetLevel();
             setTimeout(looseLife, 500);
             g_LIVES--;
-
+            return entityManager.KILL_ME_NOW;
         }
         else if(g_LIVES <= 0 && !shield_time){
-            GameOver_sound.play();
-            g_isUpdatePaused = true;
-            setTimeout(gameOver, 4000);
+            return entityManager.KILL_ME_NOW;
+        }
+    }
+    if((this.gameBar <= 0) && lifelost){
+        if(g_LIVES <= 0){
+            return entityManager.KILL_ME_NOW;
+        }
+        else{
+            lifelost = false;
+            entityManager.resetLevel();
+            setTimeout(looseLife, 500);
+            g_LIVES--;
+            return entityManager.KILL_ME_NOW;
         }
     }
 
@@ -184,7 +198,8 @@ MainCharacter.prototype.getPowerup = function(power){
         if(g_LIVES < 5) g_LIVES++;
     }
     if(power === "extratime"){
-        return;
+        FREEZE = true;
+        freezeTime();
     }
 };
 function looseLife() {
