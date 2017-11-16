@@ -114,12 +114,10 @@ MainCharacter.prototype.update = function (du) {
             setTimeout(shieldTimeout, 500);
             this.SHIELD = false;
         }
-        else if(g_LIVES > 0 && lifelost && !shield_time){
-            lifelost = false;
-            entityManager.resetLevel();
-            setTimeout(looseLife, 500);
-            g_LIVES--;
-            return entityManager.KILL_ME_NOW;
+        else if(g_LIVES > 0 && lifelost && !shield_time){ // Bolti drepur
+            g_isUpdatePaused = true;
+            Play_Song.pause();
+            return setTimeout(killMe, 3000);
         }
         else if(g_LIVES <= 0 && !shield_time){
             g_isUpdatePaused = true;
@@ -230,6 +228,16 @@ function next(){
     entityManager.resetLevel();
     lifelost = true;
     g_LIVES--;
+    Play_Song.play();
+    return entityManager.KILL_ME_NOW;
+}
+
+function killMe(){
+    lifelost = false;
+    entityManager.resetLevel();
+    lifelost = true;
+    g_LIVES--;
+    g_isUpdatePaused = false;
     Play_Song.play();
     return entityManager.KILL_ME_NOW;
 }

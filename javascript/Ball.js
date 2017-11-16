@@ -42,12 +42,9 @@ Ball.prototype.getRadius = function(){
     return this.radius;
 };
 
-//var ball_sound = new Audio("Sounds/Ball.wav");
-
 Ball.prototype.hitBall = function() {
     maybeCreatePower(this.cx , this.cy);
     this.kill();
-   // console.log(this);
     if(this.size > 0) {
          entityManager.generateBall({
             cx: this.cx,
