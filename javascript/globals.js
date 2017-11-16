@@ -43,7 +43,7 @@ var g_LIVES = 3;
 // Song
 var Play_Song = new Audio("Sounds/PlaySong.wav");
 Play_Song.loop = true;
-Play_Song.volume = 0.5;
+Play_Song.volume = 0.2;
 var Start_Song = new Audio("Sounds/StartSong1.wav");
 Start_Song.loop = true;
-Start_Song.volume = 0.5;
+Start_Song.volume = 0.2;
