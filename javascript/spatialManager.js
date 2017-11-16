@@ -110,14 +110,23 @@ findEntityInRange: function(posX, posY) {
 findWallInRange: function(x,y){
     for(var ID in this._entities){
         var entity = this._entities[ID];
-        var cx = entity.cx || entity.x;
-        var cy = entity.cy || entity.y;
-        var width = entity.width || 0;
-        var height = entity.height || 0;
-        var type = entity.type || 1;
-        if(x > cx && x < cx+width && type === 2){
-            if(y<=height-Math.abs(cy))
-                return entity;
+        var cy = entity.y;
+        if(cy !== undefined) {
+            var cx = entity.x;
+            var width = entity.width || 0;
+            var height = entity.height || 0;
+
+            if(cx === undefined) {
+                // Converting ceiling coords into wall coords.
+                cx = entity.minX;
+                width = entity.maxX - cx;
+                height = cy;
+                cy = 0;
+            }
+                        
+            if(x > cx && x < cx+width && y<=height-Math.abs(cy)){
+                return y + height;    
+            }    
         }
     }
 },

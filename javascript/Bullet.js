@@ -30,7 +30,7 @@ function Bullet(descr){
 
 Bullet.prototype = new Entity();
 Bullet.prototype.type = "default";
-Bullet.prototype.velY = 2;
+Bullet.prototype.velY = 6;
 Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
 
 
@@ -45,7 +45,6 @@ Bullet.prototype.update = function(du){
     if(this.lifeSpan <= 0 && this.type === "chain"){
         return entityManager.KILL_ME_NOW;
     }
-    var hitEntity = this.findWallEntity();
     var hitBallEntity = this.findHitEntity();
     if(hitBallEntity){
         if(!hitBallEntity.power){
@@ -54,17 +53,26 @@ Bullet.prototype.update = function(du){
             return entityManager.KILL_ME_NOW;
         }
     }
-    if(this.yTop <= 0 ){
-        this.lifeSpan -= du;
-    }
+
+    var hitY = this.findWallEntity();
     
-    if(hitEntity) return entityManager.KILL_ME_NOW;
-    
-    if((this.type === "default" || this.type === 5)&&this.yTop > 0){
-        this.yTop -= du*15;
+    if(hitY === undefined) {
+        if(this.yTop > 0) {
+            this.yTop -= du*this.velY;            
+        }
     }
-    else if(this.yTop > 0){
-        this.yTop -= du*6;
+    else {
+        if(this.yTop > hitY) {
+            this.yTop -= du*this.velY;
+        }
+        else{
+            if(this.lifeSpan < 0) {
+                return entityManager.KILL_ME_NOW;
+            }
+            else {
+                this.lifeSpan -= du;
+            }
+        }
     }
 
     spatialManager.register(this);

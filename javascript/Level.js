@@ -6,7 +6,7 @@ function createLEVELS(g_sprites) {
                 //{cx: 150, cy: 100, velX: -1, size: 3},
                 //{cx: 150, cy: 100, velX: -1, size: 2},
                 //{cx: 150, cy: 100, velX: -1, size: 1},
-                {cx: 150, cy: 100, velX: -1, size: 1}
+                {cx: 150, cy: 100, velX: -1, size: 3}
             ],
             walls: [
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
@@ -14,13 +14,13 @@ function createLEVELS(g_sprites) {
                 {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2}
             ],
             ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
+                {y: 50, vel: 0, minX: 0, maxX: g_canvas.width}
             ],
             character: {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
-                levelTime: 10,
+                levelTime: 100,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
             }
