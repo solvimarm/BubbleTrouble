@@ -311,12 +311,13 @@ function preloadDone() {
 
 // Kick it off
 requestPreloads();
+Start_Song.play();
+
 
 var playX = 100;
 var playY = 100;
 
 function st_screen(x, y) {
-  console.log(x + "   " + y);
   if (x > 80 - g_images.Chick_BW.width / 2 && x < 80 + g_images.Chick_BW.width / 2) {
     if (y > 400 - g_images.Chick_BW.height / 2 && y < 400 + g_images.Chick_BW.height / 2) {
       characterChosen = 0;
@@ -345,6 +346,9 @@ function st_screen(x, y) {
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
     if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
       state.startGame = true;
+      Start_Song.pause();
+      Play_Song.load();
+      Play_Song.play();
       g_LIVES = 3;
       generateMap(0);
       countDown();

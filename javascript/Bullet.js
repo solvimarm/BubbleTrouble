@@ -32,6 +32,7 @@ Bullet.prototype = new Entity();
 Bullet.prototype.type = "default";
 Bullet.prototype.velY = 2;
 Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
+var ball_sound = new Audio("Sounds/Ball.wav");
 
 
 Bullet.prototype.update = function(du){
@@ -51,6 +52,7 @@ Bullet.prototype.update = function(du){
         if(!hitBallEntity.power){
             hitBallEntity.hitBall();
             this.fireSound.pause();
+            ball_sound.play();
             return entityManager.KILL_ME_NOW;
         }
     }

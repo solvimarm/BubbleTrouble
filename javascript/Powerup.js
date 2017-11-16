@@ -69,7 +69,7 @@ function maybeCreatePower(cx, cy) {
     if(randNum >= 4){
         randNum = 4;
     }
-    console.log("xhnit: " + cx + "yhnit: " + cy)
+    //console.log("xhnit: " + cx + "yhnit: " + cy)
 
     if(power[randNum] != "none"){        
         entityManager.CreatePower(cx,cy, power[randNum]);

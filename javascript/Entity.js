@@ -38,7 +38,6 @@ Entity.prototype.setup = function (descr) {
     for (var property in descr) {
         this[property] = descr[property];
     }
-    console.log("descr : " + descr);
     
     // Get my (unique) spatial ID
     this._spatialID = spatialManager.getNewSpatialID();

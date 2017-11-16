@@ -66,7 +66,7 @@ var entityManager = {
 
   ballHit: function() {
     this._level["ballsHit"]++;
-    console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
+    //console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
     if(this._level["ballsHit"] === this._level["initialBalls"]) {
         NEXT_LEVEL = true;
         generateMap( this._level["currentMap"]+1);

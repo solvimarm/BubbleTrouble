@@ -26,6 +26,7 @@ function Ball(descr){
     this.radius = BallStyles[this.size].radius;
     this.maxBounce = BallStyles[this.size].maxBounce;
     this.sprite = g_sprites.Ball[BallStyles[this.size].color];
+    this.ball_sound = new Audio("Sounds/Ball.wav");
 }
 
 Ball.prototype = new Entity();
@@ -40,6 +41,8 @@ Ball.prototype.position = function(){
 Ball.prototype.getRadius = function(){
     return this.radius;
 };
+
+//var ball_sound = new Audio("Sounds/Ball.wav");
 
 Ball.prototype.hitBall = function() {
     maybeCreatePower(this.cx , this.cy);
@@ -68,7 +71,7 @@ Ball.prototype.update = function(du){
     spatialManager.unregister(this);
 
     if (this._isDeadNow) {
-        //this.hitBall();
+        //this.ball_sound.play();
         return entityManager.KILL_ME_NOW;
     }
     

@@ -9,8 +9,6 @@ function MainCharacter(descr) {
     //this.sprite = this.sprite //|| g_sprites.mainCharacterStill[0];
     this.scale = this.scale || 1;
     this.radius = 14;
-    console.log(this.sprite);
-    console.log("this character cx: " + this.cx + "and cy: " + this.cy);
 }
 
 MainCharacter.prototype = new Entity();
@@ -24,6 +22,9 @@ MainCharacter.prototype.CHAIN_BULLET = false;
 var lifelost = true;
 var shield_time = false;
 var GameOver_sound = new Audio("Sounds/game_over.wav");
+var PowerUps_sound = new Audio("Sounds/PowerUps.wav");
+var Timesup_sound =  new Audio("Sounds/TimesUp.wav");
+
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -105,6 +106,7 @@ MainCharacter.prototype.update = function (du) {
     if (collEntity){
         if(collEntity.power){
             this.getPowerup(collEntity.power);
+            PowerUps_sound.play();
             collEntity.alive = false;
         } 
         else if(this.SHIELD && !shield_time ){
@@ -122,21 +124,25 @@ MainCharacter.prototype.update = function (du) {
         else if(g_LIVES <= 0 && !shield_time){
             g_isUpdatePaused = true;
             setTimeout(gameOver, 4000);
+            Play_Song.pause();
             GameOver_sound.play();
         }
     }
+    // Tíminn klárast
     if((this.gameBar <= 0) && lifelost){
-        if(g_LIVES <= 0){
+        if(g_LIVES <= 0){ // Ekkert líf eftir
             g_isUpdatePaused = true;
             setTimeout(gameOver, 4000);
-            
+            Play_Song.pause();
+            GameOver_sound.play();
         }
         else{
             lifelost = false;
-            entityManager.resetLevel();
-            setTimeout(looseLife, 500);
-            g_LIVES--;
-            return entityManager.KILL_ME_NOW;
+            g_isUpdatePaused = true;
+            Play_Song.pause();
+            Timesup_sound.play();
+            return setTimeout(next, 4600);
+
         }
     }
 
@@ -175,7 +181,6 @@ MainCharacter.prototype.maybeFireBullet = function () {
     }
 
     if (eatKey(this.KEY_FIRE) && entityManager._bullet.length === 0) {
-        console.log(this.cy)
         entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
     }
 };
@@ -216,5 +221,15 @@ function shieldTimeout(){
 function gameOver(){
     state.startGame = false;
     entityManager.clear();
+    Start_Song.load();
+    Start_Song.play();
 }
 
+function next(){
+    g_isUpdatePaused = false;
+    entityManager.resetLevel();
+    lifelost = true;
+    g_LIVES--;
+    Play_Song.play();
+    return entityManager.KILL_ME_NOW;
+}

@@ -39,3 +39,11 @@ var FREEZE = false;
 var FREEZE_TIME = 5;
 
 var g_LIVES = 3;
+
+// Song
+var Play_Song = new Audio("Sounds/PlaySong.wav");
+Play_Song.loop = true;
+Play_Song.volume = 0.5;
+var Start_Song = new Audio("Sounds/StartSong1.wav");
+Start_Song.loop = true;
+Start_Song.volume = 0.5;
