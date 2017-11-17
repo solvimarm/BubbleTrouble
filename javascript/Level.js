@@ -182,6 +182,7 @@ function generateMap(map_number) {
         entityManager.generateWall(level.walls[i]);
     }
 
+    entityManager.generateLevelP(map_number); // print current level
     entityManager.generateLives();
 
     var numberOfBalls = 0;

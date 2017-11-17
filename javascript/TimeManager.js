@@ -61,6 +61,10 @@ TimeManager.prototype.render = function(ctx){
     if(this.countDown > 0) {
         this.renderCountdown(ctx);
     }
+
+    if(this.levelTime < 0){
+        drawTimeIsUp(ctx);
+    }
 }
 
 TimeManager.prototype.renderCountdown = function(ctx) {
@@ -76,4 +80,18 @@ TimeManager.prototype.renderCountdown = function(ctx) {
         sprite = g_sprites.Number_3;
     }
     sprite.drawWrappedCentredAt(ctx, g_canvas.width/2, g_canvas.height/2);
+}
+
+function drawTimeIsUp(ctx){
+    var string = "Time's Up"
+    ctx.shadowOffsetX = 4;
+    ctx.shadowOffsetY = 4;
+    ctx.shadowBlur = 2;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.font = "bold 50px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(string, 300, 250);
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.shadowBlur = 0;
 }

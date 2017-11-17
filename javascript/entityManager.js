@@ -13,6 +13,7 @@ var entityManager = {
   _background: [],
   _lives: [],
   _timers: [],
+  _levelP: [], // levelP = level Print (show level)
   // "PRIVATE" METHODS
 
   _forEachOf: function (aCategory, fn) {
@@ -40,7 +41,8 @@ var entityManager = {
       this._wall,
       this._power,
       this._balls,
-      this._lives
+      this._lives,
+      this._levelP
     ];
   },
 
@@ -55,6 +57,7 @@ var entityManager = {
     this._background = [];
     this._lives = [];
     this._timers = [];
+    this._levelP = [];
     FREEZE = false;
   },
 
@@ -99,6 +102,12 @@ var entityManager = {
 
   generateBackground: function (descr) {
     this._background.push(new Background(descr));
+  },
+
+  generateLevelP: function (m) {
+    this._levelP.push(new LevelP({
+      map_number : m,
+    }));
   },
 
   fireBullet: function (cx, yTop, bulletType) {
@@ -187,6 +196,3 @@ var entityManager = {
     this._timers[0].render(ctx);
   }
 };
-
-// Some deferred setup which needs the object to have been created first
-//entityManager.deferredSetup();
