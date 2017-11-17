@@ -115,7 +115,7 @@ var entityManager = {
 
   generateLives: function () {
     this._lives.push(new Lives({
-      cx: 315,
+      cx: 350,
       cy: 550 
     }));
   },
