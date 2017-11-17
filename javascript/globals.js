@@ -27,12 +27,10 @@ var characterChosen = 0;
 var POWER_IMAGE_HEIGHT = 25;
 var SPIKE_HEIGHT = 12;
 
-var NEXT_LEVEL = false;
 var timeleft = 3;
 
 var GAME_TIME = 30;
-
-var GAME_BAR = g_canvas.width;
+var GAME_FREEZE = false;
 
 var FREEZE = false;
 

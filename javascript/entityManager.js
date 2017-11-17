@@ -12,8 +12,8 @@ var entityManager = {
   _power:[],
   _background: [],
   _lives: [],
+  _timers: [],
   // "PRIVATE" METHODS
-
 
   _forEachOf: function (aCategory, fn) {
     for (var i = 0; i < aCategory.length; ++i) {
@@ -54,6 +54,8 @@ var entityManager = {
     this._power = [];
     this._background = [];
     this._lives = [];
+    this._timers = [];
+    FREEZE = false;
   },
 
   initiateLevel: function(map_number, numberOfBalls) {
@@ -66,19 +68,17 @@ var entityManager = {
 
   ballHit: function() {
     this._level["ballsHit"]++;
-    //console.log("Total: " + this._level["initialBalls"] + ", so far: " + this._level["ballsHit"]);
     if(this._level["ballsHit"] === this._level["initialBalls"]) {
-        NEXT_LEVEL = true;
         generateMap( this._level["currentMap"]+1);
-        countDown();
-        GAME_BAR = g_canvas.width;
     }
+  },
+
+  killPlayer: function() {
+    this._mainCharacter[0].kill();
   },
   
   resetLevel: function(){
     generateMap(this._level["currentMap"]);
-    countDown();
-    GAME_BAR = g_canvas.width;
   },
 
   numberOfBallsHit: function() {
@@ -127,12 +127,27 @@ var entityManager = {
         power: power
       }));
   },
-  
+
+  createTimeManager: function(levelTime) {
+    this._timers[0] = new TimeManager(levelTime);
+  },
+
+  addTimer: function(func, seconds, ID) {
+    this._timers[0].addTimer(func, seconds, ID);
+  },
+
+  addExtraTime: function(seconds, ID) {
+    this._timers[0].addExtraTime(seconds, ID);
+  },
+
   killBall: function (descr) {
   },
 
   update: function (du) {
-    if(!NEXT_LEVEL){
+    var updateType = this._timers[0].update(du);
+
+    if(updateType !== -1 && !GAME_FREEZE) {
+        
       for (var c = 0; c < this._categories.length; ++c) {
         var aCategory = this._categories[c];
         var i = 0;
@@ -141,14 +156,15 @@ var entityManager = {
           var status = aCategory[i].update(du);
 
           if (status === this.KILL_ME_NOW) {
-           // remove the dead guy, and shuffle the others down to
+          // remove the dead guy, and shuffle the others down to
             // prevent a confusing gap from appearing in the array
             aCategory.splice(i, 1);
           } else {
-           ++i;
+          ++i;
           }
         }
       }
+      
     }
   },
 
@@ -167,7 +183,8 @@ var entityManager = {
       }
       debugY += 10;
     }
-    renderExtras(ctx);
+
+    this._timers[0].render(ctx);
   }
 };
 

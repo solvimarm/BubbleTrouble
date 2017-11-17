@@ -351,7 +351,6 @@ function st_screen(x, y) {
       Play_Song.play();
       g_LIVES = 3;
       generateMap(0);
-      countDown();
     }
   }
 }

@@ -94,14 +94,11 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
 
 MainCharacter.prototype.update = function (du) {
     spatialManager.unregister(this);
-    var gameTime = this.levelTime*SECS_TO_NOMINALS;
-
+ 
     if (this._isDeadNow) {
         return entityManager.KILL_ME_NOW;
     }
 
-    this.gameBar -= g_canvas.width/gameTime;
-    GAME_BAR -= g_canvas.width/gameTime;
     var collEntity = this.findBallEntity();
     if (collEntity){
         if(collEntity.power){
@@ -111,39 +108,23 @@ MainCharacter.prototype.update = function (du) {
         } 
         else if(this.SHIELD && !shield_time ){
             shield_time = true;
-            setTimeout(shieldTimeout, 500);
+            entityManager.addTimer(shieldTimeout, 0.5);
             this.SHIELD = false;
         }
-        else if(g_LIVES > 0 && lifelost && !shield_time){ // Bolti drepur
-            g_isUpdatePaused = true;
-            Play_Song.pause();
-            return setTimeout(killMe, 3000);
+        else if(g_LIVES > 0 && !shield_time){
+            lifelost = false;
+            entityManager.resetLevel();
+            g_LIVES--;
+            return entityManager.KILL_ME_NOW;
         }
         else if(g_LIVES <= 0 && !shield_time){
-            g_isUpdatePaused = true;
-            setTimeout(gameOver, 4000);
+            GAME_FREEZE = true;
+            entityManager.addTimer(gameOver, 4);
             Play_Song.pause();
             GameOver_sound.play();
         }
     }
-    // Tíminn klárast
-    if((this.gameBar <= 0) && lifelost){
-        if(g_LIVES <= 0){ // Ekkert líf eftir
-            g_isUpdatePaused = true;
-            setTimeout(gameOver, 4000);
-            Play_Song.pause();
-            GameOver_sound.play();
-        }
-        else{
-            lifelost = false;
-            g_isUpdatePaused = true;
-            Play_Song.pause();
-            Timesup_sound.play();
-            return setTimeout(next, 4600);
-
-        }
-    }
-
+    
     var pos = this.getPos(); 
     var radius = this.getRad();
     if(spatialManager.ballCollidesWithCeiling(pos.posX,pos.posY,radius)) {
@@ -190,6 +171,23 @@ MainCharacter.prototype.render = function (ctx) {
     }
 }
 
+MainCharacter.prototype.kill = function() {
+    // Eitt líf fjarlægt eftir Timesup_sound.
+    if(g_LIVES <= 1){ // Ef síðasta lífið er að fara: 
+        GAME_FREEZE = true;
+        entityManager.addTimer(function() {gameOver();}, 4);
+        Play_Song.pause();
+        GameOver_sound.play();
+    }
+    else{
+        lifelost = false;
+        GAME_FREEZE = true;
+        Play_Song.pause();
+        Timesup_sound.play();
+        entityManager.addTimer(function() {next();}, 4.6);
+    }
+}
+
 MainCharacter.prototype.getRad = function () {
     return this.radius;
 }
@@ -199,24 +197,24 @@ MainCharacter.prototype.getPowerup = function(power){
         this.SHIELD = true;
     }
     if(power === "chain"){
-        this.CHAIN_BULLET = true;
+        this.CHAIN_BULLET = true; 
     }
     if(power === "extralife"){
         if(g_LIVES < 5) g_LIVES++;
     }
     if(power === "extratime"){
         FREEZE = true;
-        freezeTime();
+        entityManager.addTimer(function() {FREEZE = false;}, 4);
     }
 };
-function looseLife() {
-    lifelost = true;
-}
+
 function shieldTimeout(){
     shield_time = false;
 }
 
 function gameOver(){
+    console.log("Game over");
+    GAME_FREEZE = false;    
     state.startGame = false;
     entityManager.clear();
     Start_Song.load();
@@ -224,20 +222,9 @@ function gameOver(){
 }
 
 function next(){
-    g_isUpdatePaused = false;
-    entityManager.resetLevel();
-    lifelost = true;
     g_LIVES--;
-    Play_Song.play();
-    return entityManager.KILL_ME_NOW;
-}
-
-function killMe(){
-    lifelost = false;
+    GAME_FREEZE = false;
     entityManager.resetLevel();
-    lifelost = true;
-    g_LIVES--;
-    g_isUpdatePaused = false;
     Play_Song.play();
     return entityManager.KILL_ME_NOW;
 }
