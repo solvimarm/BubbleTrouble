@@ -75,29 +75,32 @@ Ball.prototype.update = function(du){
     if(spatialManager.ballCollidesWithCeiling(this.cx, this.cy, this.radius)) {
         this.hitBall();
     }
-    if(!FREEZE){
-        var newDirections = spatialManager.ballCollidesWithWall(
-            this.cx, this.cy, this.radius, this.velX, this.velY
-        );
-    
-        if(newDirections.velY < 0 && this.velY > 0) {
-        newDirections.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
-        }
-        this.velX = newDirections.velX;
-        this.velY = newDirections.velY;
-
-        var newCoords = this._getNextCoords(du);
-
-        // TODO: Collision with walls / ground.
-        if(newCoords.nextY + this.radius > g_canvas.height-100) {
-            this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
-            newCoords = this._getNextCoords(du);
-        }
-
-        this.cx = newCoords.nextX;
-        this.cy = newCoords.nextY;
-        this.velY = newCoords.newVelY;
+    if(FREEZE){
+        du /= 3;
     }
+    
+    var newDirections = spatialManager.ballCollidesWithWall(
+        this.cx, this.cy, this.radius, this.velX, this.velY
+    );
+
+    if(newDirections.velY < 0 && this.velY > 0) {
+    newDirections.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
+    }
+    this.velX = newDirections.velX;
+    this.velY = newDirections.velY;
+
+    var newCoords = this._getNextCoords(du);
+
+    // TODO: Collision with walls / ground.
+    if(newCoords.nextY + this.radius > g_canvas.height-100) {
+        this.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
+        newCoords = this._getNextCoords(du);
+    }
+
+    this.cx = newCoords.nextX;
+    this.cy = newCoords.nextY;
+    this.velY = newCoords.newVelY;
+    
     spatialManager.register(this);
 
 };

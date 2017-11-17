@@ -6,7 +6,7 @@ function createLEVELS(g_sprites) {
                 //{cx: 150, cy: 100, velX: -1, size: 3},
                 //{cx: 150, cy: 100, velX: -1, size: 2},
                 //{cx: 150, cy: 100, velX: -1, size: 1},
-                {cx: 150, cy: 100, velX: -1, size: 3}
+                {cx: 150, cy: 100, velX: -1, size: 1}
             ],
             walls: [
                 {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
@@ -14,16 +14,16 @@ function createLEVELS(g_sprites) {
                 {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2}
             ],
             ceilings: [
-                {y: 50, vel: 0, minX: 0, maxX: g_canvas.width}
+                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
             ],
             character: {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
-                levelTime: 100,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 15
         },
 
         {// LEVEL 1 //////////////////////////////////////////////
@@ -46,10 +46,10 @@ function createLEVELS(g_sprites) {
                 cx: 300,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
-                levelTime: 60,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 60
         },
         {// LEVEL 2 //////////////////////////////////////////////
             background: 2,
@@ -73,10 +73,10 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
-                levelTime: 20,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 20
         },
         {// LEVEL 3 //////////////////////////////////////////////
             background: 3,
@@ -98,10 +98,10 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 1,
-                levelTime: 40,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 40
         },
         {// LEVEL 4 //////////////////////////////////////////////
             background: 4,
@@ -121,10 +121,10 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
-                levelTime: 50,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 50
         },
           {// LEVEL 5 //////////////////////////////////////////////
             background: 5,
@@ -144,10 +144,10 @@ function createLEVELS(g_sprites) {
                 cx: 400,
                 cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
                 bulletType: 5,
-                levelTime: 40,
                 gameBar: g_canvas.width,
                 sprite: g_sprites.mainCharacterStill[characterChosen]
-            }
+            }, 
+            levelTime: 40
         }
     ];
     return LEVELS;
@@ -169,6 +169,8 @@ function generateMap(map_number) {
     for(var i = 0; i < g_LIVES; i++){
         entityManager.generateLives();
     }
+
+    entityManager.createTimeManager(level.levelTime);
     
     // Generate all Ceilings
     for (var i = 0; i < level.ceilings.length; i++) {
