@@ -1,56 +1,56 @@
+function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime, balls, walls, ceilings) {
+    var level = {
+        background: backgroundID,
+        balls: balls,
+        walls: walls,
+        ceilings: ceilings,
+        character: {
+            cx: characterXPos,
+            cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
+            bulletType: 5,
+            gameBar: g_canvas.width,
+            sprite: g_sprites.mainCharacterStill[characterChosen]
+        }, 
+        levelTime: levelTime
+    };
+    ceilings.push({y: 0, vel: 0, minX: 0, maxX: g_canvas.width});
+    level.walls.push({x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground});
+    if(useEdgeWalls) {
+        level.walls.push({x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2});
+        level.walls.push({x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2})
+    }
+    return level;
+}
+
+
 function createLEVELS(g_sprites) {
     var LEVELS = [
-        {// LEVEL 0 ////////////////////////////////////////////// 
-            background: 0,
-            balls: [
-                //{cx: 150, cy: 100, velX: -1, size: 3},
-                //{cx: 150, cy: 100, velX: -1, size: 2},
-                //{cx: 150, cy: 100, velX: -1, size: 1},
+        _createSingleLevel(
+            backgroundID = 0,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 15, 
+            balls = [
                 {cx: 150, cy: 100, velX: -1, size: 1}
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 400,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 5,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 15
-        },
-
-        {// LEVEL 1 //////////////////////////////////////////////
-            background: 1,
-            balls: [
+            ], 
+            walls = [], 
+            ceilings = []
+        ),
+        _createSingleLevel(
+            backgroundID = 1,
+            useEdgeWalls = true,
+            characterXPos = 300, 
+            levelTime = 40, 
+            balls = [
                 {cx: 100, cy: 100, velX: 1, size: 2},
                 {cx: 700, cy: 100, velX: -1, size: 3}
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel},
+            ], 
+            walls = [
                 {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
                 {x: 398, y: 430, width: 20, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Steel}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 300,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 1,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 60
-        },
+            ], 
+            ceilings = []
+        ),
         {// LEVEL 2 //////////////////////////////////////////////
             background: 2,
             balls: [
