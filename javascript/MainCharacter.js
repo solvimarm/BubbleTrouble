@@ -23,8 +23,7 @@ var lifelost = true;
 var shield_time = false;
 var GameOver_sound = new Audio("Sounds/game_over.wav");
 var PowerUps_sound = new Audio("Sounds/PowerUps.wav");
-var Timesup_sound =  new Audio("Sounds/TimesUp.wav");
-
+var Timesup_sound = new Audio("Sounds/TimesUp.wav");
 
 MainCharacter.prototype.spriteRenderer = {
     movementRight: {
@@ -38,7 +37,6 @@ MainCharacter.prototype.spriteRenderer = {
         count: 0
     }
 };
-
 
 MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
     var left = false;
@@ -62,22 +60,22 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
         still = true;
     }
     if (right) {
-        
-      if (characterChosen === 0) this.sprite = g_sprites.mainCharacter[runRight.id];
-      if (characterChosen === 1) this.sprite = g_sprites.mainCharacter[runRight.id + 4];
-      if (characterChosen === 2) this.sprite = g_sprites.mainCharacter[runRight.id + 8];
-      if (characterChosen === 3) this.sprite = g_sprites.mainCharacter[runRight.id + 12];
-      if (characterChosen === 4) this.sprite = g_sprites.mainCharacter[runRight.id + 16];
+
+        if (characterChosen === 0) this.sprite = g_sprites.mainCharacter[runRight.id];
+        if (characterChosen === 1) this.sprite = g_sprites.mainCharacter[runRight.id + 4];
+        if (characterChosen === 2) this.sprite = g_sprites.mainCharacter[runRight.id + 8];
+        if (characterChosen === 3) this.sprite = g_sprites.mainCharacter[runRight.id + 12];
+        if (characterChosen === 4) this.sprite = g_sprites.mainCharacter[runRight.id + 16];
     } else if (left) {
-      if (characterChosen === 0) this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
-      if (characterChosen === 1) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 4];
-      if (characterChosen === 2) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 8];
-      if (characterChosen === 3) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 12];
-      if (characterChosen === 4) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 16];
+        if (characterChosen === 0) this.sprite = g_sprites.mainCharacterLeft[runLeft.id];
+        if (characterChosen === 1) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 4];
+        if (characterChosen === 2) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 8];
+        if (characterChosen === 3) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 12];
+        if (characterChosen === 4) this.sprite = g_sprites.mainCharacterLeft[runLeft.id + 16];
     } else if (still) this.sprite = g_sprites.mainCharacterStill[characterChosen];
 
-    if (still || runRight.count >= /*g_sprites.mainCharacterRight.length*/ 4 * runRight.renderTimes ||
-        runLeft.count >= /*g_sprites.mainCharacterLeft.length*/ 4 * runLeft.renderTimes) {
+    if (still || runRight.count >= 4 * runRight.renderTimes ||
+        runLeft.count >= 4 * runLeft.renderTimes) {
         runRight.id = 0;
         runRight.count = 0;
         runLeft.id = 0;
@@ -94,60 +92,49 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
 
 MainCharacter.prototype.update = function (du) {
     spatialManager.unregister(this);
- 
+
     if (this._isDeadNow) {
         return entityManager.KILL_ME_NOW;
     }
 
     var collEntity = this.findBallEntity();
-    if (collEntity){
-        if(collEntity.power){
+    if (collEntity) {
+        if (collEntity.power) {
             this.getPowerup(collEntity.power);
             PowerUps_sound.play();
             collEntity.alive = false;
-        } 
-        else if(this.SHIELD && !shield_time ){
+        } else if (this.SHIELD && !shield_time) {
             shield_time = true;
             entityManager.addTimer(shieldTimeout, 0.5);
             this.SHIELD = false;
-        }
-        else if(g_LIVES > 0 && !shield_time){
-            lifelost = false;
-            entityManager.resetLevel();
-            g_LIVES--;
-            return entityManager.KILL_ME_NOW;
-        }
-        else if(g_LIVES <= 0 && !shield_time){
-            GAME_FREEZE = true;
-            entityManager.addTimer(gameOver, 4);
-            Play_Song.pause();
-            GameOver_sound.play();
+        } else if (g_LIVES > 0 && !shield_time) {
+            this.kill();
         }
     }
-    
-    var pos = this.getPos(); 
+
+    var pos = this.getPos();
     var radius = this.getRad();
-    if(spatialManager.ballCollidesWithCeiling(pos.posX,pos.posY,radius)) {
+    if (spatialManager.ballCollidesWithCeiling(pos.posX, pos.posY, radius)) {
         g_LIVES = 0;
     }
 
     var oldx = this.cx;
-        
-    if(keys[this.KEY_LEFT]) {
+
+    if (keys[this.KEY_LEFT]) {
         var nextX = this.cx - 3;
         var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
-        if(!isCollidingWithWall) {
+        if (!isCollidingWithWall) {
             this.cx = util.mod(nextX, g_canvas.width);
         }
     }
-    if(keys[this.KEY_RIGHT]) {
+    if (keys[this.KEY_RIGHT]) {
         var nextX = this.cx + 3;
         var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
-        if(!isCollidingWithWall) {
+        if (!isCollidingWithWall) {
             this.cx = util.mod(nextX, g_canvas.width);
         }
     }
-    
+
     this.updateSprite(du, oldx, this.cy);
     spatialManager.register(this);
     this.maybeFireBullet();
@@ -155,7 +142,7 @@ MainCharacter.prototype.update = function (du) {
 
 MainCharacter.prototype.maybeFireBullet = function () {
     var bulletType = "default";
-    if(this.CHAIN_BULLET){
+    if (this.CHAIN_BULLET) {
         bulletType = "chain"
     }
 
@@ -166,25 +153,28 @@ MainCharacter.prototype.maybeFireBullet = function () {
 
 MainCharacter.prototype.render = function (ctx) {
     this.sprite.drawWrappedCentredAt(ctx, this.cx, this.cy, this.rotation);
-    if(this.SHIELD){
+    if (this.SHIELD) {
         g_sprites.Power_characterShield.drawWrappedCentredAt(ctx, this.cx, this.cy);
     }
 }
 
-MainCharacter.prototype.kill = function() {
+MainCharacter.prototype.kill = function () {
     // Eitt líf fjarlægt eftir Timesup_sound.
-    if(g_LIVES <= 1){ // Ef síðasta lífið er að fara: 
+    if (g_LIVES <= 1) { // Ef síðasta lífið er að fara: 
         GAME_FREEZE = true;
-        entityManager.addTimer(function() {gameOver();}, 4);
+        entityManager.addTimer(function () {
+            gameOver();
+        }, 4);
         Play_Song.pause();
         GameOver_sound.play();
-    }
-    else{
+    } else {
         lifelost = false;
         GAME_FREEZE = true;
         Play_Song.pause();
         Timesup_sound.play();
-        entityManager.addTimer(function() {next();}, 4.6);
+        entityManager.addTimer(function () {
+            next();
+        }, 4.6);
     }
 }
 
@@ -192,36 +182,38 @@ MainCharacter.prototype.getRad = function () {
     return this.radius;
 }
 
-MainCharacter.prototype.getPowerup = function(power){
-    if(power === "shield"){
+MainCharacter.prototype.getPowerup = function (power) {
+    if (power === "shield") {
         this.SHIELD = true;
     }
-    if(power === "chain"){
-        this.CHAIN_BULLET = true; 
+    if (power === "chain") {
+        this.CHAIN_BULLET = true;
     }
-    if(power === "extralife"){
-        if(g_LIVES < 5) g_LIVES++;
+    if (power === "extralife") {
+        if (g_LIVES < 5) g_LIVES++;
     }
-    if(power === "extratime"){
+    if (power === "extratime") {
         FREEZE = true;
-        entityManager.addTimer(function() {FREEZE = false;}, 4);
+        entityManager.addTimer(function () {
+            FREEZE = false;
+        }, 4);
     }
 };
 
-function shieldTimeout(){
+function shieldTimeout() {
     shield_time = false;
 }
 
-function gameOver(){
+function gameOver() {
     console.log("Game over");
-    GAME_FREEZE = false;    
+    GAME_FREEZE = false;
     state.startGame = false;
     entityManager.clear();
     Start_Song.load();
     Start_Song.play();
 }
 
-function next(){
+function next() {
     g_LIVES--;
     GAME_FREEZE = false;
     entityManager.resetLevel();
