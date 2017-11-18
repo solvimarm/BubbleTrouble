@@ -31,8 +31,6 @@ var BallStyles = [ // The number comments are total hits.
 
 function Ball(descr){
     this.setup(descr);
-
-    // TODO: Add more styles / types.
     this.radius = BallStyles[this.size].radius;
     this.maxBounce = BallStyles[this.size].maxBounce;
     this.sprite = g_sprites.Ball[BallStyles[this.size].color];

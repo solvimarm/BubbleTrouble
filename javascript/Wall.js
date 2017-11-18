@@ -23,8 +23,6 @@
 
 function Wall(descr){
     this.setup(descr);
-
-    //this.sprite = this.sprite || g_sprites.wall;
 }
 
 Wall.prototype = new Entity();
@@ -52,7 +50,4 @@ Wall.prototype.update = function(du){
 
 Wall.prototype.render = function(ctx){
     this.sprite.drawAt(ctx, this.x, this.y, this.width, this.height);
-
-    //this.sprite.drawAt(ctx, this.x, this.y);
-    //console.log(this.sprite);
 };

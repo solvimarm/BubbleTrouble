@@ -41,7 +41,7 @@ main.iter = function (frameTime) {
     this._iterCore(this._frameTimeDelta_ms);
     
     // Diagnostics, such as showing current timer values etc.
-    this._debugRender(g_ctx);
+    //this._debugRender(g_ctx);
     
     // Request the next iteration if needed
     if (!this._isGameOver) this._requestNextIteration();
@@ -60,15 +60,18 @@ main._updateClocks = function (frameTime) {
 main._iterCore = function (dt) {
     
     // Handle QUIT
-    if (requestedQuit()) {
-        this.gameOver();
+    if (requestedQuit() && state.startGame && !g_isUpdatePaused) {
+        state.startGame = false;
+        entityManager.clear();
+        Play_Song.pause();
+        Start_Song.load();
+        Start_Song.play();
         return;
-    }
-    
+    }   
     gatherInputs();
     update(dt);
     render(g_ctx);
-};
+}; 
 
 main._isGameOver = false;
 
@@ -79,10 +82,12 @@ main.gameOver = function () {
 
 // Simple voluntary quit mechanism
 //
+
 var KEY_QUIT = 'Q'.charCodeAt(0);
 function requestedQuit() {
     return keys[KEY_QUIT];
 }
+
 
 // Annoying shim for Firefox and Safari
 window.requestAnimationFrame = 
@@ -101,13 +106,15 @@ main._requestNextIteration = function () {
 
 // Mainloop-level debug-rendering
 
+/*
 var TOGGLE_TIMER_SHOW = 'T'.charCodeAt(0);
 
 main._doTimerShow = false;
 
+
 main._debugRender = function (ctx) {
     
-    if (eatKey(TOGGLE_TIMER_SHOW)) this._doTimerShow = !this._doTimerShow;
+    //if (eatKey(TOGGLE_TIMER_SHOW)) this._doTimerShow = !this._doTimerShow;
     
     if (!this._doTimerShow) return;
     
@@ -117,6 +124,7 @@ main._debugRender = function (ctx) {
     ctx.fillText('UU ' + g_prevUpdateDu, 50, y+30); 
     ctx.fillText('FrameSync ON', 50, y+40);
 };
+*/
 
 main.init = function () {
     

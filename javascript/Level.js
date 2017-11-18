@@ -16,18 +16,17 @@ function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime
     ceilings.push({y: 0, vel: 0, minX: 0, maxX: g_canvas.width});
     level.walls.push({x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground});
     if(useEdgeWalls) {
-        level.walls.push({x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2});
-        level.walls.push({x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone2})
+        level.walls.push({x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone1});
+        level.walls.push({x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Stone1})
     }
     return level;
 }
-
 
 function createLEVELS(g_sprites) {
     var LEVELS = [
         _createSingleLevel(
             backgroundID = 0,
-            useEdgeWalls = true,
+            useEdgeWalls = false,
             characterXPos = 400, 
             levelTime = 15, 
             balls = [

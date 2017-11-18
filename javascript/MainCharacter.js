@@ -13,8 +13,8 @@ function MainCharacter(descr) {
 
 MainCharacter.prototype = new Entity();
 
-MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
-MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
+MainCharacter.prototype.KEY_LEFT = 37  //left arrow   //"A".charCodeAt(0);
+MainCharacter.prototype.KEY_RIGHT = 39 //right arrow  //'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
 MainCharacter.prototype.CHAIN_BULLET = false;

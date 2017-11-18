@@ -51,13 +51,13 @@ function update(dt) {
 // Togglable Pause Mode
 //
 var KEY_PAUSE = 'P'.charCodeAt(0);
-var KEY_STEP  = 'O'.charCodeAt(0);
+//var KEY_STEP  = 'O'.charCodeAt(0);
 
 var g_isUpdatePaused = false;
 
 function shouldSkipUpdate() {
-    if (eatKey(KEY_PAUSE)) {
+    if (eatKey(KEY_PAUSE) && state.startGame) {
         g_isUpdatePaused = !g_isUpdatePaused;
     }
-    return g_isUpdatePaused && !eatKey(KEY_STEP);    
+    return g_isUpdatePaused // && !eatKey(KEY_STEP);    
 }
