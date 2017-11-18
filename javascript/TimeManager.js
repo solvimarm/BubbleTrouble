@@ -90,7 +90,7 @@ function drawTimeIsUp(ctx){
     ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
     ctx.font = "bold 50px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(string, 300, 250);
+    ctx.fillText(string, 260, 250);
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.shadowBlur = 0;

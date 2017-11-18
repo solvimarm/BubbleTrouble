@@ -28,7 +28,7 @@ function createLEVELS(g_sprites) {
             backgroundID = 0,
             useEdgeWalls = false,
             characterXPos = 400, 
-            levelTime = 15, 
+            levelTime = 3, 
             balls = [
                 {cx: 150, cy: 100, velX: -1, size: 1}
             ], 

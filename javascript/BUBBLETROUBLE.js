@@ -161,7 +161,6 @@ function requestPreloads() {
     Power_shield: "Sprites/PowerUps/shield.png",
     Power_characterShield: "Sprites/PowerUps/character_shield.png",
     // StartScreen icon
-    Play: "Sprites/StartScreen/Play2.png",
     Chick_Color: "Sprites/StartScreen/Chick_Color.png",
     AnotherdevilBW: "Sprites/StartScreen/Anotherdevil_BW.png",
     Anotherdevil_Color: "Sprites/StartScreen/Anotherdevil_Color.png",
@@ -172,10 +171,11 @@ function requestPreloads() {
     Golbez_Color: "Sprites/StartScreen/Golbez_Color.png",
     Devil_BW : "Sprites/StartScreen/Devil_BW.png",
     Devil_Color: "Sprites/StartScreen/Devil_Color.png",
-    Logo : "Sprites/StartScreen/BubbleTroubble_Logo2.png",
+    Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png",
+    Play: "Sprites/StartScreen/Play.png",
     Wall_Background: "Sprites/StartScreen/Wall_Start.jpg",
-    ChooseC : "Sprites/StartScreen/ChooseC3.png",
-    Info : "Sprites/StartScreen/Info4.png",
+    ChooseC : "Sprites/StartScreen/ChooseC.png",
+    Info : "Sprites/StartScreen/Info.png",
     // numbers
     Number_1: "Sprites/Numbers/number_1.png",
     Number_2: "Sprites/Numbers/number_2.png",
