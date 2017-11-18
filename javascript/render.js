@@ -8,22 +8,25 @@ var g_doRender = true;
 
 var g_frameCounter = 1;
 
+/*
 var TOGGLE_CLEAR = 'C'.charCodeAt(0);
 var TOGGLE_BOX = 'B'.charCodeAt(0);
 var TOGGLE_UNDO_BOX = 'U'.charCodeAt(0);
 var TOGGLE_FLIPFLOP = 'F'.charCodeAt(0);
 var TOGGLE_RENDER = 'R'.charCodeAt(0);
+*/
 
 function render(ctx) {
     
     // Process various option toggles
     //
+    /*
     if (eatKey(TOGGLE_CLEAR)) g_doClear = !g_doClear;
     if (eatKey(TOGGLE_BOX)) g_doBox = !g_doBox;
     if (eatKey(TOGGLE_UNDO_BOX)) g_undoBox = !g_undoBox;
     if (eatKey(TOGGLE_FLIPFLOP)) g_doFlipFlop = !g_doFlipFlop;
     if (eatKey(TOGGLE_RENDER)) g_doRender = !g_doRender;
-    
+    */
     // I've pulled the clear out of `renderSimulation()` and into
     // here, so that it becomes part of our "diagnostic" wrappers
     //
@@ -41,6 +44,12 @@ function render(ctx) {
     // The core rendering of the actual game / simulation
     //
     if (g_doRender) renderSimulation(ctx);
+
+    if (shouldSkipUpdate()){
+        // draw Pause
+        console.log("Pása .......");
+        drawPause(ctx);
+    }
     
     
     // This flip-flip mechanism illustrates the pattern of alternation
@@ -69,4 +78,19 @@ function render(ctx) {
     if (g_undoBox) ctx.clearRect(200, 200, 50, 50);
     
     ++g_frameCounter;
+}
+
+
+function drawPause(ctx){
+    var string = "Pause"
+    ctx.shadowOffsetX = 2;
+    ctx.shadowOffsetY = 2;
+    ctx.shadowBlur = 2;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.font = "bold 30px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(string, 700, 40);
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.shadowBlur = 0;
 }

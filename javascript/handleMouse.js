@@ -24,7 +24,6 @@ function handleMouse(evt) {
   if(!state.startGame){
     st_screen(g_mouseX, g_mouseY);
   }
-  //entityManager.yoinkNearestShip(g_mouseX, g_mouseY);
 }
 
 // Handle "down" and "move" events the same way.
