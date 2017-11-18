@@ -161,7 +161,7 @@ function requestPreloads() {
     Power_shield: "Sprites/PowerUps/shield.png",
     Power_characterShield: "Sprites/PowerUps/character_shield.png",
     // StartScreen icon
-    Play: "Sprites/StartScreen/Play.png",
+    Play: "Sprites/StartScreen/Play2.png",
     Chick_Color: "Sprites/StartScreen/Chick_Color.png",
     AnotherdevilBW: "Sprites/StartScreen/Anotherdevil_BW.png",
     Anotherdevil_Color: "Sprites/StartScreen/Anotherdevil_Color.png",
@@ -172,8 +172,10 @@ function requestPreloads() {
     Golbez_Color: "Sprites/StartScreen/Golbez_Color.png",
     Devil_BW : "Sprites/StartScreen/Devil_BW.png",
     Devil_Color: "Sprites/StartScreen/Devil_Color.png",
-    Logo : "Sprites/StartScreen/BubbleTroubble_Logo.png",
-    Wall_Background: "Sprites/Walls/Wall_Start.png",
+    Logo : "Sprites/StartScreen/BubbleTroubble_Logo2.png",
+    Wall_Background: "Sprites/StartScreen/Wall_Start.jpg",
+    ChooseC : "Sprites/StartScreen/ChooseC3.png",
+    Info : "Sprites/StartScreen/Info4.png",
     // numbers
     Number_1: "Sprites/Numbers/number_1.png",
     Number_2: "Sprites/Numbers/number_2.png",
@@ -316,37 +318,38 @@ Start_Song.play();
 
 var playX = 100;
 var playY = 100;
+var cheight = 365 // Character height
 
 function st_screen(x, y) {
   if (x > 80 - g_images.Chick_BW.width / 2 && x < 80 + g_images.Chick_BW.width / 2) {
-    if (y > 400 - g_images.Chick_BW.height / 2 && y < 400 + g_images.Chick_BW.height / 2) {
+    if (y > cheight - g_images.Chick_BW.height / 2 && y < cheight + g_images.Chick_BW.height / 2) {
       characterChosen = 0;
     }
   }
   if (x > 240 - g_images.AnotherdevilBW.width / 2 && x < 240 + g_images.AnotherdevilBW.width / 2) {
-    if (y > 400 - g_images.AnotherdevilBW.height / 2 && y < 400 + g_images.AnotherdevilBW.height / 2) {
+    if (y > cheight - g_images.AnotherdevilBW.height / 2 && y < cheight + g_images.AnotherdevilBW.height / 2) {
       characterChosen = 1;
       g_LIVES = 2;
     }
   }
   if (x > 400 - g_images.Deathnote_BW.width / 2 && x < 400 + g_images.Deathnote_BW.width / 2) {
-    if (y > 400 - g_images.Deathnote_BW.height / 2 && y < 400 + g_images.Deathnote_BW.height / 2) {
+    if (y > cheight - g_images.Deathnote_BW.height / 2 && y < cheight + g_images.Deathnote_BW.height / 2) {
       characterChosen = 2;
     }
   }
   if (x > 560 - g_images.Golbez_BW.width / 2 && x < 560 + g_images.Golbez_BW.width / 2) {
-    if (y > 400 - g_images.Golbez_BW.height / 2 && y < 400 + g_images.Golbez_BW.height / 2) {
+    if (y > cheight - g_images.Golbez_BW.height / 2 && y < cheight + g_images.Golbez_BW.height / 2) {
       characterChosen = 3;
     }
   }
   if (x > 720 - g_images.Devil_BW.width / 2 && x < 720 + g_images.Devil_BW.width / 2) {
-    if (y > 400 - g_images.Devil_BW.height / 2 && y < 400 + g_images.Devil_BW.height / 2) {
+    if (y > cheight - g_images.Devil_BW.height / 2 && y < cheight + g_images.Devil_BW.height / 2) {
       characterChosen = 4;
       g_LIVES = 5;
     }
   }
-  if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
-    if (y > 480 /*-g_images.Play.height / 2 */ && y < 480 + g_images.Play.height) {
+  if (x > 680 && x < 680 + g_images.Play.width) {
+    if (y > 480 && y < 480 + g_images.Play.height) {
       state.startGame = true;
       Start_Song.pause();
       Play_Song.load();
@@ -361,6 +364,9 @@ function drawStartScreen(ctx) {
   ctx.drawImage(g_images.Wall_Background, 0, 0);
   ctx.drawImage(g_images.Logo, 0, 0);
   ctx.drawImage(g_images.Play, 680, 480);
+  ctx.drawImage(g_images.ChooseC, 40, 310);
+  ctx.drawImage(g_images.Info, 40, 435);
+
   switch (characterChosen) {
     case 0:
       drawChick(ctx);
@@ -382,34 +388,34 @@ function drawStartScreen(ctx) {
 
 function drawChick(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 80, 400, 1.2, g_images.Chick_Color);
+  drawCharacter(ctx, 80, cheight, 1.2, g_images.Chick_Color);
 }
 
 function drawAnotherDevil(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 240, 400, 1.2, g_images.Anotherdevil_Color);
+  drawCharacter(ctx, 240, cheight, 1.2, g_images.Anotherdevil_Color);
 }
 
 function drawDeathnote(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 400, 400, 1.2  , g_images.Deathnote_Color);
+  drawCharacter(ctx, 400, cheight, 1.2, g_images.Deathnote_Color);
 }
 
 function drawGolbez(ctx) {
   drawGhosts(ctx);
-  drawCharacter(ctx, 560, 400, 1.2, g_images.Golbez_Color);
+  drawCharacter(ctx, 560, cheight, 1.2, g_images.Golbez_Color);
 }
 function drawDevil(ctx){
   drawGhosts(ctx);
-  drawCharacter(ctx,720,400, 1.2,g_images.Devil_Color);
+  drawCharacter(ctx,720, cheight, 1.2, g_images.Devil_Color);
 }
 
 function drawGhosts(ctx) {
-  drawCharacter(ctx, 80, 400, 1, g_images.Chick_BW);
-  drawCharacter(ctx, 240, 400, 1, g_images.AnotherdevilBW);
-  drawCharacter(ctx, 400, 400, 1, g_images.Deathnote_BW);
-  drawCharacter(ctx, 560, 400, 1, g_images.Golbez_BW);
-  drawCharacter(ctx,720,400, 1,g_images.Devil_BW);
+  drawCharacter(ctx,  80, cheight, 1, g_images.Chick_BW);
+  drawCharacter(ctx, 240, cheight, 1, g_images.AnotherdevilBW);
+  drawCharacter(ctx, 400, cheight, 1, g_images.Deathnote_BW);
+  drawCharacter(ctx, 560, cheight, 1, g_images.Golbez_BW);
+  drawCharacter(ctx, 720, cheight, 1, g_images.Devil_BW);
 }
 
 function drawCharacter(ctx, x, y, scale, image) {
