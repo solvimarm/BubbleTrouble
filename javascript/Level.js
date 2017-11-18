@@ -1,4 +1,4 @@
-function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime, balls, walls, ceilings) {
+function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime, balls, walls, ceilings, bullet) {
     var level = {
         background: backgroundID,
         balls: balls,
@@ -7,7 +7,7 @@ function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime
         character: {
             cx: characterXPos,
             cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-            bulletType: 5,
+            bulletType: bullet,
             gameBar: g_canvas.width,
             sprite: g_sprites.mainCharacterStill[characterChosen]
         }, 
@@ -28,12 +28,13 @@ function createLEVELS(g_sprites) {
             backgroundID = 0,
             useEdgeWalls = false,
             characterXPos = 400, 
-            levelTime = 3, 
+            levelTime = 15, 
             balls = [
                 {cx: 150, cy: 100, velX: -1, size: 1}
             ], 
             walls = [], 
-            ceilings = []
+            ceilings = [],
+            bullet = "chain_gray"
         ),
         _createSingleLevel(
             backgroundID = 1,
@@ -48,7 +49,8 @@ function createLEVELS(g_sprites) {
                 {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
                 {x: 398, y: 430, width: 20, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
             ], 
-            ceilings = []
+            ceilings = [],
+            bullet = "chain_red"
         ),
         _createSingleLevel(
             backgroundID = 2,
@@ -59,7 +61,8 @@ function createLEVELS(g_sprites) {
                 {cx: 150, cy: 100, velX: 1, size: 1},
             ], 
             walls = [], 
-            ceilings = []
+            ceilings = [],
+            bullet = "ray_yellow"
         ),
         _createSingleLevel(
             backgroundID = 3,
@@ -70,7 +73,8 @@ function createLEVELS(g_sprites) {
                 {cx: 150, cy: 100, velX: 1, size: 2},
             ], 
             walls = [], 
-            ceilings = []
+            ceilings = [],
+            bullet = "ray_yellow"
         ),
         _createSingleLevel(
             backgroundID = 4,
@@ -81,7 +85,8 @@ function createLEVELS(g_sprites) {
                 {cx: 150, cy: 100, velX: 1, size: 3},
             ], 
             walls = [], 
-            ceilings = []
+            ceilings = [],
+            bullet = "ray_green"
         ),
         _createSingleLevel(
             backgroundID = 5,
@@ -92,7 +97,8 @@ function createLEVELS(g_sprites) {
                 {cx: 150, cy: 100, velX: 1, size: 4},
             ], 
             walls = [], 
-            ceilings = []
+            ceilings = [],
+            bullet = "chain_gray"
         )
     ];
     return LEVELS;
@@ -129,13 +135,16 @@ function generateMap(map_number) {
 
     entityManager.generateLevelP(map_number); // print current level
     entityManager.generateLives();
+    entityManager.generateShowBullet();
 
     var numberOfBalls = 0;
+    
     // Generate all Balls
     for (var i = 0; i < level.balls.length; i++) {
         entityManager.generateBall(level.balls[i]);
         numberOfBalls += Math.pow(2, level.balls[i].size + 1) - 1;
     }
+    
     // Generate Character
     entityManager.generateMainCharacter(level.character);
     entityManager.initiateLevel(map_number, numberOfBalls);

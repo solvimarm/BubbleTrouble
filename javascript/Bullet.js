@@ -2,50 +2,56 @@
 function Bullet(descr){
     this.setup(descr);
 
-    if(this.type === "chain"){
+    if(this.type === "chain_gray"){
         this.bullet = g_sprites.bullet[0];
-        this.lifeSpan = 3*SECS_TO_NOMINALS;
+        this.lifeSpan = 0;
+        this.velY = 5;
         this.fireSound = new Audio("Sounds/chain.wav");
         this.fireSound.play();
     }
-    if(this.type === "default"){
+    if(this.type === "ray_yellow"){
         this.bullet = g_sprites.bullet[1];
         this.lifeSpan = 0;
-        this.fireSound = new Audio("Sounds/laser_blaster2.wav");
+        this.velY = 15;
+        this.fireSound = new Audio("Sounds/laser_blast1.wav");
         this.fireSound.play();
     }
-    if(this.type === 3){
+    if(this.type === "ray_green"){
         this.bullet = g_sprites.bullet[2];
-        this.lifeSpan = 0;
-        this.fireSound = new Audio("Sounds/laser_blaster.wav");
+        this.lifeSpan = 3*SECS_TO_NOMINALS;
+        this.velY = 15;
+        this.fireSound = new Audio("Sounds/laser_blast2.wav");
         this.fireSound.play();
     }
-    if(this.type === 4){
+    if(this.type === "chain_red"){
         this.bullet = g_sprites.bullet[3];
-    }
-    if(this.type === 5){
-        this.bullet = g_sprites.bullet[4];
+        this.lifeSpan = 3*SECS_TO_NOMINALS;
+        this.velY = 5;
+        this.fireSound = new Audio("Sounds/chain.wav");
+        this.fireSound.play();
     }
 }
 
 Bullet.prototype = new Entity();
-Bullet.prototype.type = "default";
-Bullet.prototype.velY = 8;
-Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
+//Bullet.prototype.type = "default";
+//Bullet.prototype.velY = 8;
+//Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
+
 var ball_sound = new Audio("Sounds/Ball.wav");
 
 
 Bullet.prototype.update = function(du){
     spatialManager.unregister(this);
     
-    if(this.yTop <= 0 && this.type === "default"){
-        this.fireSound.pause();
-        return entityManager.KILL_ME_NOW; 
-    }
+    //if(this.yTop <= 0 && this.type === "default"){
+    //    this.fireSound.pause();
+    //    return entityManager.KILL_ME_NOW; 
+    //}
 
-    if(this.lifeSpan <= 0 && this.type === "chain"){
+    if(this.lifeSpan <= 0 && this.yTop <= 0){
         return entityManager.KILL_ME_NOW;
     }
+    
     var hitBallEntity = this.findHitEntity();
     if(hitBallEntity){
         if(!hitBallEntity.power){

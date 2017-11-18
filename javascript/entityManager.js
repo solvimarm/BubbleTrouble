@@ -12,6 +12,7 @@ var entityManager = {
   _power:[],
   _background: [],
   _lives: [],
+  _showBullet: [],
   _timers: [],
   _levelP: [], // levelP = level Print (show level)
   // "PRIVATE" METHODS
@@ -36,12 +37,13 @@ var entityManager = {
     this._categories = [
       this._background,
       this._bullet,
-      this._mainCharacter,
       this._ceilings,
       this._wall,
+      this._mainCharacter,
       this._power,
       this._balls,
       this._lives,
+      this._showBullet,
       this._levelP
     ];
   },
@@ -56,6 +58,7 @@ var entityManager = {
     this._power = [];
     this._background = [];
     this._lives = [];
+    this._showBullet = [];
     this._timers = [];
     this._levelP = [];
     FREEZE = false;
@@ -63,16 +66,16 @@ var entityManager = {
 
   initiateLevel: function(map_number, numberOfBalls) {
     this._level = {
-      "currentMap": map_number,
-      "initialBalls": numberOfBalls,
-      "ballsHit": 0
+      currentMap: map_number,
+      initialBalls: numberOfBalls,
+      ballsHit: 0
     };
   },
 
   ballHit: function() {
-    this._level["ballsHit"]++;
-    if(this._level["ballsHit"] === this._level["initialBalls"]) {
-        generateMap( this._level["currentMap"]+1);
+    this._level.ballsHit ++;
+    if(this._level.ballsHit === this._level.initialBalls) {
+        generateMap( this._level.currentMap + 1 );
     }
   },
 
@@ -81,11 +84,11 @@ var entityManager = {
   },
   
   resetLevel: function(){
-    generateMap(this._level["currentMap"]);
+    generateMap(this._level.currentMap);
   },
 
   numberOfBallsHit: function() {
-    return this._level["ballsHit"];
+    return this._level.ballsHit;
   },
 
   generateCeiling: function (descr) {
@@ -127,6 +130,10 @@ var entityManager = {
       cx: 350,
       cy: 550 
     }));
+  },
+
+  generateShowBullet: function (descr) {
+    this._showBullet.push(new ShowBullet(descr));
   },
   
   CreatePower: function(cx, cy, power) {

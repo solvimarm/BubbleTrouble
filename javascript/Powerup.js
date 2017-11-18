@@ -13,8 +13,6 @@
     after some time after it has reached the ground.
 */
 
-
-
 function Powerup(descr){
     this.setup(descr);
     this.radius = POWER_IMAGE_HEIGHT/2;
@@ -22,8 +20,14 @@ function Powerup(descr){
     if(this.power === "extratime"){
         this.Powerup = g_sprites.Power_hourglass;
     }
-    if(this.power === "chain"){
-        this.Powerup = g_sprites.Power_chain;
+    if(this.power === "chain_red"){
+        this.Powerup = g_sprites.Power_chainRed;
+    }
+    if(this.power === "ray_yellow"){
+        this.Powerup = g_sprites.Power_rayYellow;
+    }
+    if(this.power === "ray_green"){
+        this.Powerup = g_sprites.Power_rayGreen;
     }
     if(this.power === "extralife"){
         this.Powerup = g_sprites.Power_LiveRedHeart;
@@ -63,15 +67,16 @@ Powerup.prototype.getRadius = function(){
 };
 
 function maybeCreatePower(cx, cy) {
-    var power = ["extratime","chain", "extralife", "shield", "none"];
-    //Get random number between 0 and 9 if value lower than 5 then you get a power up.
-    var randNum = util.wholeRandRange(0,9);
-    if(randNum >= 4){
-        randNum = 4;
+    var power = ["extratime", "chain_red", "ray_yellow", "ray_green", "extralife", "shield"];
+    // randNum er stak í [0,20]
+    var randNum = util.wholeRandRange(0,20);
+    // ef randNum er í [0,5] þá createPower
+    if(randNum < 6){
+        entityManager.CreatePower(cx,cy, power[randNum]);
     }
     //console.log("xhnit: " + cx + "yhnit: " + cy)
 
-    if(power[randNum] != "none"){        
-        entityManager.CreatePower(cx,cy, power[randNum]);
-    }
+    //if(power[randNum] != "none"){        
+    //    entityManager.CreatePower(cx,cy, power[randNum]);
+   // }
 }

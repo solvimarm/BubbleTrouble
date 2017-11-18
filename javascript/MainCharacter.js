@@ -19,7 +19,11 @@ MainCharacter.prototype.KEY_LEFT = 37  //left arrow   //"A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 39 //right arrow  //'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
-MainCharacter.prototype.CHAIN_BULLET =  false;
+//MainCharacter.prototype.CHAIN_BULLET =  false;
+
+/* Available bullets: chain_gray, chain_red, ray_yellow, ray_green. */
+//MainCharacter.prototype.bulletType = "chain_gray";
+
 var g_LIVES = 3;
 var lifelost = true;
 var shield_time = false;
@@ -63,7 +67,6 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
         still = true;
     }
     if (right) {
-
         if (characterChosen === 0) this.sprite = g_sprites.mainCharacter[runRight.id];
         if (characterChosen === 1) this.sprite = g_sprites.mainCharacter[runRight.id + 4];
         if (characterChosen === 2) this.sprite = g_sprites.mainCharacter[runRight.id + 8];
@@ -155,14 +158,31 @@ MainCharacter.prototype.update = function (du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
-    var bulletType = "default";
-    if (this.CHAIN_BULLET) {
-        bulletType = "chain"
-    }
-    
-    if (eatKey(this.KEY_FIRE) && (entityManager._bullet.length === 0 || (entityManager._bullet.length === 1 && characterChosen === 2))) {
-        entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
-        ShotCounter = 1;
+    //if (eatKey(this.KEY_FIRE) && (entityManager._bullet.length === 0 || (entityManager._bullet.length === 1 && characterChosen === 2))) {
+    //    entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+    //    ShotCounter = 1;
+    //}
+    if(eatKey(this.KEY_FIRE)){
+        if(entityManager._bullet.length < 1){
+            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+        }
+        if(entityManager._bullet.length < 2 && this.bulletType === "ray_green"){
+            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+        }
+        if(entityManager._bullet.length < 3 && this.bulletType === "chain_red"){
+            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+        }
+        if(characterChosen === 2){
+            if(entityManager._bullet.length < 2){
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+            }
+            if(entityManager._bullet.length < 3 && this.bulletType === "ray_green"){
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+            }
+            if(entityManager._bullet.length < 4 && this.bulletType === "chain_red"){
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+            }
+        }
     }
 };
 
@@ -171,6 +191,7 @@ MainCharacter.prototype.render = function (ctx) {
     if (this.SHIELD) {
         g_sprites.Power_characterShield.drawWrappedCentredAt(ctx, this.cx, this.cy);
     }
+    showBullet(ctx, this.bulletType);
 }
 
 MainCharacter.prototype.kill = function () {
@@ -201,11 +222,19 @@ MainCharacter.prototype.getPowerup = function (power) {
     if (power === "shield" && characterChosen != 2) {
         this.SHIELD = true;
     }
-    if (power === "chain") {
-        this.CHAIN_BULLET = true;
+    if (power === "chain_red") {
+        this.bulletType = "chain_red";
+    }
+    if (power === "ray_yellow") {
+        this.bulletType = "ray_yellow";
+    }
+    if (power === "ray_green") {
+        this.bulletType = "ray_green";
     }
     if (power === "extralife") {
-        if (g_LIVES < 5) g_LIVES++;
+        if (g_LIVES < 5) {
+            g_LIVES++;
+        }
     }
     if (power === "extratime") {
         FREEZE = true;
@@ -234,4 +263,26 @@ function next() {
     entityManager.resetLevel();
     Play_Song.play();
     return entityManager.KILL_ME_NOW;
+}
+
+
+function showBullet(ctx, bulletType){
+    ctx.fillStyle = "black"
+    ctx.fillRect(500, 535, 30, 30);
+    if(bulletType === "chain_gray"){
+        g_sprites.Chain_Gray.drawWrappedCentredAt(ctx,515,550);
+        console.log("bulletType er : "+ bulletType);
+    }
+    if(bulletType === "chain_red"){
+        g_sprites.Chain_Red.drawWrappedCentredAt(ctx,515,550);
+        console.log("bulletType er : "+ bulletType);
+    }
+    if(bulletType === "ray_yellow"){
+        g_sprites.Ray_Yellow.drawWrappedCentredAt(ctx,515,550);
+        console.log("bulletType er : "+ bulletType);
+    }
+    if(bulletType === "ray_green"){
+        g_sprites.Ray_Green.drawWrappedCentredAt(ctx,515,550);
+        console.log("bulletType er : "+ bulletType);
+    }
 }

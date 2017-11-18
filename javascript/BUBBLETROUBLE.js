@@ -125,11 +125,15 @@ function requestPreloads() {
     Background_5: "Sprites/Backgrounds/Back_5.jpg",
     Background_6: "Sprites/Backgrounds/Back_6.jpg",
     // Bullets
-    Bullet_1: "Sprites/Bullets/Bullet_1.png",
-    Bullet_2: "Sprites/Bullets/Bullet_2.png",
-    Bullet_3: "Sprites/Bullets/Bullet_3.png",
-    Bullet_4: "Sprites/Bullets/Bullet_4.png",
-    Bullet_5: "Sprites/Bullets/Bullet_5.png",
+    Bullet_1: "Sprites/Bullets/Bullet_1.png", // chain gray
+    Bullet_2: "Sprites/Bullets/Bullet_2.png", // ray yellow
+    Bullet_3: "Sprites/Bullets/Bullet_3.png", // ray green
+    Bullet_4: "Sprites/Bullets/Bullet_4.png", // chain red
+    // Show Bullets
+    Chain_Gray: "Sprites/Bullets/Chain_Gray.png",
+    Chain_Red: "Sprites/Bullets/Chain_Red.png",
+    Ray_Yellow: "Sprites/Bullets/Ray_Yellow.png",
+    Ray_Green: "Sprites/Bullets/Ray_Green.png",
     // Walls
     Wall_ground: "Sprites/Walls/Wall_Ground.png",
     Wall_Stone1: "Sprites/Walls/Wall_Stone1.png",
@@ -157,9 +161,11 @@ function requestPreloads() {
     // PowerUps
     Power_LiveRedHeart: "Sprites/PowerUps/Live_RedHeart.png",
     Power_hourglass: "Sprites/PowerUps/hour_glass.png",
-    Power_chain: "Sprites/PowerUps/power_chain.png",
     Power_shield: "Sprites/PowerUps/shield.png",
     Power_characterShield: "Sprites/PowerUps/character_shield.png",
+    Power_chainRed: "Sprites/PowerUps/chain_Red_Power.png",
+    Power_rayYellow: "Sprites/PowerUps/ray_Yellow_Power.png",
+    Power_rayGreen: "Sprites/PowerUps/ray_Green_Power.png",
     // StartScreen icon
     Chick_Color: "Sprites/StartScreen/Chick_Color.png",
     AnotherdevilBW: "Sprites/StartScreen/Anotherdevil_BW.png",
@@ -264,8 +270,7 @@ function preloadDone() {
   g_sprites.bullet = [new Sprite(g_images.Bullet_1),
     new Sprite(g_images.Bullet_2),
     new Sprite(g_images.Bullet_3),
-    new Sprite(g_images.Bullet_4),
-    new Sprite(g_images.Bullet_5)
+    new Sprite(g_images.Bullet_4)
   ];
 
   // Walls
@@ -304,9 +309,17 @@ function preloadDone() {
   // PowerUps
   g_sprites.Power_LiveRedHeart = new Sprite(g_images.Power_LiveRedHeart);
   g_sprites.Power_hourglass = new Sprite(g_images.Power_hourglass);
-  g_sprites.Power_chain = new Sprite(g_images.Power_chain);
   g_sprites.Power_shield = new Sprite(g_images.Power_shield);
   g_sprites.Power_characterShield = new Sprite(g_images.Power_characterShield);
+  g_sprites.Power_chainRed = new Sprite(g_images.Power_chainRed);
+  g_sprites.Power_rayYellow = new Sprite(g_images.Power_rayYellow);
+  g_sprites.Power_rayGreen = new Sprite(g_images.Power_rayGreen);
+
+  // Show Bullets
+  g_sprites.Chain_Gray = new Sprite(g_images.Chain_Gray);
+  g_sprites.Chain_Red = new Sprite(g_images.Chain_Red);
+  g_sprites.Ray_Yellow = new Sprite(g_images.Ray_Yellow);
+  g_sprites.Ray_Green = new Sprite(g_images.Ray_Green);
 
   main.init();
 }
@@ -355,7 +368,7 @@ function st_screen(x, y) {
       Play_Song.load();
       Play_Song.play();
       //g_LIVES = 3;
-      generateMap(0);
+      generateMap(4);
     }
   }
 }
