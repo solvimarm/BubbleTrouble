@@ -9,14 +9,24 @@
 
 */
 
-var BallStyles = [
-    {maxBounce: 40, radius: 8, color: "Red"},     // type 0
-    {maxBounce: 70, radius: 16, color: "Blue1"},    // type 1
-    {maxBounce: 100, radius: 25, color: "Green"},   // type 2
-    {maxBounce: 120, radius: 35, color: "Pink"},    // type 3
-    {maxBounce: 120, radius: 40, color: "SeaGreen"},    // type 4
-    {maxBounce: 100, radius: 45, color: "Brown1"},    // type 5
-    
+var BallStyles = [ // The number comments are total hits.
+    {maxBounce: 40, radius: 8, color: "Red"}, // 1
+    {maxBounce: 60, radius: 14, color: "Blue1"}, // 3
+    {maxBounce: 70, radius: 20, color: "Green"}, // 7
+    {maxBounce: 80, radius: 24, color: "Brown1"}, // 15
+    {maxBounce: 85, radius: 28, color: "Orange"}, // 31
+    {maxBounce: 90, radius: 32, color: "Purple"}, // 63 
+    {maxBounce: 90, radius: 36, color: "Yellow2"}, // 127   ALERT! Using balls past this point may lead to dull game. 
+    {maxBounce: 85, radius: 40, color: "SeaGreen"}, // 255
+    {maxBounce: 85, radius: 44, color: "Pink"}, // 511
+    {maxBounce: 85, radius: 48, color: "Blue2"}, // 1027
+    {maxBounce: 80, radius: 50, color: "Brown2"}, // 2047
+    {maxBounce: 70, radius: 52, color: "GreenBlue"}, // 4095
+    {maxBounce: 70, radius: 54, color: "Grey"}, // 8192
+    {maxBounce: 70, radius: 56, color: "LightBlue"}, // 
+    {maxBounce: 70, radius: 58, color: "LightGreen"},
+    {maxBounce: 70, radius: 60, color: "WineRed"},
+    {maxBounce: 70, radius: 65, color: "Yellow1"}
 ]
 
 function Ball(descr){
@@ -126,4 +136,6 @@ Ball.prototype.render = function(ctx){
     var radiusToSpriteScale = this.radius/90;
     this.sprite.scale = radiusToSpriteScale;
     this.sprite.drawCentredAt(ctx, this.cx, this.cy, 0);
+    this.sprite.drawCentredAt(ctx, this.cx + g_canvas.width, this.cy, 0);
+    this.sprite.drawCentredAt(ctx, this.cx - g_canvas.width, this.cy, 0);
 };

@@ -51,104 +51,50 @@ function createLEVELS(g_sprites) {
             ], 
             ceilings = []
         ),
-        {// LEVEL 2 //////////////////////////////////////////////
-            background: 2,
-            balls: [
-                //{cx: 30, cy: 100, velY: 0, velX: 1, size: 0},
-                //{cx: 50, cy: 100, velX: 1, size: 0},
-                //{cx: 70, cy: 100, velX: 1, size: 0},
-                //{cx: 110, cy: 100, velX: 1, size: 0},
-                //{cx: 130, cy: 100, velX: 1, size: 0},
-                {cx: 150, cy: 100, velX: 1, size: 0},
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 400,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 1,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 20
-        },
-        {// LEVEL 3 //////////////////////////////////////////////
-            background: 3,
-            balls: [
-                //{cx: 50, cy: 100, velX: 1, size: 1},
-                //{cx: 100, cy: 200, velX: 1, size: 1},
-                //{cx: 150, cy: 200, velX: 1, size: 1},
-                {cx: 200, cy: 100, velX: 1, size: 1},
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone2},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Wood}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 400,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 1,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 40
-        },
-        {// LEVEL 4 //////////////////////////////////////////////
-            background: 4,
-            balls: [
-                {cx: 100, cy: 300, velX: 1, size: 2},
-                {cx: 100, cy: 100, velX: -1, size: 2}
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Steel},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone1}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 400,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 5,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 50
-        },
-          {// LEVEL 5 //////////////////////////////////////////////
-            background: 5,
-            balls: [
-                {cx: 100, cy: 300, velX: 1, size: 3},
-                {cx: 100, cy: 100, velX: -1, size: 3}
-            ],
-            walls: [
-                {x: 0, y: Y_BOTTOM, width: g_canvas.width, height: 100, type: 0, sprite: g_sprites.wall_ground},
-                {x: 0, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Steel},
-                {x: 784, y: 0, width: 16, height: 500, type: 0, ballsToHit: 10, sprite: g_sprites.wall_Stone1}
-            ],
-            ceilings: [
-                {y: 0, vel: 0, minX: 0, maxX: g_canvas.width}
-            ],
-            character: {
-                cx: 400,
-                cy: Y_BOTTOM - g_sprites.mainCharacterStill[characterChosen].height / 2,
-                bulletType: 5,
-                gameBar: g_canvas.width,
-                sprite: g_sprites.mainCharacterStill[characterChosen]
-            }, 
-            levelTime: 40
-        }
+        _createSingleLevel(
+            backgroundID = 2,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 20, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = []
+        ),
+        _createSingleLevel(
+            backgroundID = 3,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 20, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 2},
+            ], 
+            walls = [], 
+            ceilings = []
+        ),
+        _createSingleLevel(
+            backgroundID = 4,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 3},
+            ], 
+            walls = [], 
+            ceilings = []
+        ),
+        _createSingleLevel(
+            backgroundID = 5,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 40, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 4},
+            ], 
+            walls = [], 
+            ceilings = []
+        )
     ];
     return LEVELS;
 }
