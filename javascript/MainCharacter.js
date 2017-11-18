@@ -164,14 +164,6 @@ MainCharacter.prototype.maybeFireBullet = function () {
         entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
         ShotCounter = 1;
     }
-    /*
-    if(eatKey(this.KEY_FIRE) && ShotCounter === 1 ){
-        entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
-        ShotCounter = 0;
-        console.log("object");
-    }
-    console.log(ShotCounter + "   " + characterChosen);
-    */
 };
 
 MainCharacter.prototype.render = function (ctx) {

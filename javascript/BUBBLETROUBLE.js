@@ -342,7 +342,7 @@ function st_screen(x, y) {
   if (x > 720 - g_images.Devil_BW.width / 2 && x < 720 + g_images.Devil_BW.width / 2) {
     if (y > 400 - g_images.Devil_BW.height / 2 && y < 400 + g_images.Devil_BW.height / 2) {
       characterChosen = 4;
-      g_LIVES = 4;
+      g_LIVES = 5;
     }
   }
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
