@@ -60,7 +60,10 @@ Bullet.prototype.update = function(du){
     
     if(hitY === undefined) {
         if(this.yTop > 0) {
-            this.yTop -= du*this.velY;            
+            if(characterChosen === 3)
+                this.yTop -= du*this.velY/2
+            else
+                this.yTop -= du*this.velY;            
         }
     }
     else {

@@ -326,6 +326,7 @@ function st_screen(x, y) {
   if (x > 240 - g_images.AnotherdevilBW.width / 2 && x < 240 + g_images.AnotherdevilBW.width / 2) {
     if (y > 400 - g_images.AnotherdevilBW.height / 2 && y < 400 + g_images.AnotherdevilBW.height / 2) {
       characterChosen = 1;
+      g_LIVES = 2;
     }
   }
   if (x > 400 - g_images.Deathnote_BW.width / 2 && x < 400 + g_images.Deathnote_BW.width / 2) {
@@ -341,6 +342,7 @@ function st_screen(x, y) {
   if (x > 720 - g_images.Devil_BW.width / 2 && x < 720 + g_images.Devil_BW.width / 2) {
     if (y > 400 - g_images.Devil_BW.height / 2 && y < 400 + g_images.Devil_BW.height / 2) {
       characterChosen = 4;
+      g_LIVES = 4;
     }
   }
   if (x > 680 /* - g_images.Play.width / 2 */ && x < 680 + g_images.Play.width) {
@@ -349,7 +351,7 @@ function st_screen(x, y) {
       Start_Song.pause();
       Play_Song.load();
       Play_Song.play();
-      g_LIVES = 3;
+      //g_LIVES = 3;
       generateMap(0);
     }
   }

@@ -9,6 +9,8 @@ function MainCharacter(descr) {
     //this.sprite = this.sprite //|| g_sprites.mainCharacterStill[0];
     this.scale = this.scale || 1;
     this.radius = 14;
+    if(characterChosen === 3)
+        this.SHIELD = true;
 }
 
 MainCharacter.prototype = new Entity();
@@ -17,10 +19,11 @@ MainCharacter.prototype.KEY_LEFT = "A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
-MainCharacter.prototype.CHAIN_BULLET = false;
-//var g_LIVES = 3;
+MainCharacter.prototype.CHAIN_BULLET =  false;
+var g_LIVES = 3;
 var lifelost = true;
 var shield_time = false;
+var ShotCounter = 0;
 var GameOver_sound = new Audio("Sounds/game_over.wav");
 var PowerUps_sound = new Audio("Sounds/PowerUps.wav");
 var Timesup_sound = new Audio("Sounds/TimesUp.wav");
@@ -91,8 +94,9 @@ MainCharacter.prototype.updateSprite = function (du, oldX, oldY) {
 };
 
 MainCharacter.prototype.update = function (du) {
+    if(characterChosen === 1){
+    }
     spatialManager.unregister(this);
-
     if (this._isDeadNow) {
         return entityManager.KILL_ME_NOW;
     }
@@ -121,14 +125,24 @@ MainCharacter.prototype.update = function (du) {
     var oldx = this.cx;
 
     if (keys[this.KEY_LEFT]) {
-        var nextX = this.cx - 3;
+        if(characterChosen === 1)
+            var nextX = this.cx - 4;
+        else if(characterChosen === 4)
+            var nextX = this.cx - 2;
+        else 
+            var nextX = this.cx - 3;
         var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
         if (!isCollidingWithWall) {
-            this.cx = util.mod(nextX, g_canvas.width);
+             this.cx = util.mod(nextX, g_canvas.width);
         }
     }
     if (keys[this.KEY_RIGHT]) {
-        var nextX = this.cx + 3;
+        if(characterChosen === 1)
+            var nextX = this.cx + 4;
+        else if(characterChosen === 4)
+            var nextX = this.cx + 2;
+        else
+            var nextX = this.cx + 3;
         var isCollidingWithWall = spatialManager.wallInRangeOfMC(nextX, pos.posY, radius);
         if (!isCollidingWithWall) {
             this.cx = util.mod(nextX, g_canvas.width);
@@ -145,10 +159,19 @@ MainCharacter.prototype.maybeFireBullet = function () {
     if (this.CHAIN_BULLET) {
         bulletType = "chain"
     }
-
-    if (eatKey(this.KEY_FIRE) && entityManager._bullet.length === 0) {
+    
+    if (eatKey(this.KEY_FIRE) && (entityManager._bullet.length === 0 || (entityManager._bullet.length === 1 && characterChosen === 2))) {
         entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
+        ShotCounter = 1;
     }
+    /*
+    if(eatKey(this.KEY_FIRE) && ShotCounter === 1 ){
+        entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, bulletType);
+        ShotCounter = 0;
+        console.log("object");
+    }
+    console.log(ShotCounter + "   " + characterChosen);
+    */
 };
 
 MainCharacter.prototype.render = function (ctx) {
@@ -183,7 +206,7 @@ MainCharacter.prototype.getRad = function () {
 }
 
 MainCharacter.prototype.getPowerup = function (power) {
-    if (power === "shield") {
+    if (power === "shield" && characterChosen != 2) {
         this.SHIELD = true;
     }
     if (power === "chain") {
