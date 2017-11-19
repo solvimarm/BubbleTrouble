@@ -20,12 +20,7 @@ MainCharacter.prototype.KEY_LEFT = 37  //left arrow   //"A".charCodeAt(0);
 MainCharacter.prototype.KEY_RIGHT = 39 //right arrow  //'D'.charCodeAt(0);
 MainCharacter.prototype.KEY_FIRE = ' '.charCodeAt(0);
 MainCharacter.prototype.SHIELD = false;
-//MainCharacter.prototype.CHAIN_BULLET =  false;
 
-/* Available bullets: chain_gray, chain_red, ray_yellow, ray_green. */
-//MainCharacter.prototype.bulletType = "chain_gray";
-
-var g_LIVES = 3;
 var lifelost = true;
 var shield_time = false;
 var ShotCounter = 0;
@@ -159,33 +154,37 @@ MainCharacter.prototype.update = function (du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
-    //if (eatKey(this.KEY_FIRE) && (entityManager._bullet.length === 0 || (entityManager._bullet.length === 1 && characterChosen === 2))) {
-    //    entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
-    //    ShotCounter = 1;
-    //}
     if(eatKey(this.KEY_FIRE)){
-        if(entityManager._bullet.length < 1){
-            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
-        }
-        if(entityManager._bullet.length < 2 && this.bulletType === "ray_green"){
-            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
-        }
-        if(entityManager._bullet.length < 3 && this.bulletType === "chain_red"){
-            entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
-        }
-        if(characterChosen === 2){
-            if(entityManager._bullet.length < 2){
+        if(characterChosen === 2){ // Deathnote (eiginleiki Deathnote)
+            if(entityManager._bullet.length < 2){ // 2 skot af chain_gray eða ray_yellow
                 entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
             }
-            if(entityManager._bullet.length < 3 && this.bulletType === "ray_green"){
+            if(entityManager._bullet.length < 4 && this.bulletType === "ray_green"){ // 4 skot af ray_green
                 entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
             }
-            if(entityManager._bullet.length < 4 && this.bulletType === "chain_red"){
+            if(entityManager._bullet.length < 6 && this.bulletType === "chain_red"){ // 6 skot af chain_red
                 entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
+            }
+        }
+        else{
+            if(entityManager._bullet.length < 1){ // 1 skot af chain_gray eða ray_yellow
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
+            }
+            if(entityManager._bullet.length < 2 && this.bulletType === "ray_green"){ // 2 skot af ray_green
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
+            }
+            if(entityManager._bullet.length < 3 && this.bulletType === "chain_red"){ // 3 skot af chain_red
+                entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
+                return;
             }
         }
     }
-};
+}
 
 MainCharacter.prototype.render = function (ctx) {
     this.sprite.drawWrappedCentredAt(ctx, this.cx, this.cy, this.rotation);

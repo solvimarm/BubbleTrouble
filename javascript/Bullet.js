@@ -30,35 +30,35 @@ function Bullet(descr){
         this.fireSound = new Audio("Sounds/chain.wav");
         this.fireSound.play();
     }
+
+    console.log("ÞETTA ER SKOT");
 }
 
 Bullet.prototype = new Entity();
-//Bullet.prototype.type = "default";
-//Bullet.prototype.velY = 8;
-//Bullet.prototype.lifeSpan = 3*SECS_TO_NOMINALS;
 
 var ball_sound = new Audio("Sounds/Ball.wav");
 
 
 Bullet.prototype.update = function(du){
     spatialManager.unregister(this);
-    
-    //if(this.yTop <= 0 && this.type === "default"){
-    //    this.fireSound.pause();
-    //    return entityManager.KILL_ME_NOW; 
-    //}
 
-    if(this.lifeSpan <= 0 && this.yTop <= 0){
+    if (this._isDeadNow) {
         return entityManager.KILL_ME_NOW;
+    }
+
+    if(this.lifeSpan === 0 && this.yTop <= 0){
+        console.log("snerti loft");
+        this.killEntity();
     }
     
     var hitBallEntity = this.findHitEntity();
-    if(hitBallEntity){
-        if(!hitBallEntity.power){
-            hitBallEntity.hitBall();
+    if(hitBallEntity){ // Þú skaust eitthvað
+        if(!hitBallEntity.power){ // Pössum að það sé ekki power ups.
+            this.killEntity(); // drepum þetta skot
             this.fireSound.pause();
             ball_sound.play();
-            return entityManager.KILL_ME_NOW;
+            console.log("Þú skaust bolta");
+            hitBallEntity.hitBall();
         }
     }
 
@@ -78,7 +78,7 @@ Bullet.prototype.update = function(du){
         }
         else{
             if(this.lifeSpan < 0) {
-                return entityManager.KILL_ME_NOW;
+                this.killEntity();
             }
             else {
                 this.lifeSpan -= du;
@@ -94,7 +94,6 @@ Bullet.prototype.render = function(ctx){
 };
 
 Bullet.prototype.collisionWithWall = function(wallx,wally,width,height){
-    if(this.cx >= wallx && this.cx <= wallx + width){
-    }
+    if(this.cx >= wallx && this.cx <= wallx + width){}
 };
 

@@ -51,8 +51,8 @@ Ball.prototype.getRadius = function(){
 };
 
 Ball.prototype.hitBall = function() {
+    this.killEntity();
     maybeCreatePower(this.cx , this.cy);
-    this.kill();
     if(this.size > 0) {
          entityManager.generateBall({
             cx: this.cx,
@@ -76,7 +76,6 @@ Ball.prototype.update = function(du){
     spatialManager.unregister(this);
 
     if (this._isDeadNow) {
-        //this.ball_sound.play();
         return entityManager.KILL_ME_NOW;
     }
     
@@ -92,8 +91,9 @@ Ball.prototype.update = function(du){
     );
 
     if(newDirections.velY < 0 && this.velY > 0) {
-    newDirections.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
+        newDirections.velY = -2*Math.sqrt(this.maxBounce*consts.NOMINAL_GRAVITY);
     }
+
     this.velX = newDirections.velX;
     this.velY = newDirections.velY;
 

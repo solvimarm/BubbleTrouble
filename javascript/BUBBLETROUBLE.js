@@ -361,19 +361,19 @@ function st_screen(x, y) {
   }
   if (x > 680 && x < 680 + g_images.Play.width) {
     if (y > 480 && y < 480 + g_images.Play.height) {
-      if(characterChosen === 0){
+      if(characterChosen === 0){ // Chick
         g_LIVES = 3;
       }
-      if(characterChosen === 1){
+      if(characterChosen === 1){ // AnotherDevil
         g_LIVES = 2;
       }
-      if(characterChosen === 2){
+      if(characterChosen === 2){ // Deathnote
         g_LIVES = 3;
       }
-      if(characterChosen === 3){
+      if(characterChosen === 3){ // Golbez
         g_LIVES = 3;
       }
-      if(characterChosen === 4){
+      if(characterChosen === 4){ // Devil
         g_LIVES = 5;
       }
       state.startGame = true;
