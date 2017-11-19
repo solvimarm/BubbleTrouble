@@ -35,6 +35,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         _createSingleLevel( // Level 2
             backgroundID = 1,
@@ -53,6 +54,7 @@ function createLEVELS(g_sprites) {
             ], 
             ceilings = [],
             bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         _createSingleLevel( // Level 3
             backgroundID = 2,
@@ -68,6 +70,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         _createSingleLevel( // Level 4
             backgroundID = 3,
@@ -85,6 +88,7 @@ function createLEVELS(g_sprites) {
             ], 
             ceilings = [],
             bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         _createSingleLevel( // Level 5
             backgroundID = 4,
@@ -97,6 +101,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_yellow"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 6
             backgroundID = 5,
@@ -109,6 +114,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_yellow"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 7
             backgroundID = 6,
@@ -121,6 +127,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 8
             backgroundID = 7,
@@ -133,6 +140,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 9
             backgroundID = 8,
@@ -145,6 +153,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 10
             backgroundID = 9,
@@ -169,6 +178,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 12
             backgroundID = 11,
@@ -193,6 +203,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 14
             backgroundID = 13,
@@ -217,6 +228,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 16
             backgroundID = 15,
@@ -241,6 +253,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 18
             backgroundID = 17,
@@ -253,6 +266,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 19
             backgroundID = 18,
@@ -265,6 +279,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 20
             backgroundID = 19,
@@ -277,6 +292,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 21
             backgroundID = 20,
@@ -289,6 +305,7 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: 
         )
     ];
     return LEVELS;
