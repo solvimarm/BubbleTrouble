@@ -135,8 +135,7 @@ function generateMap(map_number) {
 
     entityManager.generateLevelP(map_number); // print current level
     entityManager.generateLives();
-    entityManager.generateShowBullet();
-
+    
     var numberOfBalls = 0;
     
     // Generate all Balls

@@ -191,7 +191,7 @@ MainCharacter.prototype.render = function (ctx) {
     if (this.SHIELD) {
         g_sprites.Power_characterShield.drawWrappedCentredAt(ctx, this.cx, this.cy);
     }
-    showBullet(ctx, this.bulletType);
+    drawShowBullet(ctx, this.bulletType);
 }
 
 MainCharacter.prototype.kill = function () {
@@ -266,23 +266,29 @@ function next() {
 }
 
 
-function showBullet(ctx, bulletType){
+function drawShowBullet(ctx, bulletType){
+    
+    ctx.fillStyle = "#663f0d"
+    ctx.fillRect(600-5, 545-5, 30+10, 30+10);
+
     ctx.fillStyle = "black"
-    ctx.fillRect(500, 535, 30, 30);
+    ctx.fillRect(600, 545, 30, 30);
+    
     if(bulletType === "chain_gray"){
-        g_sprites.Chain_Gray.drawWrappedCentredAt(ctx,515,550);
-        console.log("bulletType er : "+ bulletType);
+        g_sprites.Chain_Gray.drawWrappedCentredAt(ctx,615,560);
     }
     if(bulletType === "chain_red"){
-        g_sprites.Chain_Red.drawWrappedCentredAt(ctx,515,550);
-        console.log("bulletType er : "+ bulletType);
+        g_sprites.Chain_Red.drawWrappedCentredAt(ctx,615,560);
     }
     if(bulletType === "ray_yellow"){
-        g_sprites.Ray_Yellow.drawWrappedCentredAt(ctx,515,550);
-        console.log("bulletType er : "+ bulletType);
+        g_sprites.Ray_Yellow.drawWrappedCentredAt(ctx,615,560);
     }
     if(bulletType === "ray_green"){
-        g_sprites.Ray_Green.drawWrappedCentredAt(ctx,515,550);
-        console.log("bulletType er : "+ bulletType);
+        g_sprites.Ray_Green.drawWrappedCentredAt(ctx,615,560);
     }
+
+    ctx.font = "bold 15px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Bullet", 595, 595);
+	ctx.fillText("Lives", 382, 595);
 }

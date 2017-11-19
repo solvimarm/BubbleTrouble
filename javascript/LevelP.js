@@ -14,9 +14,11 @@ function drawCurrentLevel(ctx, map_number){
     var stringLevel = map_number.toString();
     var string = "Level : " + stringLevel;
     ctx.font = "bold 30px Arial";
+
+    //ctx.strokeStyle = "#663f0d";
+    //ctx.lineWidth = 3;
+    //ctx.strokeText(string, 20, 575);
+
     ctx.fillStyle = "black";
-    ctx.fillText(string, 20, 585);
-    ctx.strokeStyle = "white";
-    ctx.lineWidth = 1;
-    ctx.strokeText(string,20,585);
+    ctx.fillText(string, 20, 575);
 }
