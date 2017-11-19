@@ -440,7 +440,7 @@ function drawStartScreen(ctx) {
       break;
     case 2:
       drawText(ctx,"If you want something done and",1)
-      drawText(ctx,"you want i done fast, Im your guy.",2)
+      drawText(ctx,"you want it done fast, Im your guy.",2)
       drawText(ctx,"I shoot twice as many shots and",3)
       drawText(ctx,"I hate shields",4)
       drawDeathnote(ctx);
