@@ -26,13 +26,18 @@ function createLEVELS(g_sprites) {
     var LEVELS = [
         _createSingleLevel(
             backgroundID = 0,
-            useEdgeWalls = false,
-            characterXPos = 400, 
-            levelTime = 15, 
+            useEdgeWalls = true,
+            characterXPos = 100, 
+            levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: -1, size: 1}
+                {cx: 50, cy: 100, velX: -1, size: 2},
+                {cx: 350, cy: 100, velX: 1, size: 2},
+                {cx: 650, cy: 100, velX: -1, size: 2}
             ], 
-            walls = [], 
+            walls = [
+                {x: 266, y: 0, width: 20, height: 500, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
+                {x: 544, y: 0, width: 20, height: 500, type: 0, ballsToHit: 14, sprite: g_sprites.wall_Wood}
+            ], 
             ceilings = [],
             bullet = "chain_gray"
         ),
