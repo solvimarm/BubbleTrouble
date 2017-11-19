@@ -30,20 +30,15 @@ function createLEVELS(g_sprites) {
             characterXPos = 100, 
             levelTime = 30, 
             balls = [
-                {cx: 50, cy: 100, velX: -1, size: 2},
-                {cx: 350, cy: 100, velX: 1, size: 2},
-                {cx: 650, cy: 100, velX: -1, size: 2}
+                {cx: 50, cy: 200, velX: -1, size: 2},
             ], 
-            walls = [
-                {x: 266, y: 0, width: 20, height: 500, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
-                {x: 544, y: 0, width: 20, height: 500, type: 0, ballsToHit: 14, sprite: g_sprites.wall_Wood}
-            ], 
+            walls = [], 
             ceilings = [],
             bullet = "chain_gray"
         ),
         _createSingleLevel( // Level 2
             backgroundID = 1,
-            useEdgeWalls = true,
+            useEdgeWalls = false,
             characterXPos = 300, 
             levelTime = 40, 
             balls = [
@@ -51,35 +46,45 @@ function createLEVELS(g_sprites) {
                 {cx: 700, cy: 100, velX: -1, size: 3}
             ], 
             walls = [
-                {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 0, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Wood},
+                {x: 784, y: 0, width: 16, height: 500, type: 0, sprite: g_sprites.wall_Wood},
+                {x: 398, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Wood},
                 {x: 398, y: 430, width: 20, height: 70, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Wood},
             ], 
             ceilings = [],
-            bullet = "chain_red"
+            bullet = "chain_gray"
         ),
         _createSingleLevel( // Level 3
             backgroundID = 2,
             useEdgeWalls = true,
             characterXPos = 400, 
-            levelTime = 20, 
+            levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 160, cy: 300, velX: 1, size: 1},
+                {cx: 320, cy: 300, velX: 1, size: 1},
+                {cx: 480, cy: 300, velX: 1, size: 1},
+                {cx: 640, cy: 300, velX: 1, size: 1},
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "ray_yellow"
+            bullet = "chain_gray"
         ),
         _createSingleLevel( // Level 4
             backgroundID = 3,
             useEdgeWalls = true,
-            characterXPos = 400, 
-            levelTime = 20, 
+            characterXPos = 100, 
+            levelTime = 45, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 2},
+                {cx: 50, cy: 100, velX: -1, size: 2},
+                {cx: 350, cy: 100, velX: 1, size: 2},
+                {cx: 650, cy: 100, velX: -1, size: 2}
             ], 
-            walls = [], 
+            walls = [
+                {x: 266, y: 0, width: 20, height: 500, type: 0, ballsToHit: 7, sprite: g_sprites.wall_Stone1},
+                {x: 544, y: 0, width: 20, height: 500, type: 0, ballsToHit: 14, sprite: g_sprites.wall_Stone1},
+            ], 
             ceilings = [],
-            bullet = "ray_yellow"
+            bullet = "chain_gray"
         ),
         _createSingleLevel( // Level 5
             backgroundID = 4,
@@ -87,11 +92,11 @@ function createLEVELS(g_sprites) {
             characterXPos = 400, 
             levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 3},
+                {cx: 350, cy: 200, velX: 1, size: 3},
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "ray_green"
+            bullet = "ray_yellow"
         ),
         _createSingleLevel( // Level 6
             backgroundID = 5,
@@ -103,7 +108,7 @@ function createLEVELS(g_sprites) {
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "chain_gray"
+            bullet = "ray_yellow"
         ),
         _createSingleLevel( // Level 7
             backgroundID = 6,

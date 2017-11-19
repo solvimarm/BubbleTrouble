@@ -411,7 +411,7 @@ function st_screen(x, y) {
       Start_Song.pause();
       Play_Song.load();
       Play_Song.play();
-      generateMap(20);
+      generateMap(0);
     }
   }
 }
