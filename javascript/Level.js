@@ -144,8 +144,6 @@ function generateMap(map_number) {
         numberOfBalls += Math.pow(2, level.balls[i].size + 1) - 1;
     }
     
-    console.log("Fjöldi bolta" + numberOfBalls);
-    
     // Generate Character
     entityManager.generateMainCharacter(level.character);
     entityManager.initiateLevel(map_number, numberOfBalls);

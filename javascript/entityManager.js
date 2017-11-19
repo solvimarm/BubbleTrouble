@@ -63,16 +63,22 @@ var entityManager = {
 
   initiateLevel: function(map_number, numberOfBalls) {
     this._level = {
-      "currentMap": map_number,
-      "initialBalls": numberOfBalls,
-      "ballsHit": 0
+      currentMap: map_number,
+      initialBalls: numberOfBalls,
+      ballsHit: 0
     };
   },
 
   ballHit: function() {
-    this._level["ballsHit"]++;
-    if(this._level["ballsHit"] === this._level["initialBalls"]) {
-        generateMap( this._level["currentMap"]+1);
+    this._level.ballsHit += 1;
+    //if(this._level["ballsHit"] === this._level["initialBalls"]) {
+    //    generateMap( this._level["currentMap"]+1);
+    //}
+  },
+
+  updateLevel: function(){
+    if(this._balls.length === 0 && state.startGame){
+      generateMap(this._level.currentMap + 1);
     }
   },
 
@@ -81,11 +87,11 @@ var entityManager = {
   },
 
   resetLevel: function(){
-    generateMap(this._level["currentMap"]);
+    generateMap(this._level.currentMap);
   },
 
   numberOfBallsHit: function() {
-    return this._level["ballsHit"];
+    return this._level.ballsHit;
   },
   
   generateCeiling: function (descr) {

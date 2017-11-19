@@ -151,6 +151,7 @@ MainCharacter.prototype.update = function (du) {
     this.updateSprite(du, oldx, this.cy);
     spatialManager.register(this);
     this.maybeFireBullet();
+    entityManager.updateLevel();
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
@@ -249,7 +250,6 @@ function shieldTimeout() {
 }
 
 function gameOver() {
-    console.log("Game over");
     GAME_FREEZE = false;
     state.startGame = false;
     entityManager.clear();

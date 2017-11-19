@@ -30,8 +30,6 @@ function Bullet(descr){
         this.fireSound = new Audio("Sounds/chain.wav");
         this.fireSound.play();
     }
-
-    console.log("ÞETTA ER SKOT");
 }
 
 Bullet.prototype = new Entity();
@@ -47,7 +45,6 @@ Bullet.prototype.update = function(du){
     }
 
     if(this.lifeSpan === 0 && this.yTop <= 0){
-        console.log("snerti loft");
         this.killEntity();
     }
     
@@ -57,7 +54,6 @@ Bullet.prototype.update = function(du){
             this.killEntity(); // drepum þetta skot
             this.fireSound.pause();
             ball_sound.play();
-            console.log("Þú skaust bolta");
             hitBallEntity.hitBall();
         }
     }
