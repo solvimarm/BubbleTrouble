@@ -24,7 +24,7 @@ function _createSingleLevel(backgroundID, useEdgeWalls, characterXPos, levelTime
 
 function createLEVELS(g_sprites) {
     var LEVELS = [
-        _createSingleLevel(
+        _createSingleLevel( // Level 1
             backgroundID = 0,
             useEdgeWalls = true,
             characterXPos = 100, 
@@ -41,7 +41,7 @@ function createLEVELS(g_sprites) {
             ceilings = [],
             bullet = "chain_gray"
         ),
-        _createSingleLevel(
+        _createSingleLevel( // Level 2
             backgroundID = 1,
             useEdgeWalls = true,
             characterXPos = 300, 
@@ -57,7 +57,7 @@ function createLEVELS(g_sprites) {
             ceilings = [],
             bullet = "chain_red"
         ),
-        _createSingleLevel(
+        _createSingleLevel( // Level 3
             backgroundID = 2,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -69,7 +69,7 @@ function createLEVELS(g_sprites) {
             ceilings = [],
             bullet = "ray_yellow"
         ),
-        _createSingleLevel(
+        _createSingleLevel( // Level 4
             backgroundID = 3,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -81,7 +81,7 @@ function createLEVELS(g_sprites) {
             ceilings = [],
             bullet = "ray_yellow"
         ),
-        _createSingleLevel(
+        _createSingleLevel( // Level 5
             backgroundID = 4,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -93,13 +93,13 @@ function createLEVELS(g_sprites) {
             ceilings = [],
             bullet = "ray_green"
         ),
-        _createSingleLevel(
+        _createSingleLevel( // Level 6
             backgroundID = 5,
             useEdgeWalls = true,
             characterXPos = 400, 
             levelTime = 40, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 4},
+                {cx: 150, cy: 100, velX: 1, size: 0},
             ], 
             walls = [], 
             ceilings = [],
@@ -142,6 +142,7 @@ function generateMap(map_number) {
     entityManager.generateLives();
     
     var numberOfBalls = 0;
+    var lastLevel = LEVELS.length-1;
     
     // Generate all Balls
     for (var i = 0; i < level.balls.length; i++) {
@@ -151,5 +152,5 @@ function generateMap(map_number) {
     
     // Generate Character
     entityManager.generateMainCharacter(level.character);
-    entityManager.initiateLevel(map_number, numberOfBalls);
+    entityManager.initiateLevel(map_number, numberOfBalls, lastLevel);
 }

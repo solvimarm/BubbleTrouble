@@ -61,24 +61,30 @@ var entityManager = {
     FREEZE = false;
   },
 
-  initiateLevel: function(map_number, numberOfBalls) {
+  initiateLevel: function(map_number, numberOfBalls, lastL) {
     this._level = {
       currentMap: map_number,
       initialBalls: numberOfBalls,
-      ballsHit: 0
+      ballsHit: 0,
+      lastMap: lastL
     };
   },
 
   ballHit: function() {
     this._level.ballsHit += 1;
-    //if(this._level["ballsHit"] === this._level["initialBalls"]) {
-    //    generateMap( this._level["currentMap"]+1);
-    //}
   },
 
   updateLevel: function(){
     if(this._balls.length === 0 && state.startGame){
-      generateMap(this._level.currentMap + 1);
+      if(this._level.currentMap === this._level.lastMap){ // Búið að vinna leikinn
+        WINNER = true;
+        Play_Song.pause();
+        Winner_sound.play();
+        setTimeout(function(){ winner() ;}, 14000);
+      }
+      else{
+        generateMap(this._level.currentMap + 1);
+      }
     }
   },
 
@@ -202,3 +208,15 @@ var entityManager = {
     this._timers[0].render(ctx);
   }
 };
+
+
+function winner(){
+  state.startGame = false;
+  WINNER = false;
+  entityManager.clear();
+  Start_Song.load();
+  Start_Song.play();
+}
+
+
+

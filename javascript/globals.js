@@ -21,6 +21,7 @@ var NOMINAL_UPDATE_INTERVAL = 16.666;
 var SECS_TO_NOMINALS = 1000 / NOMINAL_UPDATE_INTERVAL;
 
 var Y_BOTTOM = 500;
+var WINNER = false;
 
 var characterChosen = 0;
 
@@ -44,3 +45,4 @@ Play_Song.volume = 0.2;
 var Start_Song = new Audio("Sounds/StartSong1.wav");
 Start_Song.loop = true;
 Start_Song.volume = 0.2;
+var Winner_sound = new Audio("Sounds/Winner.wav");

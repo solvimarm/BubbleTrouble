@@ -250,6 +250,7 @@ function shieldTimeout() {
 }
 
 function gameOver() {
+    console.log("Game Over");
     GAME_FREEZE = false;
     state.startGame = false;
     entityManager.clear();
@@ -300,7 +301,3 @@ function isCxOkey(x){
     }
     return true;
 }
-
-
-
-

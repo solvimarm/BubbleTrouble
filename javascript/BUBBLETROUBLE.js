@@ -331,7 +331,7 @@ Start_Song.play();
 
 var playX = 100;
 var playY = 100;
-var cheight = 365 // Character height
+var cheight = 385 // Character height
 
 function st_screen(x, y) {
   if (x > 80 - g_images.Chick_BW.width / 2 && x < 80 + g_images.Chick_BW.width / 2) {
@@ -377,10 +377,11 @@ function st_screen(x, y) {
         g_LIVES = 5;
       }
       state.startGame = true;
+      g_isUpdatePaused = false;
       Start_Song.pause();
       Play_Song.load();
       Play_Song.play();
-      generateMap(1);
+      generateMap(5);
     }
   }
 }
