@@ -124,6 +124,21 @@ function requestPreloads() {
     Background_4: "Sprites/Backgrounds/Back_4.jpg",
     Background_5: "Sprites/Backgrounds/Back_5.jpg",
     Background_6: "Sprites/Backgrounds/Back_6.jpg",
+    Background_7: "Sprites/Backgrounds/Back_7.jpg",
+    Background_8: "Sprites/Backgrounds/Back_8.jpg",
+    Background_9: "Sprites/Backgrounds/Back_9.jpg",
+    Background_10: "Sprites/Backgrounds/Back_10.jpg",
+    Background_11: "Sprites/Backgrounds/Back_11.jpg",
+    Background_12: "Sprites/Backgrounds/Back_12.jpg",
+    Background_13: "Sprites/Backgrounds/Back_13.jpg",
+    Background_14: "Sprites/Backgrounds/Back_14.jpg",
+    Background_15: "Sprites/Backgrounds/Back_15.jpg",
+    Background_16: "Sprites/Backgrounds/Back_16.jpg",
+    Background_17: "Sprites/Backgrounds/Back_17.jpg",
+    Background_18: "Sprites/Backgrounds/Back_18.jpg",
+    Background_19: "Sprites/Backgrounds/Back_19.jpg",
+    Background_20: "Sprites/Backgrounds/Back_20.jpg",
+    Background_21: "Sprites/Backgrounds/Back_21.jpg",
     // Bullets
     Bullet_1: "Sprites/Bullets/Bullet_1.png", // chain gray
     Bullet_2: "Sprites/Bullets/Bullet_2.png", // ray yellow
@@ -263,7 +278,22 @@ function preloadDone() {
     new Sprite(g_images.Background_3),
     new Sprite(g_images.Background_4),
     new Sprite(g_images.Background_5),
-    new Sprite(g_images.Background_6)
+    new Sprite(g_images.Background_6),
+    new Sprite(g_images.Background_7),
+    new Sprite(g_images.Background_8),
+    new Sprite(g_images.Background_9),
+    new Sprite(g_images.Background_10),
+    new Sprite(g_images.Background_11),
+    new Sprite(g_images.Background_12),
+    new Sprite(g_images.Background_13),
+    new Sprite(g_images.Background_14),
+    new Sprite(g_images.Background_15),
+    new Sprite(g_images.Background_16),
+    new Sprite(g_images.Background_17),
+    new Sprite(g_images.Background_18),
+    new Sprite(g_images.Background_19),
+    new Sprite(g_images.Background_20),
+    new Sprite(g_images.Background_21),
   ];
 
   // Bullets
@@ -381,7 +411,7 @@ function st_screen(x, y) {
       Start_Song.pause();
       Play_Song.load();
       Play_Song.play();
-      generateMap(5);
+      generateMap(20);
     }
   }
 }

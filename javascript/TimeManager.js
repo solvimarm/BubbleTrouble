@@ -101,16 +101,16 @@ function drawTimeIsUp(ctx){
 }
 
 function drawWinner(ctx){
-    var string1 = "Congratulations"
-    var string2 = "You Just Won The Game"
+    var string1 = "Congratulations!"
+    var string2 = "You won the game"
     ctx.shadowOffsetX = 4;
     ctx.shadowOffsetY = 4;
     ctx.shadowBlur = 2;
     ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
     ctx.font = "bold 40px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(string1, 270, 250);
-    ctx.fillText(string2, 180, 300);
+    ctx.fillText(string1, 125, 200);
+    ctx.fillText(string2, 110, 250);
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.shadowBlur = 0;

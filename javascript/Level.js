@@ -104,6 +104,186 @@ function createLEVELS(g_sprites) {
             walls = [], 
             ceilings = [],
             bullet = "chain_gray"
+        ),
+        _createSingleLevel( // Level 7
+            backgroundID = 6,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 8
+            backgroundID = 7,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 9
+            backgroundID = 8,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 10
+            backgroundID = 9,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 11
+            backgroundID = 10,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 12
+            backgroundID = 11,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 13
+            backgroundID = 12,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 14
+            backgroundID = 13,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 15
+            backgroundID = 14,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 16
+            backgroundID = 15,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 17
+            backgroundID = 16,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 18
+            backgroundID = 17,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 19
+            backgroundID = 18,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 20
+            backgroundID = 19,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
+        ),
+        _createSingleLevel( // Level 21
+            backgroundID = 20,
+            useEdgeWalls = true,
+            characterXPos = 400, 
+            levelTime = 30, 
+            balls = [
+                {cx: 150, cy: 100, velX: 1, size: 1},
+            ], 
+            walls = [], 
+            ceilings = [],
+            bullet = "ray_green"
         )
     ];
     return LEVELS;
