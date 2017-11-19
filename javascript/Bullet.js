@@ -30,6 +30,7 @@ function Bullet(descr){
         this.fireSound = new Audio("Sounds/chain.wav");
         this.fireSound.play();
     }
+    console.log("ÞETTA ER SKOT!!!");
 }
 
 Bullet.prototype = new Entity();

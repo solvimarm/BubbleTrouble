@@ -155,7 +155,7 @@ MainCharacter.prototype.update = function (du) {
 };
 
 MainCharacter.prototype.maybeFireBullet = function () {
-    if(eatKey(this.KEY_FIRE)){
+    if(eatKey(this.KEY_FIRE) && isCxOkey(this.cx)) {
         if(characterChosen === 2){ // Deathnote (eiginleiki Deathnote)
             if(entityManager._bullet.length < 2){ // 2 skot af chain_gray eða ray_yellow
                 entityManager.fireBullet(this.cx, this.cy + this.sprite.height / 2, this.bulletType);
@@ -267,7 +267,6 @@ function next() {
 
 
 function drawShowBullet(ctx, bulletType){
-    
     ctx.fillStyle = "#663f0d"
     ctx.fillRect(600-5, 545-5, 30+10, 30+10);
 
@@ -286,9 +285,22 @@ function drawShowBullet(ctx, bulletType){
     if(bulletType === "ray_green"){
         g_sprites.Ray_Green.drawWrappedCentredAt(ctx,615,560);
     }
-
     ctx.font = "bold 15px Arial";
     ctx.fillStyle = "black";
     ctx.fillText("Bullet", 595, 595);
 	ctx.fillText("Lives", 382, 595);
 }
+
+function isCxOkey(x){
+    for(var i = 0; i < entityManager._bullet.length; i++){
+        var bulletCx = entityManager._bullet[i].cx;
+        if( Math.abs(x - bulletCx) <= 2 ) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
