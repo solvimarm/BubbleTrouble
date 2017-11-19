@@ -379,21 +379,39 @@ function drawStartScreen(ctx) {
   ctx.drawImage(g_images.Play, 680, 480);
   ctx.drawImage(g_images.ChooseC, 40, 310);
   ctx.drawImage(g_images.Info, 40, 435);
-
+  ctx.save();
+  ctx.fillStyle = "#93120C"
+	ctx.fillRect(334, 450, 235, 100);
+  ctx.restore();
   switch (characterChosen) {
     case 0:
+      drawText(ctx,"I have no flaws, however I", 1);
+      drawText(ctx,"have no special abilities either", 2)
       drawChick(ctx);
       break;
     case 1:
+      drawText(ctx,"I may not be as tough as the", 1);
+      drawText(ctx,"the others, but I make that up", 2)
+      drawText(ctx,"with speed", 3)
       drawAnotherDevil(ctx);
       break;
     case 2:
+      drawText(ctx,"If you want something done and",1)
+      drawText(ctx,"you want i done fast, Im your guy.",2)
+      drawText(ctx,"I shoot twice as many shots and",3)
+      drawText(ctx,"I hate shields",4)
       drawDeathnote(ctx);
       break;
     case 3:
+      drawText(ctx,"A good defence is the best",1)
+      drawText(ctx,"offence. I start with a shield",2)
+      drawText(ctx,"but my shots travel slower",3)
       drawGolbez(ctx);
       break;
     case 4:
+      drawText(ctx,"What did you expect? I'm big and",1)
+      drawText(ctx,"slow but I'm very strong",2)
+      drawText(ctx,"",3)
       drawDevil(ctx);
       break;
   }
@@ -437,4 +455,14 @@ function drawCharacter(ctx, x, y, scale, image) {
   ctx.scale(scale, scale);
   ctx.drawImage(image, -image.width/2, -image.height/2);
   ctx.restore();
+}
+
+function drawText(ctx, words, line){
+  ctx.fillStyle = "#F9D451";
+  ctx.font = "15px Arial";
+  var y = 470;
+  if(line === 2) y = 490 
+  if(line === 3) y = 510 
+  if(line === 4) y = 530 
+  ctx.fillText(words,340,y );
 }
