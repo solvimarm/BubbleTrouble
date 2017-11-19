@@ -9,8 +9,9 @@ function MainCharacter(descr) {
     //this.sprite = this.sprite //|| g_sprites.mainCharacterStill[0];
     this.scale = this.scale || 1;
     this.radius = 14;
-    if(characterChosen === 3)
+    if(characterChosen === 3){
         this.SHIELD = true;
+    }
 }
 
 MainCharacter.prototype = new Entity();
