@@ -10,9 +10,9 @@
 */
 
 var BallStyles = [ // The number comments are total hits.
-    {maxBounce: 40, radius: 8, color: "Red"}, // 1
-    {maxBounce: 60, radius: 14, color: "Blue1"}, // 3
-    {maxBounce: 70, radius: 20, color: "Green"}, // 7
+    {maxBounce: 25, radius: 4, color: "Red"}, // 1
+    {maxBounce: 45, radius: 7, color: "Blue1"}, // 3
+    {maxBounce: 50, radius: 14, color: "Green"}, // 7
     {maxBounce: 80, radius: 24, color: "Brown1"}, // 15
     {maxBounce: 85, radius: 28, color: "Orange"}, // 31
     {maxBounce: 90, radius: 32, color: "Purple"}, // 63 
