@@ -384,15 +384,19 @@ function createLEVELS(g_sprites) {
         _createSingleLevel( // Level 17
             backgroundID = 16,
             useEdgeWalls = true,
-            characterXPos = 400, 
-            levelTime = 30, 
+            characterXPos = 100, 
+            levelTime = 60, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 100, cy: 200, velX: 1, size: 5},
+                {cx: 700, cy: 200, velX: -1, size: 5},
             ], 
-            walls = [], 
+            walls = [
+                {x: 600, y: 0,   width: 16, height: 250, type: 0, ballsToHit: 63, sprite: g_sprites.wall_Steel},
+                {x: 600, y: 250, width: 16, height: 250, type: 0, ballsToHit: 63, sprite: g_sprites.wall_Steel},
+            ], 
             ceilings = [],
-            bullet = "ray_green"
-            // Undirskrift fyrir því að borð sé komið: 
+            bullet = "ray_yellow"
+            // Undirskrift fyrir því að borð sé komið: Svenni 
         ),
         _createSingleLevel( // Level 18
             backgroundID = 17,
