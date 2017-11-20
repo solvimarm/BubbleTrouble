@@ -116,16 +116,13 @@ findWallInRange: function(x,y){
             var cx = entity.x;
             var width = entity.width || 0;
             var height = entity.height || 0;
-            console.log(entity);
             if(cx === undefined) {
                 // Converting ceiling coords into wall coords.
                 cx = entity.minX;
                 width = entity.maxX - cx;
                 height = cy;
                 cy = 0;
-                
-            }
-                        
+            } 
             if(x > cx && x < cx+width &&  y <= (cy + height) && cy !== 500){
                 return entity;    
             }    
