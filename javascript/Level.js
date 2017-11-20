@@ -210,16 +210,32 @@ function createLEVELS(g_sprites) {
             // Undirskrift fyrir því að borð sé komið: Sölvi
         ),
         _createSingleLevel( // Level 11
-            backgroundID = 10,
+            backgroundID = 2,
             useEdgeWalls = true,
-            characterXPos = 400, 
+            characterXPos = 750, 
             levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 50, cy: 400, velX: 1, size: 0},
+                {cx: 60, cy: 390, velX: 1, size: 0},
+                {cx: 70, cy: 380, velX: 1, size: 0},
+                {cx: 80, cy: 370, velX: 1, size: 0},
+                {cx: 90, cy: 360, velX: 1, size: 0},
+
+                {cx: 160, cy: 400, velX: 1, size: 0},
+                {cx: 170, cy: 390, velX: 1, size: 0},
+                {cx: 180, cy: 380, velX: 1, size: 0},
+                {cx: 190, cy: 370, velX: 1, size: 0},
+                {cx: 200, cy: 360, velX: 1, size: 0},
+
+                {cx: 260, cy: 400, velX: 1, size: 0},
+                {cx: 270, cy: 390, velX: 1, size: 0},
+                {cx: 280, cy: 380, velX: 1, size: 0},
+                {cx: 290, cy: 370, velX: 1, size: 0},
+                {cx: 300, cy: 360, velX: 1, size: 0}
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "ray_green"
+            bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 12
@@ -357,7 +373,7 @@ function createLEVELS(g_sprites) {
 function generateMap(map_number) {
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
-    var level = LEVELS[9];
+    var level = LEVELS[10];
     
     entityManager.clear();
     entityManager.deferredSetup();
