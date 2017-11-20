@@ -111,21 +111,25 @@ findWallInRange: function(x,y){
     for(var ID in this._entities){
         var entity = this._entities[ID];
         var cy = entity.y;
+        
         if(cy !== undefined) {
             var cx = entity.x;
             var width = entity.width || 0;
             var height = entity.height || 0;
-
+            console.log(entity);
             if(cx === undefined) {
                 // Converting ceiling coords into wall coords.
                 cx = entity.minX;
                 width = entity.maxX - cx;
                 height = cy;
                 cy = 0;
+                
             }
                         
-            if(x > cx && x < cx+width && y<=height-Math.abs(cy)){
-                return y + height;    
+            if(x > cx && x < cx+width &&  y <= (cy + height) && cy !== 500){
+                //return y + height;
+                //console.log(entity);
+                return entity;    
             }    
         }
     }

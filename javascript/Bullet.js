@@ -59,7 +59,7 @@ Bullet.prototype.update = function(du){
     }
 
     var hitY = this.findWallEntity();
-    
+    console.log(hitY);
     if(hitY === undefined) {
         if(this.yTop > 0) {
             if(characterChosen === 3)
@@ -90,6 +90,8 @@ Bullet.prototype.render = function(ctx){
 };
 
 Bullet.prototype.collisionWithWall = function(wallx,wally,width,height){
-    if(this.cx >= wallx && this.cx <= wallx + width){}
+    if(this.cx >= wallx && this.cx <= wallx + width){
+
+    }
 };
 
