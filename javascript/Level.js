@@ -93,28 +93,42 @@ function createLEVELS(g_sprites) {
         _createSingleLevel( // Level 5
             backgroundID = 4,
             useEdgeWalls = true,
-            characterXPos = 400, 
-            levelTime = 30, 
+            characterXPos = 700, 
+            levelTime = 20, 
             balls = [
-                {cx: 350, cy: 200, velX: 1, size: 3},
+                {cx: 50, cy: 100, velX: 0, size: 0},
+                {cx: 100, cy: 100, velX: 0, size: 0},
+                {cx: 150, cy: 100, velX: 0, size: 0},
+                {cx: 200, cy: 100, velX: 0, size: 0},
+                {cx: 250, cy: 100, velX: 0, size: 0},
+                {cx: 300, cy: 100, velX: 0, size: 0},
+                {cx: 350, cy: 100, velX: 0, size: 0},
+                {cx: 400, cy: 100, velX: 0, size: 0},
+                {cx: 450, cy: 100, velX: 0, size: 0},
+                {cx: 500, cy: 100, velX: 0, size: 0},
+                {cx: 550, cy: 100, velX: 0, size: 0},
+                {cx: 600, cy: 100, velX: 0, size: 0},
+                {cx: 650, cy: 100, velX: 0, size: 0},
+                {cx: 700, cy: 100, velX: 0, size: 0},
             ], 
             walls = [], 
-            ceilings = [],
-            bullet = "ray_yellow"
-            // Undirskrift fyrir því að borð sé komið: 
+            ceilings = [],  
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         _createSingleLevel( // Level 6
             backgroundID = 5,
             useEdgeWalls = true,
             characterXPos = 400, 
-            levelTime = 40, 
+            levelTime = 80, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 0},
+                {cx: 100, cy: 100, velX: 1, size: 4},
+                {cx: 700, cy: 100, velX: -1, size: 4},
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "chain_gray"
-            // Undirskrift fyrir því að borð sé komið: 
+            bullet = "ray_green"
+            // Undirskrift fyrir því að borð sé komið: Svenni  
         ),
         _createSingleLevel( // Level 7
             backgroundID = 6,
@@ -135,12 +149,29 @@ function createLEVELS(g_sprites) {
             characterXPos = 400, 
             levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 50, cy: 150, velX: 1, size: 0},
+                {cx: 70, cy: 150, velX: 1, size: 0},
+                {cx: 90, cy: 150, velX: 1, size: 0},
+                {cx: 110, cy: 150, velX: 1, size: 0},
+                {cx: 130, cy: 150, velX: 1, size: 0},
+                {cx: 150, cy: 150, velX: 1, size: 0},    
+                {cx: 170, cy: 150, velX: 1, size: 0},
+                {cx: 190, cy: 150, velX: 1, size: 0},
+                {cx: 50, cy: 350, velX: 1, size: 0},
+                {cx: 70, cy: 350, velX: 1, size: 0},
+                {cx: 90, cy: 350, velX: 1, size: 0},
+                {cx: 110, cy: 350, velX: 1, size: 0},
+                {cx: 130, cy: 350, velX: 1, size: 0},
+                {cx: 150, cy: 350, velX: 1, size: 0},    
+                {cx: 170, cy: 350, velX: 1, size: 0},
+                {cx: 190, cy: 350, velX: 1, size: 0},
             ], 
-            walls = [], 
+            walls = [
+                {x: 0, y: 200, width: g_canvas.width, height: 32, type: 0, ballsToHit: 8, sprite: g_sprites.wall_Stone1}
+            ], 
             ceilings = [],
-            bullet = "ray_green"
-            // Undirskrift fyrir því að borð sé komið: 
+            bullet = "ray_yellow"
+            // Undirskrift fyrir því að borð sé komið: Helgi
         ),
         _createSingleLevel( // Level 9
             backgroundID = 8,
