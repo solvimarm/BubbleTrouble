@@ -104,6 +104,7 @@ MainCharacter.prototype.update = function (du) {
     if (collEntity) {
         if (collEntity.power) {
             this.getPowerup(collEntity.power);
+            PowerUps_sound.load();
             PowerUps_sound.play();
             collEntity.alive = false;
         } else if (this.SHIELD && !shield_time) {

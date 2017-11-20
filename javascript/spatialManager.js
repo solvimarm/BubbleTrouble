@@ -127,8 +127,6 @@ findWallInRange: function(x,y){
             }
                         
             if(x > cx && x < cx+width &&  y <= (cy + height) && cy !== 500){
-                //return y + height;
-                //console.log(entity);
                 return entity;    
             }    
         }
