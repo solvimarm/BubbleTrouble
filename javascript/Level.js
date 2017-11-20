@@ -90,32 +90,7 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: Svenni
         ),
-        _createSingleLevel( // Level 5
-            backgroundID = 4,
-            useEdgeWalls = true,
-            characterXPos = 700, 
-            levelTime = 60, 
-            balls = [
-                {cx: 50, cy: 100, velX: 0, size: 0},
-                {cx: 100, cy: 100, velX: 0, size: 0},
-                {cx: 150, cy: 100, velX: 0, size: 0},
-                {cx: 200, cy: 100, velX: 0, size: 0},
-                {cx: 250, cy: 100, velX: 0, size: 0},
-                {cx: 300, cy: 100, velX: 0, size: 0},
-                {cx: 350, cy: 100, velX: 0, size: 0},
-                {cx: 400, cy: 100, velX: 0, size: 0},
-                {cx: 450, cy: 100, velX: 0, size: 0},
-                {cx: 500, cy: 100, velX: 0, size: 0},
-                {cx: 550, cy: 100, velX: 0, size: 0},
-                {cx: 600, cy: 100, velX: 0, size: 0},
-                {cx: 650, cy: 100, velX: 0, size: 0},
-                {cx: 700, cy: 100, velX: 0, size: 0},
-            ], 
-            walls = [], 
-            ceilings = [],  
-            bullet = "chain_gray"
-            // Undirskrift fyrir því að borð sé komið: Svenni
-        ),
+        
         _createSingleLevel( // Level 6
             backgroundID = 5,
             useEdgeWalls = true,
@@ -301,6 +276,32 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: viktor
         ),
+        _createSingleLevel( // Level 5
+            backgroundID = 4,
+            useEdgeWalls = true,
+            characterXPos = 700, 
+            levelTime = 100, 
+            balls = [
+                {cx: 50, cy: 100, velX: 0, size: 0},
+                {cx: 100, cy: 100, velX: 0, size: 0},
+                {cx: 150, cy: 100, velX: 0, size: 0},
+                {cx: 200, cy: 100, velX: 0, size: 0},
+                {cx: 250, cy: 100, velX: 0, size: 0},
+                {cx: 300, cy: 100, velX: 0, size: 0},
+                {cx: 350, cy: 100, velX: 0, size: 0},
+                {cx: 400, cy: 100, velX: 0, size: 0},
+                {cx: 450, cy: 100, velX: 0, size: 0},
+                {cx: 500, cy: 100, velX: 0, size: 0},
+                {cx: 550, cy: 100, velX: 0, size: 0},
+                {cx: 600, cy: 100, velX: 0, size: 0},
+                {cx: 650, cy: 100, velX: 0, size: 0},
+                {cx: 700, cy: 100, velX: 0, size: 0},
+            ], 
+            walls = [], 
+            ceilings = [],  
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: Svenni
+        ),
         _createSingleLevel( // Level 14
             backgroundID = 13,
             useEdgeWalls = true,
@@ -453,7 +454,7 @@ function createLEVELS(g_sprites) {
 function generateMap(map_number) {
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
-    var level = LEVELS[map_number];
+    var level = LEVELS[map_number+5];
     
     entityManager.clear();
     entityManager.deferredSetup();
