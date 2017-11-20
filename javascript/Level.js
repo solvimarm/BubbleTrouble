@@ -285,14 +285,21 @@ function createLEVELS(g_sprites) {
             backgroundID = 12,
             useEdgeWalls = true,
             characterXPos = 400, 
-            levelTime = 30, 
+            levelTime = 8, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 128, cy: 200, velX: 1, size: 0},
+                {cx: 146, cy: 216, velX: 1, size: 0},
+                {cx: 164, cy: 232, velX: 1, size: 0},
+                {cx: 182, cy: 248, velX: 1, size: 0},
+                {cx: 200, cy: 264, velX: 1, size: 0},
+                {cx: 218, cy: 280, velX: 1, size: 0},
+                {cx: 236, cy: 296, velX: 1, size: 0},
+                {cx: 254, cy: 312, velX: 1, size: 0}
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "ray_green"
-            // Undirskrift fyrir því að borð sé komið: 
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: viktor
         ),
         _createSingleLevel( // Level 14
             backgroundID = 13,
@@ -300,36 +307,78 @@ function createLEVELS(g_sprites) {
             characterXPos = 400, 
             levelTime = 30, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 118, cy: 200, velX: 1, size: 0},
+                {cx: 136, cy: 216, velX: 1, size: 0},
+                {cx: 154, cy: 232, velX: 1, size: 0},
+                {cx: 172, cy: 248, velX: 1, size: 0},
+                {cx: 190, cy: 264, velX: 1, size: 0},
+                {cx: 358, cy: 280, velX: 1, size: 1},
+                {cx: 396, cy: 280, velX: 1, size: 1},
+                {cx: 584, cy: 200, velX: 1, size: 0},
+                {cx: 602, cy: 216, velX: 1, size: 0},
+                {cx: 630, cy: 232, velX: 1, size: 0},
+                {cx: 648, cy: 248, velX: 1, size: 0},
+                {cx: 666, cy: 264, velX: 1, size: 0}
             ], 
-            walls = [], 
+            walls = [  
+                {x: 248, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 248, y: 430, width: 20, height: 70, type: 0, ballsToHit: 5, sprite: g_sprites.wall_Wood},
+                {x: 548, y: 0, width: 20, height: 430, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 548, y: 430, width: 20, height: 70, type: 0, ballsToHit: 11, sprite: g_sprites.wall_Wood},
+
+                ],
             ceilings = [],
-            bullet = "ray_green"
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: viktor
         ),
         _createSingleLevel( // Level 15
             backgroundID = 14,
             useEdgeWalls = true,
             characterXPos = 400, 
-            levelTime = 30, 
+            levelTime = 40, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 220, cy: 40, velX: 1, size:  1},
+                {cx: 340, cy: 40, velX: 1, size:  1},
+                {cx: 460, cy: 40, velX: 1, size:  1},
+                {cx: 720, cy: 240, velX: -1, size:  1},
+                {cx: 600, cy: 240, velX: -1, size:  1},
+                {cx: 480, cy: 240, velX: -1, size:  1},
+                {cx: 380, cy: 240, velX: -1, size:  3},
             ], 
-            walls = [], 
+            walls = [
+                {x: 0, y: 180, width: 700 , height: 10, type: 0, sprite: g_sprites.wall_Stone2},
+                {x: 100, y: 360, width: 700 , height: 10, type: 0, sprite: g_sprites.wall_Stone2}    
+            ], 
             ceilings = [],
-            bullet = "ray_green"
-            // Undirskrift fyrir því að borð sé komið: 
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: viktor 
         ),
         _createSingleLevel( // Level 16
             backgroundID = 15,
             useEdgeWalls = true,
             characterXPos = 400, 
-            levelTime = 30, 
+            levelTime = 50, 
             balls = [
-                {cx: 150, cy: 100, velX: 1, size: 1},
+                {cx: 100, cy: 300, velX: 1, size:  0},
+                {cx: 100, cy: 80, velX: 1, size:  1},
+                {cx: 300, cy: 80, velX: 1, size:  1},
+                {cx: 500, cy: 80, velX: 1, size:  2},
+                {cx: 700, cy: 80, velX: 1, size:  4},
+
             ], 
-            walls = [], 
+            walls = [
+                {x: 200, y: 0, width: 20, height: 260, type: 0, sprite: g_sprites.wall_Stone1},
+                {x: 400, y: 0, width: 20, height: 260, type: 0, sprite: g_sprites.wall_Stone2},
+                {x: 600, y: 0, width: 20, height: 260, type: 0, sprite: g_sprites.wall_Steel},
+                {x: 0, y: 260, width: 200 , height: 20, type: 0,  ballsToHit: 1, sprite: g_sprites.wall_Wood},
+                {x: 200, y: 260, width: 200 , height: 20, type: 0,  ballsToHit: 3, sprite: g_sprites.wall_Wood},
+                {x: 400, y: 260, width: 200 , height: 20, type: 0,  ballsToHit: 6, sprite: g_sprites.wall_Wood},
+                {x: 600, y: 260, width: 200 , height: 20, type: 0,  ballsToHit: 10, sprite: g_sprites.wall_Wood},    
+
+            ], 
             ceilings = [],
-            bullet = "ray_green"
+            bullet = "chain_gray"
+            // Undirskrift fyrir því að borð sé komið: viktor
         ),
         _createSingleLevel( // Level 17
             backgroundID = 16,
