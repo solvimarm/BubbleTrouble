@@ -113,7 +113,7 @@ function createLEVELS(g_sprites) {
             ], 
             walls = [], 
             ceilings = [],
-            bullet = "ray_yellow"
+            bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: 
         ),
         _createSingleLevel( // Level 7
