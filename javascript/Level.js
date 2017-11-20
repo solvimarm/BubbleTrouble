@@ -237,10 +237,10 @@ function createLEVELS(g_sprites) {
                 {cx: 380, cy: 350, velX: 1, size: 1},
                 {cx: 480, cy: 350, velX: 1, size: 1},
 
-                {cx: 580, cy: 250, velX: -1, size: 2},
-                {cx: 680, cy: 250, velX: -1, size: 2},
-                {cx: 780, cy: 250, velX: -1, size: 2},
-                {cx: 480, cy: 250, velX: -1, size: 2},
+                {cx: 580, cy: 270, velX: -1, size: 2},
+                {cx: 680, cy: 270, velX: -1, size: 2},
+                {cx: 780, cy: 270, velX: -1, size: 2},
+                {cx: 480, cy: 270, velX: -1, size: 2},
 
                 {cx: 200, cy: 50, velX: 1, size: 3},
                 {cx: 600, cy: 50, velX: -1, size: 3}
@@ -248,7 +248,7 @@ function createLEVELS(g_sprites) {
             ], 
             walls = [
                 
-                {x: 0, y: 200, width: g_canvas.width, height: 16, type: 0, ballsToHit: 49, sprite: g_sprites.wall_Stone1},
+                {x: 0, y: 230, width: g_canvas.width, height: 16, type: 0, ballsToHit: 49, sprite: g_sprites.wall_Stone1},
                 {x: 0, y: 300, width: g_canvas.width, height: 16, type: 0, ballsToHit: 21, sprite: g_sprites.wall_Stone1},
                 {x: 0, y: 400, width: g_canvas.width, height: 16, type: 0, ballsToHit: 9, sprite: g_sprites.wall_Stone1},
             ], 
@@ -454,7 +454,7 @@ function createLEVELS(g_sprites) {
 function generateMap(map_number) {
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
-    var level = LEVELS[map_number+5];
+    var level = LEVELS[map_number];
     
     entityManager.clear();
     entityManager.deferredSetup();
