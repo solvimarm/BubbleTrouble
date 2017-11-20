@@ -13,14 +13,14 @@ var BallStyles = [ // The number comments are total hits.
     {maxBounce: 25, radius: 5, color: "Red"}, // 1
     {maxBounce: 45, radius: 7, color: "Blue1"}, // 3
     {maxBounce: 50, radius: 14, color: "Green"}, // 7
-    {maxBounce: 65, radius: 20, color: "Brown1"}, // 15
+    {maxBounce: 65, radius: 20, color: "Brown2"}, // 15
     {maxBounce: 85, radius: 28, color: "Orange"}, // 31
     {maxBounce: 90, radius: 32, color: "Purple"}, // 63 
     {maxBounce: 90, radius: 36, color: "Yellow2"}, // 127   ALERT! Using balls past this point may lead to dull game. 
     {maxBounce: 85, radius: 40, color: "SeaGreen"}, // 255
     {maxBounce: 85, radius: 44, color: "Pink"}, // 511
     {maxBounce: 85, radius: 48, color: "Blue2"}, // 1027
-    {maxBounce: 80, radius: 50, color: "Brown2"}, // 2047
+    {maxBounce: 80, radius: 50, color: "Brown1"}, // 2047
     {maxBounce: 70, radius: 52, color: "GreenBlue"}, // 4095
     {maxBounce: 70, radius: 54, color: "Grey"}, // 8192
     {maxBounce: 70, radius: 56, color: "LightBlue"}, // 
