@@ -89,7 +89,7 @@ function drawPause(ctx){
     ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
     ctx.font = "bold 30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(string, 700, 40);
+    ctx.fillText(string, 680, 40);
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.shadowBlur = 0;

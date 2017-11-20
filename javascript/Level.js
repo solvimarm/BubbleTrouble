@@ -91,7 +91,7 @@ function createLEVELS(g_sprites) {
             // Undirskrift fyrir því að borð sé komið: Svenni
         ),
         
-        _createSingleLevel( // Level 6
+        _createSingleLevel( // Level 5
             backgroundID = 5,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -105,7 +105,7 @@ function createLEVELS(g_sprites) {
             bullet = "ray_green"
             // Undirskrift fyrir því að borð sé komið: Svenni  
         ),
-        _createSingleLevel( // Level 7
+        _createSingleLevel( // Level 6
             backgroundID = 6,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -121,7 +121,7 @@ function createLEVELS(g_sprites) {
             bullet = "ray_yellow"
             // Undirskrift fyrir því að borð sé komið: Svenni
         ),
-        _createSingleLevel( // Level 8
+        _createSingleLevel( // Level 7
             backgroundID = 7,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -151,7 +151,7 @@ function createLEVELS(g_sprites) {
             bullet = "ray_yellow"
             // Undirskrift fyrir því að borð sé komið: Helgi
         ),
-        _createSingleLevel( // Level 9
+        _createSingleLevel( // Level 8
             backgroundID = 8,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -164,7 +164,7 @@ function createLEVELS(g_sprites) {
             bullet = "ray_green"
             // Undirskrift fyrir því að borð sé komið: sölvi
         ),
-        _createSingleLevel( // Level 10
+        _createSingleLevel( // Level 9
             backgroundID = 0,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -187,7 +187,7 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: Sölvi
         ),
-        _createSingleLevel( // Level 11
+        _createSingleLevel( // Level 10
             backgroundID = 2,
             useEdgeWalls = true,
             characterXPos = 750, 
@@ -216,7 +216,7 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: sölvi
         ),
-        _createSingleLevel( // Level 12
+        _createSingleLevel( // Level 11
             backgroundID = 11,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -256,7 +256,7 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
              // Undirskrift fyrir því að borð sé komið: sölvi
         ),
-        _createSingleLevel( // Level 13
+        _createSingleLevel( // Level 12
             backgroundID = 12,
             useEdgeWalls = true,
             characterXPos = 400, 
@@ -276,7 +276,7 @@ function createLEVELS(g_sprites) {
             bullet = "chain_gray"
             // Undirskrift fyrir því að borð sé komið: viktor
         ),
-        _createSingleLevel( // Level 5
+        _createSingleLevel( // Level 13
             backgroundID = 4,
             useEdgeWalls = true,
             characterXPos = 700, 
@@ -458,7 +458,7 @@ function createLEVELS(g_sprites) {
 function generateMap(map_number) {
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
-    var level = LEVELS[map_number+5];
+    var level = LEVELS[map_number];
     
     entityManager.clear();
     entityManager.deferredSetup();
