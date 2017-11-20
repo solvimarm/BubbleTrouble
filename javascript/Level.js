@@ -404,7 +404,7 @@ function createLEVELS(g_sprites) {
 function generateMap(map_number) {
     // My level is object
     var LEVELS = createLEVELS(g_sprites);
-    var level = LEVELS[11];
+    var level = LEVELS[map_number];
     
     entityManager.clear();
     entityManager.deferredSetup();
