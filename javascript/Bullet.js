@@ -59,7 +59,6 @@ Bullet.prototype.update = function(du){
     }
 
     var hitY = this.findWallEntity();
-    console.log(hitY);
     if(hitY === undefined) {
         if(this.yTop > 0) {
             if(characterChosen === 3)
